@@ -1,0 +1,19 @@
+name: Content change request
+description: Suggest an addition or change to the textbook content.
+title: "[Content]: "
+labels: [content]
+body:
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed change
+      description: What should be added/changed, and why?
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: Sources / references
+      description: Provide citations or links where applicable.
+    validations:
+      required: false
