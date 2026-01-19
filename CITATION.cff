@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it using the metadata below."
+title: "ECTO: Theory Development Textbook"
+type: software
+authors:
+  - family-names: "van Dongen"
+    given-names: "Noah"
+    affiliation: "Erasmus University Rotterdam"
+repository-code: "https://github.com/<ORG_OR_USER>/<REPO>"
+url: "https://<ORG_OR_USER>.github.io/<REPO>/"
+license: "CC-BY-4.0"
+# After the first Zenodo-archived release, replace the placeholders below.
+# preferred-citation:
+#   type: article
+#   authors:
+#     - family-names: "van Dongen"
+#       given-names: "Noah"
+#   title: "ECTO: Theory Development Textbook"
+#   doi: "10.5281/zenodo.XXXXXXXX"

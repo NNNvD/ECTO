@@ -1,0 +1,11 @@
+# Introduction
+
+This chapter is a placeholder.
+
+## Repository workflow
+
+- Edit content in `manuscript/`.
+- Use PRs to merge into `main`.
+- CI renders the book on PRs.
+- Merges to `main` deploy to GitHub Pages.
+- GitHub Releases are archived by Zenodo.

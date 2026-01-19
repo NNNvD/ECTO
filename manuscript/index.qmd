@@ -1,0 +1,11 @@
+---
+title: "ECTO: Theory Development Textbook"
+---
+
+## Overview
+
+This is the public, living version of the ECTO textbook.
+
+## How to cite
+
+- Zenodo concept DOI (all versions): TBD
