@@ -1,55 +1,99 @@
 # ECTO: Theory Development Textbook
 
-Public repository for ECTO (Theory Development Textbook). This repo contains the living source files (Quarto) and automation for building and publishing the website.
+ECTO is an open, community-maintained textbook and reference work on **theory development** (primarily in psychology and the broader behavioural and social sciences). The project curates methods, templates, examples, and workflows for turning theoretical ideas into **explicit specifications** that can be:
+
+- Precisely stated (constructs, assumptions, scope conditions)
+- Represented as mechanism or process descriptions (qualitative and/or formal)
+- Linked to measurement and data (what would count as evidence, and how)
+- Used to derive discriminating predictions and crucial tests
+- Iteratively improved based on empirical and conceptual feedback
+
+This GitHub repository is the public, living workspace for authoring ECTO and publishing it as a website. **Zenodo** is used as the archival layer for immutable, DOI-minted releases.
 
 ## Quick links
-- Website (GitHub Pages): _TBD_
-- Zenodo concept DOI (all versions): _TBD after first release_
 
-## What’s in this repository
-- `manuscript/` — Quarto book source (chapters, assets, includes)
-- `.github/workflows/` — CI, GitHub Pages deployment, release automation
-- `scripts/` — utility scripts (optional)
+- Website (GitHub Pages): https://<ORG_OR_USER>.github.io/<REPO>/
+- Repository: https://github.com/<ORG_OR_USER>/<REPO>
+- Zenodo concept DOI (all versions): TBD (available after the first release)
+- Latest Zenodo version DOI: TBD
 
-## Build locally
-Prerequisites: Quarto installed.
+## What is ECTO?
 
-From repo root:
-- `quarto render manuscript`
+ECTO aims to make theory development more cumulative and more teachable. In many research areas, theoretical ideas are abundant but often remain underspecified: key constructs are ambiguous, assumptions are implicit, measurement links are unclear, and competing interpretations can be hard to adjudicate. ECTO addresses this by providing:
 
-Output:
-- `manuscript/_book/`
+- **Procedures and checklists** that make specification steps explicit
+- **Templates** that can be reused in projects, courses, and collaborations
+- **Worked examples** illustrating common failure modes and stronger alternatives
+- **A workflow** from idea -> specification -> formalization -> test -> revision
 
-## Publishing
-### GitHub Pages
-This repo is configured to deploy the rendered Quarto book to GitHub Pages via GitHub Actions.
+### Who this is for
 
-Repository admin steps:
-1. Go to Settings → Pages.
-2. Set Source to **GitHub Actions**.
+- Researchers and students who want practical guidance on building and improving theories
+- Methodologists, philosophers of science, and modelers contributing tools, critiques, and examples
+- Educators who want reusable teaching materials for theory construction and evaluation
 
-### Zenodo archival
-Zenodo archives **GitHub Releases** from this repo and mints DOIs.
+### What you will find in the book
 
-Repository admin steps:
-1. Log in to Zenodo using GitHub.
-2. In Zenodo: Profile → GitHub → toggle this repository ON → click Sync.
-3. Create the first GitHub Release (e.g., `v0.1.0`). Zenodo should archive it and mint a DOI.
-4. Paste the Zenodo **concept DOI** (all versions) into this README and into `CITATION.cff`.
+While the scope will expand over time, ECTO is intended to cover (at minimum):
 
-Important:
-- Zenodo’s GitHub integration archives the repository snapshot at release time. Treat large binary outputs as separate deposits.
+- Construct definition and conceptual clarification
+- Scope conditions and auxiliary assumptions
+- Mechanism mapping and process descriptions
+- Formalization (computational / mathematical / simulation models where appropriate)
+- Measurement and operationalization links (how theory meets data)
+- Deriving hypotheses and designing crucial tests
+- Theory comparison, revision, and cumulative updating
 
-## Versioning and releases
-Releases are managed automatically using `release-please`.
+## What this repository is for
 
-Recommended practice:
-- Use Conventional Commit prefixes (e.g., `feat: ...`, `fix: ...`, `docs: ...`).
-- Merge PRs into `main`; `release-please` will open a release PR when needed.
+This repository is intentionally structured to support three things:
 
-## Contributing
-See `CONTRIBUTING.md`.
+1. **A living textbook**
+   - Source files for the book (Quarto / Markdown) live in this repo.
+   - The rendered website is published via GitHub Pages.
 
-## License
-- Text/content: CC BY 4.0 (see `LICENSE-CONTENT`)
-- Code (scripts/workflows): MIT (see `LICENSE-CODE`)
+2. **Open collaboration**
+   - Issues and pull requests are the primary mechanism for discussion and improvement.
+   - Contributions can include chapter content, examples, figures, and build/publishing improvements.
+
+3. **Citable, immutable releases (Zenodo)**
+   - When a GitHub Release is created, Zenodo archives a snapshot of the repository and mints a DOI.
+   - Use the Zenodo DOI to cite a specific released version, or the concept DOI to cite ECTO in general.
+
+### Non-goals and constraints
+
+To keep the repository durable, legally safe, and easy to maintain, it should not contain:
+
+- Sensitive or confidential data (including personal data not explicitly intended for publication)
+- Copyright-restricted PDFs or other materials without distribution rights
+- Large binary files that do not need to be versioned with the source
+
+If you need to publish large binaries (e.g., PDFs of teaching packs, large datasets, videos), deposit them as separate Zenodo records and link to them from the relevant chapter or the README.
+
+## Repository layout
+
+Top-level structure (high level):
+
+- `manuscript/` - Quarto book source
+  - `index.qmd` - landing page for the book
+  - `chapters/` - chapter files
+  - `_quarto.yml` - book configuration
+- `.github/workflows/` - automation
+  - `ci.yml` - build checks on PRs/pushes
+  - `pages.yml` - deploy website on `main`
+  - `release.yml` - automated release management (release-please)
+- `CITATION.cff` - citation metadata (update after the first Zenodo release)
+- `ZENODO_SETUP.md` - short instructions for enabling the Zenodo GitHub integration
+- `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` - contribution and community guidelines
+- `scripts/` - optional helper scripts
+
+## Build and preview locally
+
+Prerequisites:
+
+- Install Quarto: https://quarto.org/
+
+Build the book from the repository root:
+
+```bash
+quarto render manuscript
