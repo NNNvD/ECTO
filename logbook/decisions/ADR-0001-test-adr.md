@@ -1,8 +1,8 @@
-# ADR-{{ADR_NUM}}: {{TITLE}}
+# ADR-0001: Test ADR
 
-- Date: {{DATE}}
+- Date: 2026-01-27
 - Status: Accepted
-- Decision owner: {{OWNER}}
+- Decision owner: Noah van Dongen
 - Related: 
 
 ## Context
