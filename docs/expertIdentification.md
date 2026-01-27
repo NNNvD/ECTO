@@ -77,4 +77,4 @@ Candidate experts are scored (0–2) on five criteria (max 10\) by the PI. These
 
 ## 4\. Inclusion criteria
 
-See *Project Description*
+See *[Project Description](https://github.com/NNNvD/ECTO/blob/main/docs/projectDescription.md)*
