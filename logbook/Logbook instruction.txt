@@ -1,0 +1,345 @@
+# Instructions for Codex Agent: Set up a repo-native Logbook system
+
+## Goal
+
+Implement a durable, readable, low-friction logbook inside this GitHub repo. The logbook must support:
+
+1. Daily chronological logs (easy append, one file per day)
+2. Decision records (ADRs) for durable decisions
+3. Optional meeting notes and incident reports
+4. A generated `logbook/README.md` index that stays current
+5. Simple commands to create/open today’s log and create ADRs
+6. GitHub-native cross-linking to Issues/PRs/commits
+
+## Non-goals
+
+* Do not introduce heavy dependencies or a complex web app.
+* Do not require a database.
+* Do not require external services beyond GitHub Actions.
+* Do not redesign project architecture; only add the logbook system.
+
+## Repository changes (deliverables)
+
+Create/modify the following files:
+
+### 1) Directory structure
+
+Create these directories (if they do not exist):
+
+* `logbook/`
+* `logbook/daily/`
+* `logbook/decisions/`
+* `logbook/meetings/`
+* `logbook/incidents/`
+* `logbook/_templates/`
+* `scripts/`
+* `.github/workflows/`
+* `.github/`
+
+### 2) Templates
+
+Create the following template files:
+
+#### `logbook/_templates/daily.md`
+
+Use exactly this template (keep it stable; the scripts depend on headings):
+
+```md
+---
+date: {{DATE}}
+timezone: Europe/Amsterdam
+---
+
+# {{DATE}}
+
+## Highlights
+- 
+
+## Entries
+### {{TIME}} — Action — <short title>
+- Context:
+- What I did:
+- Result:
+- Links:
+- Follow-ups:
+```
+
+#### `logbook/_templates/adr.md`
+
+```md
+# ADR-{{ADR_NUM}}: {{TITLE}}
+
+- Date: {{DATE}}
+- Status: Accepted
+- Decision owner: {{OWNER}}
+- Related: 
+
+## Context
+## Decision
+## Rationale
+## Consequences
+## Alternatives considered
+```
+
+#### `logbook/_templates/meeting.md`
+
+```md
+---
+date: {{DATE}}
+---
+
+# {{DATE}} — Meeting — {{TITLE}}
+
+## Attendees
+- 
+
+## Agenda
+- 
+
+## Notes
+- 
+
+## Decisions
+- 
+
+## Actions
+- 
+```
+
+#### `logbook/_templates/incident.md`
+
+```md
+---
+date: {{DATE}}
+severity: low
+---
+
+# {{DATE}} — Incident — {{TITLE}}
+
+## Summary
+## Timeline
+## Impact
+## Root cause
+## Resolution
+## Follow-ups
+```
+
+### 3) Core documentation
+
+Create `logbook/README.md` as an auto-generated index file. It MUST start with this header and warning:
+
+```md
+# Logbook
+
+This file is auto-generated. Do not edit manually. Run `python scripts/logbook_index.py` to regenerate.
+```
+
+Also create `logbook/LOGGING_GUIDE.md` (handwritten, not generated) that explains:
+
+* What belongs in Daily vs ADR vs Meeting vs Incident
+* Minimum standard for a “Decision” (when to create an ADR)
+* Recommended entry style (short heading + bullet fields)
+* How to reference Issues/PRs/commits (use `#123`, `PR #45`, short SHA)
+
+### 4) Developer ergonomics
+
+Add a `.github/pull_request_template.md` with a logbook checklist:
+
+```md
+## Logbook checklist
+- [ ] Logbook updated (daily entry and/or ADR) if this PR contains a noteworthy change
+- [ ] Linked relevant Issue/ADR in PR description
+```
+
+Optionally add `.github/ISSUE_TEMPLATE/logbook.md` if you think it helps, but it is not required.
+
+## Scripts (automation)
+
+### Technology requirement
+
+Use Python 3 (no external dependencies beyond the standard library). Provide scripts in `scripts/`. They must run on macOS/Linux and in GitHub Actions.
+
+### 1) Script: create/open today’s daily log
+
+Create `scripts/log_today.py` with behavior:
+
+* Determine today’s date in `Europe/Amsterdam` local date.
+
+  * Use Python’s `zoneinfo.ZoneInfo("Europe/Amsterdam")`.
+* File path: `logbook/daily/YYYY-MM-DD.md`
+* If file does not exist:
+
+  * Create it from `logbook/_templates/daily.md`
+  * Replace:
+
+    * `{{DATE}}` with `YYYY-MM-DD`
+    * `{{TIME}}` with current `HH:MM`
+* Print the created/target file path to stdout.
+* Exit code 0 on success.
+* Do NOT open an editor (keep it CI-friendly). Only create/ensure file exists.
+
+Also support an optional argument:
+
+* `--date YYYY-MM-DD` to create/ensure a specific date file (useful for backfilling)
+
+### 2) Script: append an entry to today’s log
+
+Create `scripts/log_add.py` with behavior:
+
+* Ensure today’s log exists (call the same internal helper used by `log_today.py`).
+* Accept CLI args:
+
+  * `--type` one of `Action|Decision|Meeting|Risk|Blocked|Release` (default: Action)
+  * `--title` required string
+  * `--links` optional string (free text; e.g., `#123, PR #45, abcdef0`)
+  * `--context` optional string
+  * `--result` optional string
+  * `--followups` optional string
+* Append a new entry under `## Entries` in the daily file, using this format:
+
+```md
+### HH:MM — <Type> — <Title>
+- Context: ...
+- What I did:
+- Result: ...
+- Links: ...
+- Follow-ups: ...
+```
+
+Rules:
+
+* If optional fields are omitted, still include the bullet but leave it blank (for consistency).
+* Ensure there is a blank line between entries.
+
+### 3) Script: create a new ADR with auto-increment
+
+Create `scripts/adr_new.py` with behavior:
+
+* Determine next ADR number by scanning `logbook/decisions/` for files matching `ADR-\d{4}-*.md`
+* Next number is max + 1, start from 1
+* Format ADR num as 4 digits: `0001`, `0002`, etc.
+* Accept args:
+
+  * `--title` required string
+  * `--owner` optional string (default: `Noah van Dongen`)
+  * `--status` optional string (default: `Accepted`)
+* Create file:
+
+  * slugify title to a safe filename suffix:
+
+    * lowercase
+    * spaces to hyphens
+    * remove non-alphanumeric except hyphen
+    * collapse multiple hyphens
+  * Filename: `logbook/decisions/ADR-0001-short-title.md`
+* Use template `logbook/_templates/adr.md` and replace:
+
+  * `{{ADR_NUM}}`, `{{TITLE}}`, `{{DATE}}`, `{{OWNER}}`
+  * Also set `Status:` line to the `--status` value
+* Print created ADR path to stdout.
+
+### 4) Script: generate index
+
+Create `scripts/logbook_index.py` to regenerate `logbook/README.md`.
+
+It must:
+
+* Discover all daily logs in `logbook/daily/*.md`
+* Discover all ADRs in `logbook/decisions/*.md`
+* Sort daily logs descending (most recent first)
+* Sort ADRs ascending by ADR number, and also include date if present
+* Output sections:
+
+```md
+# Logbook
+
+This file is auto-generated. Do not edit manually. Run `python scripts/logbook_index.py` to regenerate.
+
+## Daily logs (latest first)
+- 2026-01-18 — [2026-01-18](daily/2026-01-18.md)
+...
+
+## Decisions (ADRs)
+| ADR | Title | Date | Status |
+|---:|---|---|---|
+| 0001 | ... | 2026-01-18 | Accepted |
+...
+
+## Meetings
+- (optional) list files under logbook/meetings
+
+## Incidents
+- (optional) list files under logbook/incidents
+```
+
+Implementation details:
+
+* ADR metadata extraction:
+
+  * Parse first heading line `# ADR-0001: Title`
+  * Parse bullet lines for `Date:` and `Status:` if present
+* Daily link line uses relative link `daily/YYYY-MM-DD.md`
+* Use only standard library.
+
+### 5) Add a simple Makefile (or just) interface
+
+If the repo does not already have a task runner, add `Makefile` with:
+
+```make
+log:
+	python scripts/log_today.py
+
+log-add:
+	python scripts/log_add.py --type "$(TYPE)" --title "$(TITLE)" --links "$(LINKS)" --context "$(CONTEXT)" --result "$(RESULT)" --followups "$(FOLLOWUPS)"
+
+adr:
+	python scripts/adr_new.py --title "$(TITLE)" --owner "$(OWNER)" --status "$(STATUS)"
+
+log-index:
+	python scripts/logbook_index.py
+```
+
+If a Makefile already exists, append these targets without breaking existing ones.
+
+## GitHub Actions
+
+Create `.github/workflows/logbook-index.yml`:
+
+Behavior:
+
+* Trigger on `push` to default branch and on `workflow_dispatch`
+* Steps:
+
+  1. Checkout
+  2. Set up Python 3.x
+  3. Run `python scripts/logbook_index.py`
+  4. If `logbook/README.md` changed, commit and push back
+
+Important:
+
+* Use the built-in `GITHUB_TOKEN`
+* Configure git user as `github-actions[bot]`
+* Keep commits minimal with message: `chore(logbook): update logbook index`
+
+If pushing back is undesirable in this repo’s governance, then instead fail the workflow with a message indicating the index is out of date. However, default implementation should auto-commit.
+
+## Quality checks
+
+After implementation, the agent must:
+
+1. Run `python scripts/log_today.py` locally (in CI context) and ensure it creates the expected daily file.
+2. Run `python scripts/log_add.py --title "Test entry"` and confirm it appends to the file.
+3. Run `python scripts/adr_new.py --title "Test ADR"` and confirm ADR numbering + filename slug.
+4. Run `python scripts/logbook_index.py` and confirm `logbook/README.md` renders with valid relative links.
+5. Confirm no non-standard dependencies are required.
+
+## Acceptance criteria
+
+This is complete when:
+
+* Directories and templates exist
+* Scripts exist and run without errors
+* Index generator produces a stable `logbook/README.md`
+* GitHub Action keeps the index up to date
+* PR template includes logbook checklist
+* All paths are relative and GitHub-render friendly
