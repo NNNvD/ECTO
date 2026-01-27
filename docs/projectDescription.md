@@ -1,6 +1,6 @@
 # Expert Consensus on Theory Development Methodology 
 
-## General description (Draft, v0.0)
+## General description - V1.0
 
 **Project:** ECO Theory Development Text Book  
 **Description:** Developing a collaborative textbook and curriculum on theory creation, development, and evaluation in psychological science through expert consensus  
