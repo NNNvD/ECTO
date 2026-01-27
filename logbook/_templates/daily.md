@@ -7,3 +7,11 @@ timezone: Europe/Amsterdam
 
 ## Highlights
 - 
+
+## Entries
+### {{TIME}} — Action — <short title>
+- Context:
+- What I did:
+- Result:
+- Links:
+- Follow-ups:
