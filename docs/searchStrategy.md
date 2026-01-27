@@ -1,3 +1,7 @@
+---
+title: Search Strategy
+---
+
 # ECO Theory Development Textbook
 
 ## Search strategy for building version 0.0 of the textbook \- V1.0
