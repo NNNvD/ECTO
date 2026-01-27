@@ -12,7 +12,7 @@ This GitHub repository is the public, living workspace for authoring ECTO and pu
 
 ## Quick links
 
-- Website (GitHub Pages): TBD
+- Website (GitHub Pages): https://nnnvd.github.io/ECTO/ (after enabling GitHub Pages in repo settings)
 - Repository: https://github.com/NNNvD/ECTO
 - Zenodo concept DOI (all versions): TBD (available after the first release)
 - Latest Zenodo version DOI: TBD
