@@ -26,6 +26,89 @@ The quality of a Delphi study hinges on recruited experts. This procedure emphas
 * **Identify potential experts:** First and last authors from papers on topics identified by the terms used in the literature scan (e.g., methods papers, pedagogy pieces, essays on the need for better theory development).   
 * **Rationale:** Grounds the panel in demonstrable domain contributions. The papers need to be written by practicing experts (\>2000) the experts need to understand each other (English), and the projects concern psychological science (discipline \= psychology). 
 
+#### Search Queries
+
+##### **Scopus**
+
+**A) Theory creation/development/formalization**  
+TITLE-ABS-KEY( (theor\* W/3 (develop\* OR construct\* OR formal\* OR build\*))  
+OR "theory building" OR "theory construction" OR "formal theory"  
+OR (model\* W/3 formal\*) )  
+AND (LIMIT-TO (SUBJAREA, "PSYC")) AND PUBYEAR \> 2000
+
+**B) Abduction / explanation**  
+TITLE-ABS-KEY( abduction OR "abductive reasoning" OR "inference to the best explanation" OR IBE  
+OR (explan\* W/3 (power OR quality OR adequacy)) )  
+AND (LIMIT-TO (SUBJAREA, "PSYC")) AND PUBYEAR \> 2000
+
+**C) Model evaluation / theory choice / hypothesis derivation**  
+TITLE-ABS-KEY( (model\* W/3 (evaluat\* OR compar\* OR criticism OR adequacy OR selection OR choice))  
+OR (theor\* W/3 (evaluat\* OR apprais\* OR choice OR compar\*))  
+OR "hypothesis derivation" )  
+AND (LIMIT-TO (SUBJAREA, "PSYC")) AND PUBYEAR \> 2000
+
+**D) Theory education / pedagogy**  
+TITLE-ABS-KEY( (theor\* W/3 (education OR pedagogy OR curriculum OR syllabus OR teach\* OR training))  
+OR "theory education" OR "theory pedagogy" )  
+AND (LIMIT-TO (SUBJAREA, "PSYC")) AND PUBYEAR \> 2000
+
+## 
+
+##### **Web of Science Core Collection**
+
+**Filters**  
+Research Areas \= Psychology;  
+Document Types \= Article, Review article, Book chapter  
+Timespan \= 2000–2025
+
+**A) Theory creation/development/formalization**  
+TS=( (theor\* NEAR/3 (develop\* OR construct\* OR formal\* OR build\*))  
+OR "theory building" OR "theory construction" OR "formal theory"  
+OR (model\* NEAR/3 formal\*) )
+
+**B) Abduction / explanation**  
+TS=( abduction OR "abductive reasoning" OR "inference to the best explanation" OR IBE  
+OR (explan\* NEAR/3 (power OR quality OR adequacy)) )
+
+**C) Model evaluation / theory choice / hypothesis derivation**  
+TS=( (model\* NEAR/3 (evaluat\* OR compar\* OR criticism OR adequacy OR selection OR choice))  
+OR (theor\* NEAR/3 (evaluat\* OR apprais\* OR choice OR compar\*))  
+OR "hypothesis derivation" )
+
+**D) Theory education / pedagogy**  
+TS=( (theor\* NEAR/3 (education OR pedagogy OR curriculum OR syllabus OR teach\* OR training))  
+OR "theory education" OR "theory pedagogy" )
+
+## 
+
+##### **APA PsycInfo (EBSCOhost)**
+
+**Filters:**  
+Source Types: Academic Journals, eBooks, Literature Reviews  
+Timespan \- 2000 \- 2025
+
+**A) Theory creation/development/formalization**  
+TX ( theor\* N3 (develop\* OR construct\* OR formal\* OR build\*)  
+OR "theory building" OR "theory construction" OR "formal theory"  
+OR (model\* N3 formal\*) )  
+AND TX ( psycholog\* )
+
+**B) Abduction / explanation**  
+TX ( abduction OR "abductive reasoning" OR "inference to the best explanation" OR IBE  
+OR explan\* N3 (power OR quality OR adequacy) )  
+AND TX ( psycholog\* )
+
+**C) Model evaluation / theory choice / hypothesis derivation**  
+TX ( model\* N3 (evaluat\* OR compar\* OR criticism OR adequacy OR selection OR choice)  
+OR theor\* N3 (evaluat\* OR apprais\* OR choice OR compar\*)  
+OR "hypothesis derivation" )  
+AND TX ( psycholog\* )
+
+**D) Theory education / pedagogy**  
+TX ( theor\* N3 (education OR pedagogy OR curriculum OR syllabus OR teach\* OR training)  
+OR "theory education" OR "theory pedagogy" )  
+AND TX ( psycholog\* )
+
 ### Step 2\. Bounded snowballing
 
 * Experts identified and invited through Step 1 are asked to identify additional experts  
@@ -77,4 +160,4 @@ Candidate experts are scored (0–2) on five criteria (max 10\) by the PI. These
 
 ## 4\. Inclusion criteria
 
-See *[Project Description](https://github.com/NNNvD/ECTO/blob/main/docs/projectDescription.md)*
+See *Project Description*
