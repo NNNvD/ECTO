@@ -63,7 +63,7 @@ This repository is intentionally structured to support the **development of ECTO
 
 ## Non-goals and constraints (important)
 
-To keep the repository durable, legally safe, and ethically compliant, it must not contain:
+To keep the repository durable, legally safe, and ethically compliant, it will (must) not contain:
 
 - **Sensitive or confidential data**, including any non-public participant information
 - **Raw Delphi responses** that could compromise anonymity or were not explicitly consented for public release
@@ -71,7 +71,7 @@ To keep the repository durable, legally safe, and ethically compliant, it must n
 - Copyright-restricted PDFs or other materials without distribution rights
 - Large binary files that do not need to be versioned with the source
 
-If the Delphi produces outputs suitable for sharing, we prefer:
+Delphi outputs suitable for sharing:
 - **Aggregated summaries**, anonymized excerpts within consent limits, and public-facing syntheses
 - Separate Zenodo records for large artifacts, linked from the README if needed
 
@@ -92,4 +92,3 @@ Top-level structure (high level):
 - `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` - contribution and community guidelines
 - `scripts/` - optional helper scripts (e.g., build, validation, export utilities)
 
-> Note: You may still see a `manuscript/` folder in early stages from the initial scaffold. If the repo is strictly about the Delphi development process, consider renaming `manuscript/` to something like `protocol_site/` or `docs/`, or repurposing it to render the public project documentat_
