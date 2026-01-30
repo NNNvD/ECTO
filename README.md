@@ -1,14 +1,14 @@
-# ECTO: Theory Development Textbook
+# ECTO: Developing the ECTO Textbook (Delphi Project Repository)
 
-ECTO is an open, community-maintained textbook and reference work on **theory development** (primarily in psychology and the broader behavioural and social sciences). The project curates methods, templates, examples, and workflows for turning theoretical ideas into **explicit specifications** that can be:
+ECTO will become an open, community-maintained textbook and reference work on **theory development** (primarily in psychology and the broader behavioural and social sciences).
 
-- Precisely stated (constructs, assumptions, scope conditions)
-- Represented as mechanism or process descriptions (qualitative and/or formal)
-- Linked to measurement and data (what would count as evidence, and how)
-- Used to derive discriminating predictions and crucial tests
-- Iteratively improved based on empirical and conceptual feedback
+**This GitHub repository is *not* (yet) the textbook itself.**  
+At this stage, the repository is dedicated to documenting and coordinating the **development process** of ECTO — in particular, the design, setup, and execution of an expert-elicitation / **Delphi-style** project to determine the scope, structure, content priorities, and quality criteria of the future textbook.
 
-This GitHub repository is the public, living workspace for authoring ECTO and publishing it as a website. **Zenodo** is used as the archival layer for immutable, DOI-minted releases.
+In other words: **this repo is the “meta-project”: how we build ECTO.**  
+Only later will the actual textbook content be published here (or in a closely linked repository).
+
+**Zenodo** is used as an archival layer for immutable, DOI-minted releases of this *development workflow and its public outputs*.
 
 ## Quick links
 
@@ -17,83 +17,79 @@ This GitHub repository is the public, living workspace for authoring ECTO and pu
 - Zenodo concept DOI (all versions): TBD (available after the first release)
 - Latest Zenodo version DOI: TBD
 
-## What is ECTO?
+## What is ECTO (the eventual output)?
 
-ECTO aims to make theory development more cumulative and more teachable. In many research areas, theoretical ideas are abundant but often remain underspecified: key constructs are ambiguous, assumptions are implicit, measurement links are unclear, and competing interpretations can be hard to adjudicate. ECTO addresses this by providing:
+ECTO aims to make theory development more cumulative and teachable. In many research areas, theoretical ideas remain underspecified: key constructs are ambiguous, assumptions are implicit, measurement links are unclear, and competing interpretations can be hard to adjudicate.
 
-- **Procedures and checklists** that make specification steps explicit
-- **Templates** that can be reused in projects, courses, and collaborations
-- **Worked examples** illustrating common failure modes and stronger alternatives
-- **A workflow** from idea -> specification -> formalization -> test -> revision
+The future ECTO textbook will curate methods, templates, examples, and workflows for turning theoretical ideas into **explicit specifications** that can be:
 
-### Who this is for
+- Precisely stated (constructs, assumptions, scope conditions)
+- Represented as mechanism or process descriptions (qualitative and/or formal)
+- Linked to measurement and data (what would count as evidence, and how)
+- Used to derive discriminating predictions and crucial tests
+- Iteratively improved based on empirical and conceptual feedback
 
-- Researchers and students who want practical guidance on building and improving theories
-- Methodologists, philosophers of science, and modelers contributing tools, critiques, and examples
-- Educators who want reusable teaching materials for theory construction and evaluation
+## What this repository is for (current scope)
 
-### What you will find in the book
+This repository is intentionally structured to support the **development of ECTO**, with emphasis on a Delphi-style expert process. Concretely, this repo hosts:
 
-While the scope will expand over time, ECTO is intended to cover (at minimum):
+1. **Delphi project documentation**
+   - Protocols and workflow documentation (how the Delphi is run)
+   - Inclusion/exclusion criteria for experts and materials
+   - Recruitment materials, invitation templates, consent language (public-facing versions)
+   - Round structure, timelines, and decision rules
+   - Versioned change logs and rationales (why design decisions were made)
 
-- Construct definition and conceptual clarification
-- Scope conditions and auxiliary assumptions
-- Mechanism mapping and process descriptions
-- Formalization (computational / mathematical / simulation models where appropriate)
-- Measurement and operationalization links (how theory meets data)
-- Deriving hypotheses and designing crucial tests
-- Theory comparison, revision, and cumulative updating
+2. **Public instruments and materials**
+   - Survey instruments (items, rubrics, rating scales, codebooks)
+   - Guidance documents for participants (instructions, definitions, examples)
+   - Public templates for summarizing or coding responses
+   - Anonymized or aggregated outputs intended for public release (see constraints below)
 
-## What this repository is for
+3. **Open collaboration and issue tracking**
+   - Issues and pull requests are the primary mechanism for proposing changes
+   - Discussions about scope, structure, and methodological choices
+   - Tasks for building, validating, and improving project materials
 
-This repository is intentionally structured to support three things:
-
-1. **A living textbook**
-   - Source files for the book (Quarto / Markdown) live in this repo.
-   - The rendered website is published via GitHub Pages.
-
-2. **Open collaboration**
-   - Issues and pull requests are the primary mechanism for discussion and improvement.
-   - Contributions can include chapter content, examples, figures, and build/publishing improvements.
-
-3. **Citable, immutable releases (Zenodo)**
+4. **Citable, immutable releases (Zenodo)**
    - When a GitHub Release is created, Zenodo archives a snapshot of the repository and mints a DOI.
-   - Use the Zenodo DOI to cite a specific released version, or the concept DOI to cite ECTO in general.
+   - These DOIs are intended to cite **public versions of the Delphi protocol and outputs** (not private/raw responses).
 
-### Non-goals and constraints
+### What this repository is *not* for (yet)
 
-To keep the repository durable, legally safe, and easy to maintain, it should not contain:
+- It is **not yet** the canonical repository for the full textbook content.
+- It should **not** be used as the main home for draft chapters intended as publishable textbook chapters.
+- If early chapter drafting happens during development, it should be clearly marked as **provisional**, **non-canonical**, and **subject to Delphi outcomes** (or placed in a separate repo).
 
-- Sensitive or confidential data (including personal data not explicitly intended for publication)
+## Non-goals and constraints (important)
+
+To keep the repository durable, legally safe, and ethically compliant, it must not contain:
+
+- **Sensitive or confidential data**, including any non-public participant information
+- **Raw Delphi responses** that could compromise anonymity or were not explicitly consented for public release
+- Personal data (names/emails/affiliations) unless explicitly intended for publication
 - Copyright-restricted PDFs or other materials without distribution rights
 - Large binary files that do not need to be versioned with the source
 
-If you need to publish large binaries (e.g., PDFs of teaching packs, large datasets, videos), deposit them as separate Zenodo records and link to them from the relevant chapter or the README.
+If the Delphi produces outputs suitable for sharing, we prefer:
+- **Aggregated summaries**, anonymized excerpts within consent limits, and public-facing syntheses
+- Separate Zenodo records for large artifacts, linked from the README if needed
 
-## Repository layout
+## Repository layout (current and planned)
 
 Top-level structure (high level):
 
-- `manuscript/` - Quarto book source
-  - `index.qmd` - landing page for the book
-  - `chapters/` - chapter files
-  - `_quarto.yml` - book configuration
+- `protocol/` - Delphi protocol, governance, decision rules, timelines
+- `instruments/` - survey instruments, item banks, rubrics, codebooks
+- `materials/` - participant-facing instructions, templates, public recruitment materials
+- `outputs/` - public, anonymized/aggregated results and syntheses (no raw confidential data)
 - `.github/workflows/` - automation
-  - `ci.yml` - build checks on PRs/pushes
-  - `pages.yml` - deploy website on `main`
+  - `ci.yml` - basic checks on PRs/pushes (lint/build validation where applicable)
+  - `pages.yml` - deploy public documentation site on `main` (optional)
   - `release.yml` - automated release management (release-please)
 - `CITATION.cff` - citation metadata (update after the first Zenodo release)
-- `ZENODO_SETUP.md` - short instructions for enabling the Zenodo GitHub integration
+- `ZENODO_SETUP.md` - instructions for enabling the Zenodo GitHub integration
 - `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` - contribution and community guidelines
-- `scripts/` - optional helper scripts
+- `scripts/` - optional helper scripts (e.g., build, validation, export utilities)
 
-## Build and preview locally
-
-Prerequisites:
-
-- Install Quarto: https://quarto.org/
-
-Build the book from the repository root:
-
-```bash
-quarto render manuscript
+> Note: You may still see a `manuscript/` folder in early stages from the initial scaffold. If the repo is strictly about the Delphi development process, consider renaming `manuscript/` to something like `protocol_site/` or `docs/`, or repurposing it to render the public project documentat_
