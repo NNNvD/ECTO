@@ -79,7 +79,8 @@ Delphi outputs suitable for sharing:
 
 Top-level structure (high level):
 
-- `protocol/` - Delphi protocol, governance, decision rules, timelines
+- `docs/` - Delphi protocol, governance, decision rules, timelines
+- `logbook/`- Logbook where daily notes, decisions, and incidents are reported
 - `instruments/` - survey instruments, item banks, rubrics, codebooks
 - `materials/` - participant-facing instructions, templates, public recruitment materials
 - `outputs/` - public, anonymized/aggregated results and syntheses (no raw confidential data)
