@@ -4,13 +4,13 @@ title: Project Description
 
 # Expert Consensus on Theory Development Methodology 
 
-## General description - V1.0
+## General description - V1.0.1
 
 **Project:** ECO Theory Development Text Book  
 **Description:** Developing a collaborative textbook and curriculum on theory creation, development, and evaluation in psychological science through expert consensus  
 **PI:** N.N.N. van Dongen (Erasmus University Rotterdam)  
 **Advisors:** B. Aczel, B. Haig, Olga Perski, Bodil Jorg  
-**Version note:** This preregistration is not final. It will be updated after we finalize: (a) the expert identification procedure and inclusion/exclusion criteria, (b) the literature search strategy for building Version 0.0, and (c) the detailed design of the expert consensus (Delphi) rounds.
+**Version note:** This Project Descrioption is not final. It will be updated after we finalize: (a) the expert identification procedure and inclusion/exclusion criteria, (b) the literature search strategy for building Version 0.0, and (c) the detailed design of the expert consensus (Delphi) rounds. Later updates might also occur as the project progresses
 
 ---
 
@@ -31,7 +31,7 @@ To develop a Delphi-based, expert-consensus textbook and curriculum that specifi
 
 - **Textbook (Version 1.0):** “Methodology for Theory Creation, Development, and Evaluation in Psychological Science” (open, citable).  
 - **Instructor’s Guide:** assignments bank, rubrics, grading/evaluation matrix.  
-- **Open materials:** protocols, datasets of anonymized Delphi responses, preregistrations, and revision histories (GitHub).  
+- **Open materials:** protocols, datasets of anonymized Delphi responses, project documents, and revision histories (GitHub).  
 - **Scholarly outputs:** journal publication describing the consensus procedure and its results.
 
 ### 1.3 Scope
@@ -95,7 +95,7 @@ We aim for a balance across: discipline (psychology, philosophy of science, comp
 A systematic literature search will be conducted to assemble a representative, interdisciplinary corpus of theoretical, methodological, and pedagogical works relevant to the creation and evaluation of scientific theories in psychology. This corpus will serve as the evidence base and initial content for developing the textbook and generating Delphi survey materials.  
 **Target:** \~50 sources are expected to be included.
 
-Material for the Delphi procedure will be developed in phases (see Section 4 below). The PI will prepare this material based on the sources identified through the literature search. An Evidence Map will link the sources to this material. See [*Search Strategy*](https://docs.google.com/document/d/1cquZb6cQOyuxqPR9df83MUoFSmVLYmzuJe9rsLmDPEQ/edit?tab=t.0) for further details. 
+Material for the Delphi procedure will be developed in phases (see Section 4 below). The PI will prepare a V0.0 version of this material based on the sources identified through the literature search. An Evidence Map will link the sources to this material. See [*Search Strategy*](https://docs.google.com/document/d/1cquZb6cQOyuxqPR9df83MUoFSmVLYmzuJe9rsLmDPEQ/edit?tab=t.0) for further details. 
 
 ---
 
@@ -142,12 +142,15 @@ We align six Delphi phases to the project’s core questions. Each phase proceed
 **Output:** **Evaluation matrix & sample rubrics** (instructor guide).
 
 ---
+## 6\. Adding and Removing items 
 
-## 6\. Consensus Criteria and Stopping Rules
+During each consensus round, Experts can propose to remove or add items. The PI will evaluate the argumentation for removal/addition and suggest a decision for the next consensus round. If a 2/3 majority agrees with the decision, the item is removed from / added to the material.
+
+## 7\. Consensus Criteria and Stopping Rules
 
 For each phase, items will be rated on 7-point Likert scales (1 \= strongly disagree / not relevant; 7 \= strongly agree / highly relevant). We stop a phase when:
 
-1) **Consensus:** Phase item-set achieves mean ≥ 4.5, no single item receives a score \< 3.0 by more than 25% of the experts, and no new items are proposed in the final feedback round; or  
+1) **Consensus:** Phase item-set achieves mean ≥ 4.5, no single item receives a score \< 3.0 by more than 30% of the experts, and no new items are proposed in the final feedback round; or  
 2) **Rounds cap:** A maximum of 5 rounds reached per phase. If consensus is incomplete, the phase output will be published with an addendum noting the lack of full consensus and item-level agreement statistics.
 
 During each round, items that receive no score below 3 by more than 25% of experts and an average of 4.5 or higher will be designated as “consensus reached” and will be dropped from the next consensus round. Thus, once consensus has been reached on an item, it will not be reevaluated during the following rounds. 
@@ -162,7 +165,7 @@ An online meeting will be planned with the experts to discuss these options. Opt
 
 ---
 
-## 7\. Analysis and Synthesis Plan
+## 8\. Analysis and Synthesis Plan
 
 - **Quantitative:** For each item—mean, median, IQR, % agreement (≥4), change across rounds; visualize movement toward consensus.  
 - **Qualitative:** Items will be revised based on comments made by the experts. If required, thematic synthesis will be used for systematic assessment and application of these comments.   
@@ -170,7 +173,7 @@ An online meeting will be planned with the experts to discuss these options. Opt
 
 ---
 
-## 8\. Post-Consensus Amendments
+## 9\. Post-Consensus Amendments
 
 We allow controlled amendments after consensus if:
 
@@ -181,7 +184,7 @@ We allow controlled amendments after consensus if:
 
 ---
 
-## 9\. Materials, Data, and Transparency
+## 10\. Materials, Data, and Transparency
 
 - **Project description and logbook:** GitHub and Zenodo, versioned (this v0.0 → v1.0 at launch of Round-1).  
 - **Data storage:** All materials produced during this project will be stored on *EUR SURF Yoda,* as is standard in the Data Management Plan upheld by the Erasmus University Rotterdam. No data will be destroyed upon completion of this project. It will be stored for a minimum of 10 years.    
@@ -192,19 +195,13 @@ We allow controlled amendments after consensus if:
 
 ---
 
-## 10\. Ethical Considerations
+## 11\. Ethical Considerations
 
 - **Review body:** Ethics Review Committee Psychology, Erasmus School of Social and Behavioural Sciences (submission planned alongside v1.0).  
 - **Risk level:** Minimal risk (expert opinion study).  
 - **Confidentiality:** The expert responses are anonymized for the reports. The surveys per round are not anonymized because the PI needs to be able to ask for clarification from the experts.   
 - **Withdrawal:** Participants may withdraw at any time; data will be removed upon request where feasible.  
 - **Compensation:** None
-
----
-
-## 11\. Timeline (Indicative; will be updated in v1.0)
-
-- 
 
 ---
 
