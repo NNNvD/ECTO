@@ -9,8 +9,8 @@ title: Project Description
 **Project:** ECO Theory Development Text Book  
 **Description:** Developing a collaborative textbook and curriculum on theory creation, development, and evaluation in psychological science through expert consensus  
 **PI:** N.N.N. van Dongen (Erasmus University Rotterdam)  
-**Advisors:** B. Aczel, B. Haig, Olga Perski, Bodil Jorg  
-**Version note:** This Project Descrioption is not final. It will be updated after we finalize: (a) the expert identification procedure and inclusion/exclusion criteria, (b) the literature search strategy for building Version 0.0, and (c) the detailed design of the expert consensus (Delphi) rounds. Later updates might also occur as the project progresses
+**Advisors:** B. Aczel, B. Haig, O. Perski, B. Jorg  
+**Version note:** This Project Description is not final. It will be updated after we finalize: (a) the expert identification procedure and inclusion/exclusion criteria, (b) the literature search strategy for building Version 0.0, and (c) the detailed design of the expert consensus (Delphi) rounds. Later updates might also occur as the project progresses
 
 ---
 
@@ -55,19 +55,28 @@ Invitees will be asked to rate agreement (7-point Likert) with the statement:
 - **Include** if rating ≥ 3 (provisionally; final threshold may be adjusted in v1.0).  
 - **Exclude** if rating ≤ 2 or unwilling to participate in multi-round Delphi.
 
-### 2.3 Inclusion Criteria (to be finalized in v1.0)
+### 2.3 Inclusion Criteria
 
-- Demonstrated contributions to theory development, formal modeling, philosophy of science, methodology, or pedagogy in psychology or neighboring fields (e.g., ≥3 peer-reviewed publications or equivalent impact).  
-- Teaching or mentoring experience in relevant topics (preferred).  
-- Commitment to 6–30 iterative rounds (estimated 1–2 hours per round).  
+- Demonstrated contributions to theory development, formal modeling, philosophy of science, methodology, or pedagogy in psychology or neighboring fields (determined by the [*Expert Identification Protocol*](https://docs.google.com/document/u/0/d/1aYMX8TzVg_In7ZgBN4IoJ06GDItw7TH6ylK0EZNiSY0/edit))   
+- Commitment to 6–30 iterative rounds (estimated 0.5 \- 1 hour per round).  
 - No conflicts of interest (e.g., direct commercial stake in competing proprietary curricula).  
 - No prior substantiated ethical violations relevant to research/teaching integrity.
 
-### 2.4 Consent & Confidentiality
+### 2.4 Qualification assessment
+
+When invited, potential experts will be asked to rate their expertise on:
+
+- Substantive theory development  
+- Methodology as it pertains to theory development and assessment  
+- Teaching and teaching-related pedagogy
+
+This self-assessment will be conducted via a short survey with Likert-scale questions. Results from this survey will not be used as inclusion/exclusion criteria, because there may be systemic differences between how different types of people evaluate themselves on the same level of skills. 
+
+### 2.5 Consent & Confidentiality
 
 - Digital informed consent will be obtained before Round 1 (see [*Informed Consent Form*](https://docs.google.com/document/d/1D4FqcMce2msrW-IsXwT0574P4MqLxiS_emgAqAY1mME/edit?usp=sharing))  
 - Anonymity of responses within rounds; names may be acknowledged in outputs only with explicit permission.  
-- Data are stored on secure university servers and GitHub project with anonymized public release of aggregate summaries.  
+- Data are stored on secure university servers and on a GitHub repository, with anonymized public release of aggregate summaries.  
 - GDPR-compliant data handling; right to withdraw at any time without penalty.
 
 ---
