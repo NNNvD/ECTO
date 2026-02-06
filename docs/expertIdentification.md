@@ -113,55 +113,25 @@ TX ( theor\* N3 (education OR pedagogy OR curriculum OR syllabus OR teach\* OR t
 OR "theory education" OR "theory pedagogy" )  
 AND TX ( psycholog\* )
 
-### Step 2\. Bounded snowballing
+### Step 3\. Exclusion
+
+Identified potential experts will be excluded if they meet one or more of the following criteria.
+
+* Their publication predates 2000  
+* The abstract does not explicitly mention that the paper is about, in some shape or form, how to (partly or completely) create, develop, and evaluate scientific theories, or scientific explanations, or about teaching the necessary skills.   
+* They are retired or have the emeritus status  
+* They are early-career researchers (Postdoctoral researcher or lower)
+
+### Step 4 — Selection and invitations
+
+* Identified potential experts are ordered alphabetically by surname, excluding prefixes (e.g., the Dutch “van”)  
+* Experts are invited in descending order until the quota is met.  
+* To protect against a men-only expert group, at least ⅓ of the invitees need to be non-male.   
+* Over-recruit by \~30% to offset attrition. The remaining experts are maintained as a waitlist.
+
+### Step 5\. Bounded snowballing
 
 * Experts identified and invited through Step 1 are asked to identify additional experts  
 * These seed experts are asked to nominate up to 3 additional experts (especially early-career or underrepresented scholars).  
 * Include nominees only if they meet the inclusion criteria.  
 * **Rationale:** Broadens coverage while guarding against reputational bias.
-
-### Step 3\. Exclusion and Stratification matrix
-
-Identified potential experts will be excluded if they meet one or more of the following criteria.
-
-* Their publication predates 2000  
-* They are retired or have the emeritus status  
-* They are early-career researchers (Postdoctoral researcher or lower)  
-* The abstract does not explicitly mention that the paper is about, in some shape or form, how to (partly or completely) create, develop, and evaluate scientific theories, or scientific explanations, or about teaching the necessary skills. 
-
-After exclusion, the balance of experts will be tracked by discipline (psychology, philosophy of science, computational/modeling), career stage, region, gender, and reason for inclusion. 
-
-| Candidate | Discipline | Region | Gender | Inclusion  | Notes |
-| :---- | :---- | :---- | :---- | :---- | :---- |
-|  |  |  |  |  |  |
-
-### Step 4 — Qualification scoring (screening rubric)
-
-Candidate experts are scored (0–2) on five criteria (max 10\) by the PI. These scores will be based on the personal assessment by the PI from CVs, institute bio pages, and personal websites of the identified experts. The PI acknowledges that these assessments might be incomplete and/or biased. The final results will be presented to the Advisory Board. They have the mandate to ask for a second opinion if the results are in doubt. 
-
-| Criterion | 0 \= Not evident | 1 \= Some evidence | 2 \= Strong evidence |
-| :---- | :---- | :---- | :---- |
-| Substantive theory expertise |  |  |  |
-| Methodological expertise |  |  |  |
-| Pedagogical contribution |  |  |  |
-| Scholarly impact (field-relative) |  |  |  |
-| Commitment & availability |  |  |  |
-| **Total (0–10)** |  |  |  |
-
-**Rationale:** Transparent qualification improves reproducibility.
-
-### Step 5 — Selection and invitations
-
-* Within each stratum, rank by composite score and invite in descending order until quota is met.  
-* Over-recruit by \~30% to offset attrition. The remaining experts are maintained as a waitlist.
-
-### Step 6 — Onboarding & documentation
-
-* Provide aims, schedule, consent, expected time per round, data handling, and authorship/acknowledgment plan.  
-* Register a de-identified selection log (scores \+ final composition) in the preregistration repository (e.g., OSF).
-
----
-
-## 4\. Inclusion criteria
-
-See *Project Description*
