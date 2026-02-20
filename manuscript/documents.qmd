@@ -1,0 +1,15 @@
+---
+title: "Documents"
+---
+
+## Project Description
+
+{{< include ../docs/projectDescription.md >}}
+
+## Expert Identification
+
+{{< include ../docs/expertIdentification.md >}}
+
+## Search Strategy
+
+{{< include ../docs/searchStrategy.md >}}
