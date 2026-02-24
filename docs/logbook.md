@@ -4,8 +4,7 @@ title: Logbook
 
 # Logbook
 
-This page renders the latest logbook index and links to the entries hosted in this GitHub Pages site.
-
+This page renders the latest logbook index and links to the logbook entries.
 ## Daily logs (latest first)
 - 2026-01-27 — [2026-01-27](logbook/daily/2026-01-27)
 
