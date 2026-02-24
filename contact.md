@@ -11,4 +11,5 @@ For questions about the ECTO project, please contact:
 - **Repository:** <https://github.com/NNNvD/ECTO>
 
 If you have feedback on documents, methods, or logbook entries, please open an issue in the repository.
+
 If you have any questions, please email me at <n.n.n.vandongen@essb.eur.nl> 
