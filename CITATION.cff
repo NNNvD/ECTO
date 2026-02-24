@@ -1,19 +1,25 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it using the metadata below."
-title: "ECTO: Theory Development Textbook"
+title: "Expert Consensus on an Open-Textbook for Theory Development Methodology (ECTO) — Delphi Development Materials"
 type: software
+
 authors:
   - family-names: "van Dongen"
     given-names: "Noah"
     affiliation: "Erasmus University Rotterdam"
-repository-code: "https://github.com/<ORG_OR_USER>/<REPO>"
-url: "https://<ORG_OR_USER>.github.io/<REPO>/"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+
+repository-code: "https://github.com/NNNvD/ECTO"
+url: "https://nnnvd.github.io/ECTO/"
+
+doi: "10.5281/zenodo.18760330"
+
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.18760331"
+    description: "Zenodo version DOI for GitHub release v0.0.1"
+  - type: url
+    value: "https://github.com/NNNvD/ECTO"
+    description: "Source repository"
+
 license: "CC-BY-4.0"
-# After the first Zenodo-archived release, replace the placeholders below.
-# preferred-citation:
-#   type: article
-#   authors:
-#     - family-names: "van Dongen"
-#       given-names: "Noah"
-#   title: "ECTO: Theory Development Textbook"
-#   doi: "10.5281/zenodo.XXXXXXXX"
