@@ -1,0 +1,5 @@
+---
+title: "Logbook"
+---
+
+{{< include ../logbook/README.md >}}
