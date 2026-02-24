@@ -4,12 +4,15 @@ title: "Documents"
 
 ## Project Description
 
-{{< include includes/projectDescription.md >}}
+```{include-file} includes/projectDescription.md
+```
 
 ## Expert Identification
 
-{{< include includes/expertIdentification.md >}}
+```{include-file} includes/expertIdentification.md
+```
 
 ## Search Strategy
 
-{{< include includes/searchStrategy.md >}}
+```{include-file} includes/searchStrategy.md
+```
