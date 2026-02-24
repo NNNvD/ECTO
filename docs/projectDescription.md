@@ -3,9 +3,9 @@
 
 
 ## General description 
-**Title:** _Expert Consensus on an Open-Textbook for Theory Development Methodology_< br/> 
-**Short title:** _Expert Consensus on Theory Development_< br/>
-**Acronym:** _ECTO_< br/>
+**Title:** _Expert Consensus on an Open-Textbook for Theory Development Methodology_<br/> 
+**Short title:** _Expert Consensus on Theory Development_<br/>
+**Acronym:** _ECTO_<br/>
 
 **Project:** ECO Theory Development Text Book  
 **Description:** Developing a collaborative textbook and curriculum on theory creation, development, and evaluation in psychological science through expert consensus  
