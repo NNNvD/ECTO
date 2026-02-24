@@ -1,0 +1,45 @@
+title: ECTO
+remote_theme: just-the-docs/just-the-docs
+color_scheme: light
+search_enabled: true
+heading_anchors: true
+logo: "/images/logo.png"
+aux_links:
+  Repository: "https://github.com/NNNvD/ECTO"
+
+# Ensure only explicitly whitelisted top-level pages appear in sidebar nav.
+defaults:
+  - scope:
+      path: ""
+    values:
+      nav_exclude: true
+
+  - scope:
+      path: "index.md"
+    values:
+      nav_exclude: false
+  - scope:
+      path: "project-description.md"
+    values:
+      nav_exclude: false
+  - scope:
+      path: "expert-identification.md"
+    values:
+      nav_exclude: false
+  - scope:
+      path: "search-strategy.md"
+    values:
+      nav_exclude: false
+  - scope:
+      path: "logbook.md"
+    values:
+      nav_exclude: false
+  - scope:
+      path: "contact.md"
+    values:
+      nav_exclude: false
+
+# Do not publish legacy/aggregate page paths.
+exclude:
+  - documents.md
+  - logbook-page.md
