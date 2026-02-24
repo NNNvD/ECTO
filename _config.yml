@@ -6,3 +6,18 @@ heading_anchors: true
 logo: "/images/logo.png"
 aux_links:
   Repository: "https://github.com/NNNvD/ECTO"
+
+
+defaults:
+  - scope:
+      path: "docs"
+    values:
+      nav_exclude: true
+  - scope:
+      path: "manuscript"
+    values:
+      nav_exclude: true
+  - scope:
+      path: "logbook"
+    values:
+      nav_exclude: true
