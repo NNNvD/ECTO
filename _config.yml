@@ -1,0 +1,40 @@
+title: ECTO
+remote_theme: just-the-docs/just-the-docs
+color_scheme: light
+search_enabled: true
+heading_anchors: true
+logo: "/images/logo.png"
+aux_links:
+  Repository: "https://github.com/NNNvD/ECTO"
+
+
+defaults:
+  - scope:
+      path: "docs"
+    values:
+      nav_exclude: true
+  - scope:
+      path: "manuscript"
+    values:
+      nav_exclude: true
+  - scope:
+      path: "logbook"
+    values:
+      nav_exclude: true
+
+  - scope:
+      path: "scripts"
+    values:
+      nav_exclude: true
+  - scope:
+      path: "images"
+    values:
+      nav_exclude: true
+  - scope:
+      path: "ZENODO_SETUP.md"
+    values:
+      nav_exclude: true
+  - scope:
+      path: "scripts/orcid_faculty_classifier_v1_manual.md"
+    values:
+      nav_exclude: true
