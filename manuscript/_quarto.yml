@@ -14,7 +14,7 @@ website:
   repo-url: "https://github.com/<ORG_OR_USER>/<REPO>"
   repo-actions: [edit, issue]
   navbar:
-    logo: /images/logo.png
+    logo: /images/ECTO_logo_NB.png
     left:
       - href: index.qmd
         text: Home
