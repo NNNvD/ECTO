@@ -14,7 +14,6 @@ README_PATH = LOGBOOK_DIR / "README.md"
 
 HEADER = """# Logbook
 
-This file is auto-generated. Do not edit manually. Run `python scripts/logbook_index.py` to regenerate.
 """
 
 
@@ -61,7 +60,7 @@ def parse_adr_metadata(path: Path) -> dict[str, str]:
 def build_daily_section() -> str:
     daily_files = list_markdown_files(DAILY_DIR)
     daily_files.sort(reverse=True)
-    lines = ["## Daily logs (latest first)"]
+    lines = ["## Daily logs"]
     for path in daily_files:
         date = path.stem
         lines.append(f"- {date} — [{date}](daily/{path.name})")
