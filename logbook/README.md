@@ -19,9 +19,11 @@ This file is auto-generated. Do not edit manually. Run `python scripts/logbook_i
 | 0006 | Do not balance experts by discipline or region | 2026-02-03 | Accepted |
 | 0007 | Remove qualification scoring from expert identification | 2026-02-03 | Accepted |
 | 0008 | Invite experts in alphabetical order | 2026-02-05 | Accepted |
+| 0009 | Add expert replacement thresholds | 2026-01-15 | Accepted |
 
 ## Meetings
-- (none)
+- [2026-01-15-general-discussion-on-design](meetings/2026-01-15-general-discussion-on-design.md)
+- [2026-02-02-general-discussion-on-design](meetings/2026-02-02-general-discussion-on-design.md)
 
 ## Incidents
 - (none)
