@@ -2,7 +2,9 @@ project:
   type: website
   render:
     - index.qmd
-    - documents.qmd
+    - project-description.qmd
+    - expert-identification.qmd
+    - search-strategy.qmd
     - logbook.qmd
     - contact.qmd
   resources:
@@ -13,25 +15,19 @@ website:
   site-url: "https://<ORG_OR_USER>.github.io/<REPO>/"
   repo-url: "https://github.com/<ORG_OR_USER>/<REPO>"
   repo-actions: [edit, issue]
-  navbar:
-    logo: /images/ECTO_logo_NB.png
-    left:
-      - href: index.qmd
-        text: Home
-      - href: documents.qmd
-        text: Documents
-      - href: logbook.qmd
-        text: Logbook
-      - href: contact.qmd
-        text: Contact
   sidebar:
     style: "docked"
+    logo: /images/ECTO_logo_NB.png
     search: true
     contents:
       - href: index.qmd
         text: Home
-      - href: documents.qmd
-        text: Documents
+      - href: project-description.qmd
+        text: Project Description
+      - href: expert-identification.qmd
+        text: Expert Identification
+      - href: search-strategy.qmd
+        text: Search Strategy
       - href: logbook.qmd
         text: Logbook
       - href: contact.qmd
@@ -45,3 +41,5 @@ format:
     toc-depth: 4
     toc-location: left
     smooth-scroll: true
+
+
