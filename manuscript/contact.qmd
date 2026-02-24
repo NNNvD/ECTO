@@ -1,0 +1,11 @@
+---
+title: "Contact"
+---
+
+For questions about the ECTO project, please contact:
+
+- **Project lead:** Noah van Dongen
+- **Affiliation:** Erasmus University Rotterdam
+- **Repository:** <https://github.com/<ORG_OR_USER>/<REPO>>
+
+If you have feedback on documents, methods, or logbook entries, please open an issue in the repository.
