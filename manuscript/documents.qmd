@@ -4,12 +4,12 @@ title: "Documents"
 
 ## Project Description
 
-{{< include ../docs/projectDescription.md >}}
+{{< include includes/projectDescription.md >}}
 
 ## Expert Identification
 
-{{< include ../docs/expertIdentification.md >}}
+{{< include includes/expertIdentification.md >}}
 
 ## Search Strategy
 
-{{< include ../docs/searchStrategy.md >}}
+{{< include includes/searchStrategy.md >}}
