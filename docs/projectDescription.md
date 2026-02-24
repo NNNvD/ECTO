@@ -7,8 +7,7 @@
 **Short title:** _Expert Consensus on Theory Development_<br/>
 **Acronym:** _ECTO_<br/>
 
-**Project:** ECO Theory Development Text Book  
-**Description:** Developing a collaborative textbook and curriculum on theory creation, development, and evaluation in psychological science through expert consensus  
+**Summary:** This project aims to develop a collaborative textbook and curriculum on theory creation, development, and evaluation in psychological science through expert consensus.  
 **PI:** N.N.N. van Dongen (Erasmus University Rotterdam)  
 **Advisors:** B. Aczel, B. Haig, O. Perski, B. Jorg  
 **Version note:** This Project Description is not final. It will be updated after we finalize: (a) the expert identification procedure and inclusion/exclusion criteria, (b) the literature search strategy for building Version 0.0, and (c) the detailed design of the expert consensus (Delphi) rounds. Later updates might also occur as the project progresses
