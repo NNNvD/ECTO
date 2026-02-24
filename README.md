@@ -1,4 +1,9 @@
-# ECTO: Developing the ECTO Textbook (Delphi Project Repository)
+# Expert Consensus on an Open-Textbook for Theory Development Methodology
+## Delphi Project Repository
+
+<p align="center">
+  <img src="../images/ECTO_logo.png" alt="Figure" width="300">
+</p>
 
 ECTO will become an open, community-maintained textbook and reference work on **theory development** (primarily in psychology and the broader behavioural and social sciences).
 
