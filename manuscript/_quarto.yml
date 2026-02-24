@@ -1,11 +1,24 @@
 project:
   type: website
+  resources:
+    - ../images
 
 website:
   title: "ECTO"
   site-url: "https://<ORG_OR_USER>.github.io/<REPO>/"
   repo-url: "https://github.com/<ORG_OR_USER>/<REPO>"
   repo-actions: [edit, issue]
+  navbar:
+    logo: /images/logo.png
+    left:
+      - href: index.qmd
+        text: Home
+      - href: documents.qmd
+        text: Documents
+      - href: logbook.qmd
+        text: Logbook
+      - href: contact.qmd
+        text: Contact
   sidebar:
     style: "docked"
     search: true
@@ -22,6 +35,8 @@ website:
 format:
   html:
     theme: cosmo
+    css: styles.css
     toc: true
     toc-depth: 4
     toc-location: left
+    smooth-scroll: true
