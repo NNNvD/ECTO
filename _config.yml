@@ -38,3 +38,9 @@ defaults:
       path: "contact.md"
     values:
       nav_exclude: false
+
+# Do not publish legacy/aggregate page paths.
+exclude:
+  - documents.md
+  - logbook-page.md
+  - legacy
