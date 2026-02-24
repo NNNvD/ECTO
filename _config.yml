@@ -1,0 +1,8 @@
+title: ECTO
+remote_theme: just-the-docs/just-the-docs
+color_scheme: light
+search_enabled: true
+heading_anchors: true
+logo: "/images/logo.png"
+aux_links:
+  Repository: "https://github.com/NNNvD/ECTO"
