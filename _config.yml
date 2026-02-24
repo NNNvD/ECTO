@@ -7,34 +7,39 @@ logo: "/images/logo.png"
 aux_links:
   Repository: "https://github.com/NNNvD/ECTO"
 
-
+# Ensure only explicitly whitelisted top-level pages appear in sidebar nav.
 defaults:
   - scope:
-      path: "docs"
-    values:
-      nav_exclude: true
-  - scope:
-      path: "manuscript"
-    values:
-      nav_exclude: true
-  - scope:
-      path: "logbook"
+      path: ""
     values:
       nav_exclude: true
 
   - scope:
-      path: "scripts"
+      path: "index.md"
     values:
-      nav_exclude: true
+      nav_exclude: false
   - scope:
-      path: "images"
+      path: "project-description.md"
     values:
-      nav_exclude: true
+      nav_exclude: false
   - scope:
-      path: "ZENODO_SETUP.md"
+      path: "expert-identification.md"
     values:
-      nav_exclude: true
+      nav_exclude: false
   - scope:
-      path: "scripts/orcid_faculty_classifier_v1_manual.md"
+      path: "search-strategy.md"
     values:
-      nav_exclude: true
+      nav_exclude: false
+  - scope:
+      path: "logbook.md"
+    values:
+      nav_exclude: false
+  - scope:
+      path: "contact.md"
+    values:
+      nav_exclude: false
+
+# Do not publish legacy/aggregate page paths.
+exclude:
+  - documents.md
+  - logbook-page.md
