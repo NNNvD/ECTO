@@ -1,6 +1,5 @@
-## ECO Theory Development Textbook
-
-## Expert identification & selection protocol \- V1.0
+# Expert identification & selection protocol
+### Version 1.0
 
 ## 1\. Rationale
 
