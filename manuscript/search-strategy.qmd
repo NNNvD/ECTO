@@ -2,5 +2,5 @@
 title: "Search Strategy"
 ---
 
-```{include-file} ../docs/searchStrategy.md
-```
+{{< include ../docs/searchStrategy.md >}}
+
