@@ -1,7 +1,3 @@
----
-title: Expert Identification
----
-
 ## ECO Theory Development Textbook
 
 ## Expert identification & selection protocol \- V1.0

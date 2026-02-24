@@ -5,4 +5,4 @@ nav_order: 2
 has_toc: true
 ---
 
-{% include_relative manuscript/includes/projectDescription.md %}
+{% include_relative docs/projectDescription.md %}
