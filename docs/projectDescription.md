@@ -4,7 +4,7 @@ title: Project Description
 
 # Expert Consensus on Theory Development Methodology 
 
-## General description - V1.0.1
+## General description - V1.0.2
 
 **Project:** ECO Theory Development Text Book  
 **Description:** Developing a collaborative textbook and curriculum on theory creation, development, and evaluation in psychological science through expert consensus  
@@ -94,8 +94,10 @@ We aim for a balance across: discipline (psychology, philosophy of science, comp
 
 ### 3.2 Replacement and Retention
 
-- Over-include by at least \~30% of the minimum to offset attrition.  
-- If participation drops below 6 at any point, recruit additional experts using the same criteria.
+- Over-include by at least ~30% of the minimum to offset attrition.
+- If, after a phase (see Section 5), the number of experts has dropped below 10, we will recruit additional experts until we have reached >10 experts.
+- If the number of experts drops below 6, during a phase (or at any point), we will recruit additional experts using the same criteria.
+
 
 ---
 
