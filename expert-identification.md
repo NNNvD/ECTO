@@ -5,4 +5,4 @@ nav_order: 3
 has_toc: true
 ---
 
-{% include_relative manuscript/includes/expertIdentification.md %}
+{% include_relative docs/expertIdentification.md %}
