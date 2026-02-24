@@ -2,13 +2,13 @@
 ## Delphi Project Repository
 
 <p align="center">
-  <img src="images/ECTO_logo_black.png" alt="Figure" width="200">
+  <img src="images/ECTO_logo.png" alt="Figure" width="200">
 </p>
 
 ECTO will become an open, community-maintained textbook and reference work on **theory development** (primarily in psychology and the broader behavioural and social sciences).
 
 **This GitHub repository is *not* (yet) the textbook itself.**  
-At this stage, the repository is dedicated to documenting and coordinating the **development process** of ECTO — in particular, the design, setup, and execution of an expert-elicitation / **Delphi-style** project to determine the scope, structure, content priorities, and quality criteria of the future textbook.
+At this stage, the repository is dedicated to documenting and coordinating the **development process** of ECTO — in particular, the design, setup, and execution of an expert-elicitation (Delphi-style) project to determine the scope, structure, content priorities, and quality criteria of the future textbook.
 
 In other words: **this repo is the “meta-project”: how we build ECTO.**  
 Only later will the actual textbook content be published here (or in a closely linked repository).
@@ -19,8 +19,8 @@ Only later will the actual textbook content be published here (or in a closely l
 
 - Website (GitHub Pages): https://nnnvd.github.io/ECTO/
 - Repository: https://github.com/NNNvD/ECTO
-- Zenodo concept DOI (all versions): TBD 
-- Latest Zenodo version DOI: TBD
+- Zenodo concept DOI (all versions): https://doi.org/10.5281/zenodo.18760330
+- Latest Zenodo version DOI (V0.0.1): https://doi.org/10.5281/zenodo.18760331
 
 ## What is ECTO (the eventual output)?
 
@@ -36,7 +36,7 @@ The future ECTO textbook will curate methods, templates, examples, and workflows
 
 ## What this repository is for (current scope)
 
-This repository is intentionally structured to support the **development of ECTO**, with emphasis on a Delphi-style expert process. Concretely, this repo hosts:
+This repository is intentionally structured to support the **development of ECTO** with an emphasis on transparancy and real-time availability of material. Concretely, this repo hosts:
 
 1. **Delphi project documentation**
    - Protocols and workflow documentation (how the Delphi is run)
@@ -76,25 +76,5 @@ To keep the repository durable, legally safe, and ethically compliant, it will (
 - Copyright-restricted PDFs or other materials without distribution rights
 - Large binary files that do not need to be versioned with the source
 
-Delphi outputs suitable for sharing:
-- **Aggregated summaries**, anonymized excerpts within consent limits, and public-facing syntheses
-- Separate Zenodo records for large artifacts, linked from the README if needed
 
-## Repository layout (current and planned)
-
-Top-level structure (high level):
-
-- `docs/` - Delphi protocol, governance, decision rules, timelines
-- `logbook/`- Logbook where daily notes, decisions, and incidents are reported
-- `instruments/` - survey instruments, item banks, rubrics, codebooks
-- `materials/` - participant-facing instructions, templates, public recruitment materials
-- `outputs/` - public, anonymized/aggregated results and syntheses (no raw confidential data)
-- `.github/workflows/` - automation
-  - `ci.yml` - basic checks on PRs/pushes (lint/build validation where applicable)
-  - `pages.yml` - deploy public documentation site on `main` (optional)
-  - `release.yml` - automated release management (release-please)
-- `CITATION.cff` - citation metadata (update after the first Zenodo release)
-- `ZENODO_SETUP.md` - instructions for enabling the Zenodo GitHub integration
-- `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` - contribution and community guidelines
-- `scripts/` - optional helper scripts (e.g., build, validation, export utilities)
 
