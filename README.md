@@ -19,8 +19,8 @@ Only later will the actual textbook content be published here (or in a closely l
 
 - Website (GitHub Pages): https://nnnvd.github.io/ECTO/
 - Repository: https://github.com/NNNvD/ECTO
-- Zenodo concept DOI (all versions): TBD 
-- Latest Zenodo version DOI: TBD
+- Zenodo concept DOI (all versions): https://doi.org/10.5281/zenodo.18760330
+- Latest Zenodo version DOI (V0.0.1): https://doi.org/10.5281/zenodo.18760331
 
 ## What is ECTO (the eventual output)?
 
