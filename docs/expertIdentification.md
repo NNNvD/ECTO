@@ -1,5 +1,5 @@
 # Expert identification & selection protocol
-### Version 1.0
+### Version 1.0.0
 
 ## 1\. Rationale
 

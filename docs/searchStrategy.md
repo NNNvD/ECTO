@@ -1,5 +1,5 @@
 # Search strategy for building version 0.0 of the textbook
-### Version 1.0
+### Version 1.0.0
 
 
 ## 1\. Rationale for the Search Approach
