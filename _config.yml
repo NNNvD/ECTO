@@ -3,7 +3,7 @@ remote_theme: just-the-docs/just-the-docs
 color_scheme: light
 search_enabled: true
 heading_anchors: true
-logo: "/images/logo.png"
+logo: "/images/ECTO_logo_NB.png"
 aux_links:
   Repository: "https://github.com/NNNvD/ECTO"
 
@@ -43,3 +43,4 @@ defaults:
 exclude:
   - documents.md
   - logbook-page.md
+  - legacy
