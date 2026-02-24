@@ -76,8 +76,5 @@ To keep the repository durable, legally safe, and ethically compliant, it will (
 - Copyright-restricted PDFs or other materials without distribution rights
 - Large binary files that do not need to be versioned with the source
 
-Delphi outputs suitable for sharing:
-- **Aggregated summaries**, anonymized excerpts within consent limits, and public-facing syntheses
-- Separate Zenodo records for large artifacts, linked from the README if needed
 
 
