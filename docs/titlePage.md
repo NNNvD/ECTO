@@ -1,6 +1,6 @@
 # Expert Consensus on an Open-Textbook for Theory Development Methodology
 
-![lgog](images/ECTO - logo.png)
+![logog](./images/ECTO - logo.png)
 
 **Long title:** Expert Consensus on an Open-Textbook for Theory Development Methodology  
 **Short title:** Expert Consensus on Theory Development  
