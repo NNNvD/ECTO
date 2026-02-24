@@ -12,9 +12,9 @@ Only later will the actual textbook content be published here (or in a closely l
 
 ## Quick links
 
-- Website (GitHub Pages): https://nnnvd.github.io/ECTO/ (after enabling GitHub Pages in repo settings)
+- Website (GitHub Pages): https://nnnvd.github.io/ECTO/
 - Repository: https://github.com/NNNvD/ECTO
-- Zenodo concept DOI (all versions): TBD (available after the first release)
+- Zenodo concept DOI (all versions): TBD 
 - Latest Zenodo version DOI: TBD
 
 ## What is ECTO (the eventual output)?
@@ -47,7 +47,7 @@ This repository is intentionally structured to support the **development of ECTO
    - Anonymized or aggregated outputs intended for public release (see constraints below)
 
 3. **Open collaboration and issue tracking**
-   - Issues and pull requests are the primary mechanism for proposing changes
+   - Issues and pull requests are the primary mechanisms for proposing changes
    - Discussions about scope, structure, and methodological choices
    - Tasks for building, validating, and improving project materials
 
