@@ -1,0 +1,18 @@
+---
+date: 2026-02-24
+timezone: Europe/Amsterdam
+---
+
+# 2026-02-24
+
+## Highlights
+- Updated the repo 
+- fixed pages website
+- made a first release to Zenodo
+
+## Entries
+### 17:00 — GitHub repo — General update and maintenance
+**Context:** The GitHub repo was not set up properly yet and the pages website did not build properly.
+
+I updated the documents based on the decisions that were previously made. I cleaned up the repo structure and removed redundant files. Once the pages build properly, I made the first release to Zenodo. 
+
