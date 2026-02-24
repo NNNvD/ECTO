@@ -1,7 +1,7 @@
 # Expert Consensus on an Open-Textbook for Theory Development Methodology
 
 <p align="center">
-  <img src="../images/figure.png" alt="Figure" width="300">
+  <img src="../images/ECTO_logo.png" alt="Figure" width="300">
 </p>
 
 **Long title:** Expert Consensus on an Open-Textbook for Theory Development Methodology  
