@@ -80,8 +80,9 @@ def build_adr_section() -> str:
         "|---:|---|---|---|",
     ]
     for item in adr_metadata:
+        title_link = f"[{item['title']}](decisions/{Path(item['path']).name})"
         lines.append(
-            f"| {item['number']} | {item['title']} | {item['date']} | {item['status']} |"
+            f"| {item['number']} | {title_link} | {item['date']} | {item['status']} |"
         )
     if len(lines) == 3:
         lines.append("| (none) | | | |")
