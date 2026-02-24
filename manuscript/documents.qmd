@@ -1,1 +1,15 @@
 
+## Project Description
+
+```{include-file} ../docs/projectDescription.md
+```
+
+## Expert Identification
+
+```{include-file} ../docs/expertIdentification.md
+```
+
+## Search Strategy
+
+```{include-file} ../docs/searchStrategy.md
+```
