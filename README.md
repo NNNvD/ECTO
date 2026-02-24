@@ -2,7 +2,7 @@
 ## Delphi Project Repository
 
 <p align="center">
-  <img src="/images/ECTO_logo_black.png" alt="Figure" width="200">
+  <img src="images/ECTO_logo_black.png" alt="Figure" width="200">
 </p>
 
 ECTO will become an open, community-maintained textbook and reference work on **theory development** (primarily in psychology and the broader behavioural and social sciences).

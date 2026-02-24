@@ -1,0 +1,6 @@
+---
+title: "Search Strategy"
+---
+
+```{include-file} ../docs/searchStrategy.md
+```
