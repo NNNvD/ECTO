@@ -1,6 +1,6 @@
 # Expert Consensus on an Open-Textbook for Theory Development Methodology
 
-
+![lgog](images/ECTO - logo.png)
 
 **Long title:** Expert Consensus on an Open-Textbook for Theory Development Methodology  
 **Short title:** Expert Consensus on Theory Development  
@@ -8,5 +8,5 @@
 
 **Description:** Developing a collaborative textbook and curriculum on theory creation, development, and evaluation in psychological science through expert consensus  
 **PI:** N.N.N. van Dongen (Erasmus University Rotterdam)  
-**Advisors:**B. Aczel, B. Haig, O. Perski, B. Jorg    
+**Advisors:** B. Aczel, B. Haig, O. Perski, B. Jorg    
 **Version note:** All separate documents are versioned. No overarching version of the project has been established. 
