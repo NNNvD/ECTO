@@ -111,7 +111,6 @@ Material for the Delphi procedure will be developed in phases (see Section 4 bel
 
 ---
 
-## 
 
 ## 5\. Study Design: Delphi Phases and Instruments
 
@@ -227,5 +226,3 @@ Any deviations (e.g., panel size changes, altered thresholds, additional rounds)
 
 - **Manuscript authorship** follows standard scholarly criteria (substantial contributions to design/analysis/writing). Consensus panel members will be coauthors on all scholarly output, unless they opt out.   
 - **Conflicts of interest:** All investigators and experts will disclose relevant conflicts at enrollment; disclosures will be posted on GitHub.
-
----
