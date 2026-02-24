@@ -1,9 +1,11 @@
 title: ECTO
+url: "https://nnnvd.github.io"
+baseurl: "/ECTO"
 remote_theme: just-the-docs/just-the-docs
 color_scheme: light
 search_enabled: true
 heading_anchors: true
-logo: "images/ECTO_logo_black.png"
+logo: "/images/ECTO_logo_black.png"
 aux_links:
   Repository: "https://github.com/NNNvD/ECTO"
 
