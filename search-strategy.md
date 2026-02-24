@@ -5,4 +5,4 @@ nav_order: 4
 has_toc: true
 ---
 
-{% include_relative manuscript/includes/searchStrategy.md %}
+{% include_relative docs/searchStrategy.md %}
