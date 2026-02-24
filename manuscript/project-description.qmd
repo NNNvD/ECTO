@@ -2,4 +2,5 @@
 title: "Project Description"
 ---
 
-{{< include ../docs/projectDescription.md >}}
+```{include-file} ../docs/projectDescription.md
+```

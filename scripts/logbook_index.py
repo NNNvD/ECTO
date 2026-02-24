@@ -73,18 +73,30 @@ def build_adr_section() -> str:
     adr_files = list_markdown_files(DECISIONS_DIR)
     adr_metadata = [parse_adr_metadata(path) for path in adr_files]
     adr_metadata.sort(key=lambda item: item["number"])
+
     lines = [
         "## Decisions (ADRs)",
-        "| ADR | Title | Date | Status |",
-        "|---:|---|---|---|",
+        "",
+        "<table>",
+        "  <thead>",
+        "    <tr><th>ADR</th><th>Title</th><th>Date</th><th>Status</th></tr>",
+        "  </thead>",
+        "  <tbody>",
     ]
-    for item in adr_metadata:
-        title_link = f"[{item['title']}](decisions/{Path(item['path']).name})"
-        lines.append(
-            f"| {item['number']} | {title_link} | {item['date']} | {item['status']} |"
-        )
-    if len(lines) == 3:
-        lines.append("| (none) | | | |")
+
+    if not adr_metadata:
+        lines.append("    <tr><td>(none)</td><td></td><td></td><td></td></tr>")
+    else:
+        for item in adr_metadata:
+            title_link = f"<a href='decisions/{Path(item['path']).name}'>{item['title']}</a>"
+            lines.append(
+                f"    <tr><td>{item['number']}</td><td>{title_link}</td><td>{item['date']}</td><td>{item['status']}</td></tr>"
+            )
+
+    lines.extend([
+        "  </tbody>",
+        "</table>",
+    ])
     return "\n".join(lines)
 
 
