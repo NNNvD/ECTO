@@ -21,3 +21,20 @@ defaults:
       path: "logbook"
     values:
       nav_exclude: true
+
+  - scope:
+      path: "scripts"
+    values:
+      nav_exclude: true
+  - scope:
+      path: "images"
+    values:
+      nav_exclude: true
+  - scope:
+      path: "ZENODO_SETUP.md"
+    values:
+      nav_exclude: true
+  - scope:
+      path: "scripts/orcid_faculty_classifier_v1_manual.md"
+    values:
+      nav_exclude: true

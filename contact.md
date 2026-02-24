@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Contact
-nav_order: 4
+nav_order: 6
 ---
 
 For questions about the ECTO project, please contact:
