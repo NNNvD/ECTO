@@ -1,16 +1,16 @@
 /* Slightly cleaner left-side navigation and TOC styling */
 .sidebar nav[role="doc-toc"] {
   border-left: 1px solid #e9ecef;
-  padding-left: 0.75rem;
+  padding-left: 0.45rem;
 }
 
 .sidebar .sidebar-item {
-  border-radius: 0.35rem;
+  border-radius: 0.15rem;
 }
 
 .sidebar .sidebar-item .active {
   background: #f3f7ff;
-  border-radius: 0.35rem;
+  border-radius: 0.15rem;
 }
 
 .toc-actions {

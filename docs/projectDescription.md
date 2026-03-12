@@ -1,9 +1,13 @@
 # Expert Consensus on Theory Development Methodology 
+### Version 1.0.2
 
-## General description - V1.0.2
 
-**Project:** ECO Theory Development Text Book  
-**Description:** Developing a collaborative textbook and curriculum on theory creation, development, and evaluation in psychological science through expert consensus  
+## General description 
+**Title:** _Expert Consensus on an Open-Textbook for Theory Development Methodology_<br/> 
+**Short title:** _Expert Consensus on Theory Development_<br/>
+**Acronym:** _ECTO_<br/>
+
+**Summary:** This project aims to develop a collaborative textbook and curriculum on theory creation, development, and evaluation in psychological science through expert consensus.  
 **PI:** N.N.N. van Dongen (Erasmus University Rotterdam)  
 **Advisors:** B. Aczel, B. Haig, O. Perski, B. Jorg  
 **Version note:** This Project Description is not final. It will be updated after we finalize: (a) the expert identification procedure and inclusion/exclusion criteria, (b) the literature search strategy for building Version 0.0, and (c) the detailed design of the expert consensus (Delphi) rounds. Later updates might also occur as the project progresses
@@ -40,7 +44,8 @@ The textbook focuses on pre-empirical theory work (idea generation, specificatio
 
 ### 2.1 Expert identification
 
-Experts will be identified and invited according to the [*Expert Identification Protocol*](https://docs.google.com/document/d/1aYMX8TzVg_In7ZgBN4IoJ06GDItw7TH6ylK0EZNiSY0/edit?usp=sharing)*.*
+Experts will be identified and invited according to the 
+[*Expert Identification Protocol*](https://github.com/NNNvD/ECTO/blob/main/docs/expertIdentification.md)*.*
 
 ### 2.2 Eligibility Screen (Round-0)
 
@@ -53,8 +58,8 @@ Invitees will be asked to rate agreement (7-point Likert) with the statement:
 
 ### 2.3 Inclusion Criteria
 
-- Demonstrated contributions to theory development, formal modeling, philosophy of science, methodology, or pedagogy in psychology or neighboring fields (determined by the [*Expert Identification Protocol*](https://docs.google.com/document/u/0/d/1aYMX8TzVg_In7ZgBN4IoJ06GDItw7TH6ylK0EZNiSY0/edit))   
-- Commitment to 6–30 iterative rounds (estimated 0.5 \- 1 hour per round).  
+- Demonstrated contributions to theory development, formal modeling, philosophy of science, methodology, or pedagogy in psychology or neighboring fields (determined by the [*Expert Identification Protocol*](https://github.com/NNNvD/ECTO/blob/main/docs/expertIdentification.md))   
+- Commitment to at least 12 iterative rounds (estimated 20 \- 40 minutes per round).  
 - No conflicts of interest (e.g., direct commercial stake in competing proprietary curricula).  
 - No prior substantiated ethical violations relevant to research/teaching integrity.
 
@@ -70,7 +75,7 @@ This self-assessment will be conducted via a short survey with Likert-scale ques
 
 ### 2.5 Consent & Confidentiality
 
-- Digital informed consent will be obtained before Round 1 (see [*Informed Consent Form*](https://docs.google.com/document/d/1D4FqcMce2msrW-IsXwT0574P4MqLxiS_emgAqAY1mME/edit?usp=sharing))  
+- Digital informed consent will be obtained before Round 1 (see *Informed Consent Form*, LINK TBA))  
 - Anonymity of responses within rounds; names may be acknowledged in outputs only with explicit permission.  
 - Data are stored on secure university servers and on a GitHub repository, with anonymized public release of aggregate summaries.  
 - GDPR-compliant data handling; right to withdraw at any time without penalty.
@@ -102,11 +107,10 @@ We aim for a balance across: discipline (psychology, philosophy of science, comp
 A systematic literature search will be conducted to assemble a representative, interdisciplinary corpus of theoretical, methodological, and pedagogical works relevant to the creation and evaluation of scientific theories in psychology. This corpus will serve as the evidence base and initial content for developing the textbook and generating Delphi survey materials.  
 **Target:** \~50 sources are expected to be included.
 
-Material for the Delphi procedure will be developed in phases (see Section 4 below). The PI will prepare a V0.0 version of this material based on the sources identified through the literature search. An Evidence Map will link the sources to this material. See [*Search Strategy*](https://docs.google.com/document/d/1cquZb6cQOyuxqPR9df83MUoFSmVLYmzuJe9rsLmDPEQ/edit?tab=t.0) for further details. 
+Material for the Delphi procedure will be developed in phases (see Section 4 below). The PI will prepare a V0.0 version of this material based on the sources identified through the literature search. An Evidence Map will link the sources to this material. See [*Search Strategy*](https://github.com/NNNvD/ECTO/blob/main/docs/searchStrategy.md) for further details. 
 
 ---
 
-## 
 
 ## 5\. Study Design: Delphi Phases and Instruments
 
@@ -222,5 +226,3 @@ Any deviations (e.g., panel size changes, altered thresholds, additional rounds)
 
 - **Manuscript authorship** follows standard scholarly criteria (substantial contributions to design/analysis/writing). Consensus panel members will be coauthors on all scholarly output, unless they opt out.   
 - **Conflicts of interest:** All investigators and experts will disclose relevant conflicts at enrollment; disclosures will be posted on GitHub.
-
----
