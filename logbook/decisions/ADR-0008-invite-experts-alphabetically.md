@@ -1,3 +1,6 @@
+---
+permalink: /decisions/ADR-0008-invite-experts-alphabetically
+---
 # ADR-0008: Invite experts in alphabetical order
 
 - Date: 2026-02-05

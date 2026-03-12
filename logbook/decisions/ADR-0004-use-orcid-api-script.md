@@ -1,3 +1,6 @@
+---
+permalink: /decisions/ADR-0004-use-orcid-api-script
+---
 # ADR-0004: Use ORCID API script for career stage identification
 
 - Date: 2026-01-14

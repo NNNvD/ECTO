@@ -1,3 +1,6 @@
+---
+permalink: /decisions/ADR-0005-relax-consensus-rule
+---
 # ADR-0005: Relax consensus rule threshold to 30%
 
 - Date: 2026-02-02

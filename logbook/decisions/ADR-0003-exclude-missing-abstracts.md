@@ -1,3 +1,6 @@
+---
+permalink: /decisions/ADR-0003-exclude-missing-abstracts
+---
 # ADR-0003: Exclude papers missing abstracts
 
 - Date: 2026-01-07

@@ -1,3 +1,6 @@
+---
+permalink: /decisions/ADR-0009-add-expert-replacement-thresholds
+---
 # ADR-0009: Add expert replacement thresholds
 
 - Date: 2026-01-15

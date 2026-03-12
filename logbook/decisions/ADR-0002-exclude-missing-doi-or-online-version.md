@@ -1,3 +1,6 @@
+---
+permalink: /decisions/ADR-0002-exclude-missing-doi-or-online-version
+---
 # ADR-0002: Exclude papers missing a DOI or online version
 
 - Date: 2026-01-07

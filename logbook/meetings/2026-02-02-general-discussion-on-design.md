@@ -1,5 +1,6 @@
 ---
 date: 2026-02-02
+permalink: /meetings/2026-02-02-general-discussion-on-design
 ---
 
 # 2026-02-02 — Meeting — General discussion on design
