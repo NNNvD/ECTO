@@ -1,3 +1,6 @@
+---
+permalink: /decisions/ADR-0001-test-adr
+---
 # ADR-0001: Test ADR
 
 - Date: 2026-01-27
