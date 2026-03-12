@@ -5,7 +5,8 @@ remote_theme: just-the-docs/just-the-docs
 color_scheme: light
 search_enabled: true
 heading_anchors: true
-logo: "https://nnnvd.github.io/ECTO/images/ECTO_logo_black.png"
+logo: "/images/ECTO_logo_NB.png"
+favicon_ico: "/images/ECTO_logo_NB.png"
 aux_links:
   Repository: "https://github.com/NNNvD/ECTO"
 
