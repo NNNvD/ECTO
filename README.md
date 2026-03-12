@@ -77,8 +77,10 @@ To keep the repository durable, legally safe, and ethically compliant, it will (
 - Large binary files that do not need to be versioned with the source
 
 
+## License
+Unless stated otherwise: documentation, protocols, and other text materials are licensed under CC BY 4.0. Code (scripts, automation, tooling) is licensed under the MIT License. See [LICENSE-CONTENT](https://github.com/NNNvD/ECTO/blob/main/LICENSE-CONTENT) and [LICENSE-CODE](https://github.com/NNNvD/ECTO/blob/main/LICENSE-CODE).
 
-### Funding
+## Funding
 <table>
   <tr>
     <td style="vertical-align: top; padding-right: 12px;">
