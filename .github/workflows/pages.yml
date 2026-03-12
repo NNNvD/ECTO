@@ -24,21 +24,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-
-      - name: Render book
-        run: quarto render manuscript
-
-      - name: Configure Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
         with:
-          enablement: true
+          source: ./
+          destination: ./_site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: manuscript/_site
+          path: ./_site
 
       - name: Deploy
         id: deployment
