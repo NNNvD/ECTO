@@ -59,7 +59,7 @@ Invitees will be asked to rate agreement (7-point Likert) with the statement:
 ### 2.3 Inclusion Criteria
 
 - Demonstrated contributions to theory development, formal modeling, philosophy of science, methodology, or pedagogy in psychology or neighboring fields (determined by the [*Expert Identification Protocol*](https://github.com/NNNvD/ECTO/blob/main/docs/expertIdentification.md))   
-- Commitment to 6–30 iterative rounds (estimated 0.5 \- 1 hour per round).  
+- Commitment to at least 12 iterative rounds (estimated 20 \- 40 minutes per round).  
 - No conflicts of interest (e.g., direct commercial stake in competing proprietary curricula).  
 - No prior substantiated ethical violations relevant to research/teaching integrity.
 
