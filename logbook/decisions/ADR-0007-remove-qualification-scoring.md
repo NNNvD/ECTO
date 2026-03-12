@@ -1,3 +1,6 @@
+---
+permalink: /decisions/ADR-0007-remove-qualification-scoring
+---
 # ADR-0007: Remove qualification scoring from expert identification
 
 - Date: 2026-02-03

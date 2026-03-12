@@ -1,3 +1,6 @@
+---
+permalink: /decisions/ADR-0006-skip-discipline-region-balancing
+---
 # ADR-0006: Do not balance experts by discipline or region
 
 - Date: 2026-02-03
