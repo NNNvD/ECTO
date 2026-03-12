@@ -15,3 +15,14 @@ Zenodo can automatically archive GitHub Releases for a public repository and min
 ## Operational policy
 - Only create a release when you want a DOI-minted, immutable snapshot.
 - Keep large binaries out of GitHub; deposit them separately to Zenodo if needed.
+
+
+## Changing the Release Please baseline version responsibly
+If you want to move the manifest from `0.2.0` to `1.0.0`, do it intentionally and transparently:
+
+1. Update `release-please-manifest.json` to the new baseline version.
+2. Merge that change through a PR with a short rationale (e.g., "project has reached stable public workflow").
+3. Ensure `README.md`/`CITATION.cff` are updated when the next real GitHub Release is created.
+4. Avoid editing the manifest repeatedly; treat it as release state, not planning notes.
+
+This change affects what Release Please considers the current released version for the next automated release calculation.
