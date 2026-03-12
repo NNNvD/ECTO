@@ -78,10 +78,15 @@ To keep the repository durable, legally safe, and ethically compliant, it will (
 
 
 
-### Funding
-<p align="left">
-  <img src="images/NWO logo - full colour - RGB - transparante achtergrond.png" alt="Figure" width="50">
-</p>
-This is a project of *The next step in methodological innovation: Open and collaborative theory development* with file number **VI.Veni.231G.093** of the research programme **Veni SGW** which is financed by the *Dutch Research Council (NWO)*
-
+### Funding### Funding
+<table>
+  <tr>
+    <td style="vertical-align: top; padding-right: 12px;">
+      <img src="images/NWO logo - full colour - RGB - transparante achtergrond.png" alt="NWO logo" width="50">
+    </td>
+    <td style="vertical-align: top;">
+      This is a project of <em>The next step in methodological innovation: Open and collaborative theory development</em> with file number <strong>VI.Veni.231G.093</strong> of the research programme <strong>Veni SGW</strong>, which is financed by the <em>Dutch Research Council (NWO)</em>.
+    </td>
+  </tr>
+</table>
 
