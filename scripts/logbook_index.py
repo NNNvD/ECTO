@@ -63,7 +63,7 @@ def build_daily_section() -> str:
     lines = ["## Daily logs"]
     for path in daily_files:
         date = path.stem
-        lines.append(f"- {date} — [{date}](daily/{path.stem})")
+        lines.append(f"- {date} — [{date}]({{{{ '/daily/{path.stem}' | relative_url }}}})")
     if len(lines) == 1:
         lines.append("- (none)")
     return "\n".join(lines)
@@ -88,7 +88,10 @@ def build_adr_section() -> str:
         lines.append("    <tr><td>(none)</td><td></td><td></td><td></td></tr>")
     else:
         for item in adr_metadata:
-            title_link = f"<a href='decisions/{Path(item['path']).stem}'>{item['title']}</a>"
+            title_link = (
+                f"<a href=\"{{{{ '/decisions/{Path(item['path']).stem}' | relative_url }}}}\">"
+                f"{item['title']}</a>"
+            )
             lines.append(
                 f"    <tr><td>{item['number']}</td><td>{title_link}</td><td>{item['date']}</td><td>{item['status']}</td></tr>"
             )
@@ -104,7 +107,7 @@ def build_simple_section(title: str, directory: Path, label: str) -> str:
     files = list_markdown_files(directory)
     lines = [title]
     for path in files:
-        lines.append(f"- [{path.stem}]({label}/{path.stem})")
+        lines.append(f"- [{path.stem}]({{{{ '/{label}/{path.stem}' | relative_url }}}})")
     if len(lines) == 1:
         lines.append("- (none)")
     return "\n".join(lines)
