@@ -78,7 +78,7 @@ To keep the repository durable, legally safe, and ethically compliant, it will (
 
 
 
-### Funding### Funding
+### Funding
 <table>
   <tr>
     <td style="vertical-align: top; padding-right: 12px;">
