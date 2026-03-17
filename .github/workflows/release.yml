@@ -13,6 +13,8 @@ permissions:
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     permissions:
       contents: write
       pull-requests: write
@@ -22,4 +24,4 @@ jobs:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
           config-file: .release-please-config.json
           manifest-file: release-please-manifest.json
-          fork: true
+          fork: false
