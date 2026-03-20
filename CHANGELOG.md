@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/NNNvD/ECTO/compare/v1.1.0...v1.2.0) (2026-03-20)
+
+
+### Features
+
+* Merge pull request [#47](https://github.com/NNNvD/ECTO/issues/47) from NNNvD/codex/automate-document-versioning-process ([6dae2f0](https://github.com/NNNvD/ECTO/commit/6dae2f0722c5a0df848987862e579c3e54940ede))
+
+
+### Bug Fixes
+
+* Merge pull request [#45](https://github.com/NNNvD/ECTO/issues/45) from NNNvD/codex/explain-release-please-action-functionality ([98eb8d0](https://github.com/NNNvD/ECTO/commit/98eb8d03d78db0e69a12948ecf5632620e426e86))
+
 ## [1.1.0](https://github.com/NNNvD/ECTO/compare/v1.0.0...v1.1.0) (2026-03-17)
 
 
