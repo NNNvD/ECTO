@@ -9,3 +9,12 @@ adr:
 
 log-index:
 	python scripts/logbook_index.py
+
+docs-version-list:
+	python scripts/docs_version.py list
+
+docs-version-sync:
+	python scripts/docs_version.py sync
+
+docs-version-set:
+	python scripts/docs_version.py set "$(DOC)" "$(VERSION)"
