@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.2.0](https://github.com/NNNvD/ECTO/compare/v1.1.0...v1.2.0) (2026-03-26)
+
+
+### Features
+
+* Merge pull request [#47](https://github.com/NNNvD/ECTO/issues/47) from NNNvD/codex/automate-document-versioning-process ([6dae2f0](https://github.com/NNNvD/ECTO/commit/6dae2f0722c5a0df848987862e579c3e54940ede))
+
+
+### Bug Fixes
+
+* Create 2026-03-19 ([3cc2c27](https://github.com/NNNvD/ECTO/commit/3cc2c27bb389a48310a45d54d3cca83f177079bf))
+* Create 2026-03-26 ([a4ff6ca](https://github.com/NNNvD/ECTO/commit/a4ff6ca489ab5bb5a80b629330db02c2a6bbc8d5))
+* Merge pull request [#45](https://github.com/NNNvD/ECTO/issues/45) from NNNvD/codex/explain-release-please-action-functionality ([98eb8d0](https://github.com/NNNvD/ECTO/commit/98eb8d03d78db0e69a12948ecf5632620e426e86))
+* Rename 2026-03-19 to 2026-03-19.md ([fac6891](https://github.com/NNNvD/ECTO/commit/fac6891fb627d0f55acb07f5dc99f973e266db27))
+* Rename 2026-03-26 to 2026-03-26.md ([1b68513](https://github.com/NNNvD/ECTO/commit/1b68513ae11ab755a3c8bd75191fed8c4a3e78ac))
+
 ## [1.1.0](https://github.com/NNNvD/ECTO/compare/v1.0.0...v1.1.0) (2026-03-17)
 
 
