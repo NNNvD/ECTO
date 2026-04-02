@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.1](https://github.com/NNNvD/ECTO/compare/v1.2.0...v1.2.1) (2026-04-02)
+
+
+### Bug Fixes
+
+* Add daily log for April 2, 2026 ([21cd1eb](https://github.com/NNNvD/ECTO/commit/21cd1ebb175782dca873788ae6f75f21fed57cc3))
+* Add daily log for April 2, 2026 ([9806f96](https://github.com/NNNvD/ECTO/commit/9806f96e63eca4990edf3623397fbde1730fd864))
+* Merge pull request [#49](https://github.com/NNNvD/ECTO/issues/49) from NNNvD/NNNvD-patch-3 ([21cd1eb](https://github.com/NNNvD/ECTO/commit/21cd1ebb175782dca873788ae6f75f21fed57cc3))
+
 ## [1.2.0](https://github.com/NNNvD/ECTO/compare/v1.1.0...v1.2.0) (2026-03-26)
 
 
