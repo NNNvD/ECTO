@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.2](https://github.com/NNNvD/ECTO/compare/v1.2.1...v1.2.2) (2026-04-13)
+
+
+### Bug Fixes
+
+* Fix typo in advisor's name in project description ([8e9212b](https://github.com/NNNvD/ECTO/commit/8e9212b11f9057c196eb67e296c16e46ddca5cf8))
+* Fix typo in advisor's name in project description ([2ac5b50](https://github.com/NNNvD/ECTO/commit/2ac5b50e6e11e854dc124f9dc20c920419003f31))
+* Merge pull request [#53](https://github.com/NNNvD/ECTO/issues/53) from NNNvD/NNNvD-patch-5 ([8e9212b](https://github.com/NNNvD/ECTO/commit/8e9212b11f9057c196eb67e296c16e46ddca5cf8))
+
 ## [1.2.1](https://github.com/NNNvD/ECTO/compare/v1.2.0...v1.2.1) (2026-04-02)
 
 
