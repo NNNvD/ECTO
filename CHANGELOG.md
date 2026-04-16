@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.3](https://github.com/NNNvD/ECTO/compare/v1.2.2...v1.2.3) (2026-04-16)
+
+
+### Bug Fixes
+
+* Create 2026-04-09.md ([360ddb7](https://github.com/NNNvD/ECTO/commit/360ddb748676bf80fe8cdb3863c328671dc8b253))
+* Create advisory board meeting notes for April 2026 ([bff1bc2](https://github.com/NNNvD/ECTO/commit/bff1bc2cf34cbf96c19bb34e2668b87e3494655a))
+* Create advisory board meeting notes for April 2026 ([8f3ee88](https://github.com/NNNvD/ECTO/commit/8f3ee883b1e673dbeb4b441cdb29f660b731cbe1))
+
 ## [1.2.2](https://github.com/NNNvD/ECTO/compare/v1.2.1...v1.2.2) (2026-04-13)
 
 
