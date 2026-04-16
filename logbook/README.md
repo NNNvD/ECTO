@@ -1,6 +1,8 @@
 # Logbook
 
 ## Daily logs
+- 2026-04-16 — [2026-04-16]({{ '/daily/2026-04-16' | relative_url }})
+- 2026-04-09 — [2026-04-09]({{ '/daily/2026-04-09' | relative_url }})
 - 2026-04-02 — [2026-04-02]({{ '/daily/2026-04-02' | relative_url }})
 - 2026-03-26 — [2026-03-26]({{ '/daily/2026-03-26' | relative_url }})
 - 2026-03-19 — [2026-03-19]({{ '/daily/2026-03-19' | relative_url }})
@@ -33,6 +35,7 @@
 ## Meetings
 - [2026-01-15-general-discussion-on-design]({{ '/meetings/2026-01-15-general-discussion-on-design' | relative_url }})
 - [2026-02-02-general-discussion-on-design]({{ '/meetings/2026-02-02-general-discussion-on-design' | relative_url }})
+- [20260413_advisory_board_1]({{ '/meetings/20260413_advisory_board_1' | relative_url }})
 
 ## Incidents
 - (none)
