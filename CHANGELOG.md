@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.2.4](https://github.com/NNNvD/ECTO/compare/v1.2.3...v1.2.4) (2026-04-16)
+
+
+### Bug Fixes
+
+* Merge pull request [#55](https://github.com/NNNvD/ECTO/issues/55) from NNNvD/automation/logbook-index ([c4f4ba2](https://github.com/NNNvD/ECTO/commit/c4f4ba2f60a5c005376664304f60ab1c3c516ebf))
+* Merge pull request [#61](https://github.com/NNNvD/ECTO/issues/61) from NNNvD/NNNvD-patch-7 ([cb56152](https://github.com/NNNvD/ECTO/commit/cb561528d95f2b60f49f657cf2bae20d76fcb381))
+* Update daily log note 2026-04-16.md ([cb56152](https://github.com/NNNvD/ECTO/commit/cb561528d95f2b60f49f657cf2bae20d76fcb381))
+* Update daily log note 2026-04-16.md ([ff67d86](https://github.com/NNNvD/ECTO/commit/ff67d8605c8ac1eea7a2283728ed42a2e8f94a4b))
+
 ## [1.2.3](https://github.com/NNNvD/ECTO/compare/v1.2.2...v1.2.3) (2026-04-16)
 
 
