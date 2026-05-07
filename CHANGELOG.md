@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.6](https://github.com/NNNvD/ECTO/compare/v1.2.5...v1.2.6) (2026-05-07)
+
+
+### Bug Fixes
+
+* Merge pull request [#64](https://github.com/NNNvD/ECTO/issues/64) from NNNvD/automation/logbook-index ([e7d7c11](https://github.com/NNNvD/ECTO/commit/e7d7c113371ab22d916733de351011fb340b80e1))
+
 ## [1.2.5](https://github.com/NNNvD/ECTO/compare/v1.2.4...v1.2.5) (2026-05-07)
 
 
