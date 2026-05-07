@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.5](https://github.com/NNNvD/ECTO/compare/v1.2.4...v1.2.5) (2026-05-07)
+
+
+### Bug Fixes
+
+* Add daily log for April 30, 2026 ([8f18946](https://github.com/NNNvD/ECTO/commit/8f18946da10c49d2ed61b12e02bbded3b5dece27))
+* Add daily log for April 30, 2026 ([aaaed4d](https://github.com/NNNvD/ECTO/commit/aaaed4d10755c1b4a7f17da11f627066e76d3beb))
+* Add log for daily activities on 2026-05-07 ([e5d97ee](https://github.com/NNNvD/ECTO/commit/e5d97ee4edca836225d784e9742c3eed806a2a19))
+
 ## [1.2.4](https://github.com/NNNvD/ECTO/compare/v1.2.3...v1.2.4) (2026-04-23)
 
 
