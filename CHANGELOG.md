@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.7](https://github.com/NNNvD/ECTO/compare/v1.2.6...v1.2.7) (2026-05-15)
+
+
+### Bug Fixes
+
+* Add log for daily activities on 2026-05-15 ([40f775b](https://github.com/NNNvD/ECTO/commit/40f775bf4e664413e17d153535d2a7539e033082))
+
 ## [1.2.6](https://github.com/NNNvD/ECTO/compare/v1.2.5...v1.2.6) (2026-05-07)
 
 
