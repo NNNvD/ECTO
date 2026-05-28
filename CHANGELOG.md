@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.9](https://github.com/NNNvD/ECTO/compare/v1.2.8...v1.2.9) (2026-05-28)
+
+
+### Bug Fixes
+
+* Add log for daily activities on 2026-05-28 ([8c515be](https://github.com/NNNvD/ECTO/commit/8c515bed74cc8d097df9431d6802191b314c87fd))
+* added pdf version of phase 1 v0.0 ([a19c4c1](https://github.com/NNNvD/ECTO/commit/a19c4c1e488b80d9b6e93cdd86d4a3385e547979))
+* Merge pull request [#71](https://github.com/NNNvD/ECTO/issues/71) from NNNvD/NNNvD-patch-3 ([22dd9be](https://github.com/NNNvD/ECTO/commit/22dd9be7b899c93de660c83167d9631d494cd9bf))
+
 ## [1.2.8](https://github.com/NNNvD/ECTO/compare/v1.2.7...v1.2.8) (2026-05-21)
 
 
