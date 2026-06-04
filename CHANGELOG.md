@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.10](https://github.com/NNNvD/ECTO/compare/v1.2.9...v1.2.10) (2026-06-04)
+
+
+### Bug Fixes
+
+* Add daily log entry for June 4, 2026 ([ae8d18a](https://github.com/NNNvD/ECTO/commit/ae8d18a73f3a7a3309707c74ef4e1590c0c3565d))
+* Add log entry for June 1, 2026 ([25f3441](https://github.com/NNNvD/ECTO/commit/25f34413b861cffed254f313839465e36cab3488))
+* update phase_1_round_1 ([17ea986](https://github.com/NNNvD/ECTO/commit/17ea986433ec2e5e1c87a6e6c16b3d597c4d96a0))
+
 ## [1.2.9](https://github.com/NNNvD/ECTO/compare/v1.2.8...v1.2.9) (2026-05-28)
 
 
