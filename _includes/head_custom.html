@@ -40,6 +40,12 @@
 
     toc.appendChild(title);
     toc.appendChild(list);
+
+    var footer = document.createElement("p");
+    footer.className = "page-toc-footer";
+    footer.innerHTML = 'This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.';
+    toc.appendChild(footer);
+
     wrap.appendChild(toc);
   });
 </script>

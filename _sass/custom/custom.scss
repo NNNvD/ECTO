@@ -91,6 +91,13 @@ body {
   text-decoration: underline;
 }
 
+.page-toc-footer {
+  margin: 3rem 0 0;
+  color: #5c5962;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
 .main-content p[align="center"] img[src*="ECTO_logo_black"] {
   width: clamp(140px, 18vw, 200px);
 }
@@ -141,6 +148,10 @@ body {
   .site-header,
   .site-footer {
     width: var(--ecto-left-rail);
+  }
+
+  .site-footer {
+    display: none !important;
   }
 
   .side-bar + .main {
