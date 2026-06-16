@@ -92,6 +92,10 @@ body {
   text-decoration: underline;
 }
 
+.main-content h1:first-of-type {
+  text-align: center;
+}
+
 .main-content p[align="center"] img[src*="ECTO_logo_black"] {
   width: clamp(140px, 18vw, 200px);
 }
