@@ -2,3 +2,24 @@
   width: 150px;
   height: auto;
 }
+
+.funding-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.funding-card {
+  border: 1px solid #e6e6e6;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.funding-card img {
+  display: block;
+  max-width: 180px;
+  max-height: 72px;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+}

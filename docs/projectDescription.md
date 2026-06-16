@@ -1,5 +1,5 @@
 # Expert Consensus on Theory Development Methodology 
-### Version 1.0.2
+### Version 1.0.3
 
 
 ## General description 
@@ -44,8 +44,8 @@ The textbook focuses on pre-empirical theory work (idea generation, specificatio
 
 ### 2.1 Expert identification
 
-Experts will be identified and invited according to the 
-[*Expert Identification Protocol*](https://github.com/NNNvD/ECTO/blob/main/docs/expertIdentification.md)*.*
+Experts will be identified and invited according to the
+[*Expert Identification Protocol*]({{ '/expert-identification/' | relative_url }}).
 
 ### 2.2 Eligibility Screen (Round-0)
 
@@ -58,7 +58,7 @@ Invitees will be asked to rate agreement (7-point Likert) with the statement:
 
 ### 2.3 Inclusion Criteria
 
-- Demonstrated contributions to theory development, formal modeling, philosophy of science, methodology, or pedagogy in psychology or neighboring fields (determined by the [*Expert Identification Protocol*](https://github.com/NNNvD/ECTO/blob/main/docs/expertIdentification.md))   
+- Demonstrated contributions to theory development, formal modeling, philosophy of science, methodology, or pedagogy in psychology or neighboring fields (determined by the [*Expert Identification Protocol*]({{ '/expert-identification/' | relative_url }}))
 - Commitment to at least 12 iterative rounds (estimated 20 \- 40 minutes per round).  
 - No conflicts of interest (e.g., direct commercial stake in competing proprietary curricula).  
 - No prior substantiated ethical violations relevant to research/teaching integrity.
@@ -75,7 +75,7 @@ This self-assessment will be conducted via a short survey with Likert-scale ques
 
 ### 2.5 Consent & Confidentiality
 
-- Digital informed consent will be obtained before Round 1 (see *Informed Consent Form*, LINK TBA))  
+- Digital informed consent will be obtained before Round 1 (see the [public informed consent form]({{ '/docs/ECTO%20-%20informed%20consent%20form.pdf' | relative_url }})).
 - Anonymity of responses within rounds; names may be acknowledged in outputs only with explicit permission.  
 - Data are stored on secure university servers and on a GitHub repository, with anonymized public release of aggregate summaries.  
 - GDPR-compliant data handling; right to withdraw at any time without penalty.
@@ -107,7 +107,7 @@ We aim for a balance across: discipline (psychology, philosophy of science, comp
 A systematic literature search will be conducted to assemble a representative, interdisciplinary corpus of theoretical, methodological, and pedagogical works relevant to the creation and evaluation of scientific theories in psychology. This corpus will serve as the evidence base and initial content for developing the textbook and generating Delphi survey materials.  
 **Target:** \~50 sources are expected to be included.
 
-Material for the Delphi procedure will be developed in phases (see Section 4 below). The PI will prepare a V0.0 version of this material based on the sources identified through the literature search. An Evidence Map will link the sources to this material. See [*Search Strategy*](https://github.com/NNNvD/ECTO/blob/main/docs/searchStrategy.md) for further details. 
+Material for the Delphi procedure will be developed in phases (see Section 4 below). The PI will prepare a V0.0 version of this material based on the sources identified through the literature search. An Evidence Map will link the sources to this material. See the [Search Strategy]({{ '/search-strategy/' | relative_url }}) for further details.
 
 ---
 

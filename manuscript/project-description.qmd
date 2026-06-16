@@ -1,6 +1,0 @@
----
-title: "Project Description"
----
-
-```{include-file} ../docs/projectDescription.md
-```
