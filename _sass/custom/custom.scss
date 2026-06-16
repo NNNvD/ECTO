@@ -1,3 +1,19 @@
+:root {
+  --ecto-layout-max: 80rem;
+  --ecto-left-rail: 16.5rem;
+  --ecto-right-rail: 16.5rem;
+  --ecto-layout-gutter: max(0px, calc((100vw - var(--ecto-layout-max)) / 2));
+}
+
+body {
+  background-color: #f5f6fa;
+}
+
+.main {
+  background-color: #fff;
+  min-height: 100vh;
+}
+
 .funding-grid {
   display: flex;
   flex-direction: column;
@@ -73,6 +89,10 @@
   text-decoration: underline;
 }
 
+.main-content p[align="center"] img[src*="ECTO_logo_black"] {
+  width: clamp(140px, 18vw, 200px);
+}
+
 @media (max-width: 66.5rem) {
   .main-content-wrap {
     display: block;
@@ -110,19 +130,21 @@
 
 @media (min-width: 66.5rem) {
   .side-bar {
-    width: 16.5rem;
-    min-width: 16.5rem;
+    left: var(--ecto-layout-gutter);
+    width: var(--ecto-left-rail);
+    min-width: var(--ecto-left-rail);
   }
 
   .site-nav,
   .site-header,
   .site-footer {
-    width: 16.5rem;
+    width: var(--ecto-left-rail);
   }
 
   .side-bar + .main {
-    margin-left: 16.5rem;
-    margin-right: 16.5rem;
+    max-width: calc(var(--ecto-layout-max) - var(--ecto-left-rail) - var(--ecto-right-rail));
+    margin-left: calc(var(--ecto-layout-gutter) + var(--ecto-left-rail));
+    margin-right: calc(var(--ecto-layout-gutter) + var(--ecto-right-rail));
   }
 
   .main-content-wrap {
@@ -138,9 +160,9 @@
     display: block;
     position: fixed;
     top: 0;
-    right: 0;
+    right: var(--ecto-layout-gutter);
     bottom: 0;
-    width: 16.5rem;
+    width: var(--ecto-right-rail);
     padding: 5.75rem 2rem 2rem;
     overflow-y: auto;
     background-color: #f5f6fa;
