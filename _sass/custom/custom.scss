@@ -1,9 +1,10 @@
 :root {
-  --ecto-layout-max: 80rem;
+  --ecto-layout-max: 72rem;
   --ecto-left-rail: 14rem;
-  --ecto-right-rail: 11rem;
+  --ecto-right-rail: 14rem;
   --ecto-content-pad: 1.25rem;
-  --ecto-rail-pad: 1rem;
+  --ecto-rail-pad: 1.5rem;
+  --ecto-content-width: calc(var(--ecto-layout-max) - var(--ecto-left-rail) - var(--ecto-right-rail));
   --ecto-layout-gutter: max(0px, calc((100vw - var(--ecto-layout-max)) / 2));
 }
 
@@ -152,7 +153,8 @@ body {
   }
 
   .side-bar + .main {
-    max-width: calc(var(--ecto-layout-max) - var(--ecto-left-rail) - var(--ecto-right-rail));
+    width: var(--ecto-content-width);
+    max-width: var(--ecto-content-width);
     margin-left: calc(var(--ecto-layout-gutter) + var(--ecto-left-rail));
     margin-right: calc(var(--ecto-layout-gutter) + var(--ecto-right-rail));
   }
@@ -163,7 +165,7 @@ body {
   }
 
   .main-content {
-    max-width: 44rem;
+    max-width: none;
   }
 
   .page-toc {
