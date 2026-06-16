@@ -161,10 +161,10 @@ During each consensus round, Experts can propose to remove or add items. The PI 
 
 For each phase, items will be rated on 7-point Likert scales (1 \= strongly disagree / not relevant; 7 \= strongly agree / highly relevant). We stop a phase when:
 
-1) **Consensus:** Phase item-set achieves mean ≥ 4.5, no single item receives a score \< 3.0 by more than 30% of the experts, and no new items are proposed in the final feedback round; or  
+1) **Consensus:** Every item in the phase has a mean rating ≥ 4.5, no more than 25% of valid respondents rate any item 3 or lower, and no new items are proposed in the final feedback round; or
 2) **Rounds cap:** A maximum of 5 rounds reached per phase. If consensus is incomplete, the phase output will be published with an addendum noting the lack of full consensus and item-level agreement statistics.
 
-During each round, items that receive no score below 3 by more than 25% of experts and an average of 4.5 or higher will be designated as “consensus reached” and will be dropped from the next consensus round. Thus, once consensus has been reached on an item, it will not be reevaluated during the following rounds. 
+During each round, an item will be designated as “consensus reached” when its mean rating is ≥ 4.5 and no more than 25% of valid respondents rate it 3 or lower. The item will then be dropped from the next consensus round. Thus, once consensus has been reached on an item, it will not be reevaluated during the following rounds.
 
 A mid-project evaluation will be triggered when Phase 3 has been completed, and more than 12 feedback rounds have been conducted. This evaluation will be used to decide on how to proceed. The project can proceed as follows:
 
