@@ -1,7 +1,9 @@
 :root {
   --ecto-layout-max: 80rem;
-  --ecto-left-rail: 16.5rem;
-  --ecto-right-rail: 16.5rem;
+  --ecto-left-rail: 14rem;
+  --ecto-right-rail: 14rem;
+  --ecto-content-pad: 1.25rem;
+  --ecto-rail-pad: 1.5rem;
   --ecto-layout-gutter: max(0px, calc((100vw - var(--ecto-layout-max)) / 2));
 }
 
@@ -110,12 +112,12 @@ body {
   }
 
   .side-bar {
-    width: 15.5rem;
-    min-width: 15.5rem;
+    width: 14rem;
+    min-width: 14rem;
   }
 
   .side-bar + .main {
-    margin-left: 15.5rem;
+    margin-left: 14rem;
   }
 
   .main {
@@ -123,8 +125,8 @@ body {
   }
 
   .main-content-wrap {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: var(--ecto-content-pad);
+    padding-right: var(--ecto-content-pad);
   }
 }
 
@@ -148,8 +150,8 @@ body {
   }
 
   .main-content-wrap {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: var(--ecto-content-pad);
+    padding-right: var(--ecto-content-pad);
   }
 
   .main-content {
@@ -163,7 +165,7 @@ body {
     right: var(--ecto-layout-gutter);
     bottom: 0;
     width: var(--ecto-right-rail);
-    padding: 5.75rem 2rem 2rem;
+    padding: 5.75rem var(--ecto-rail-pad) 2rem;
     overflow-y: auto;
     background-color: #f5f6fa;
     border-left: 1px solid #eeebee;
