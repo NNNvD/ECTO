@@ -1,9 +1,9 @@
 :root {
   --ecto-layout-max: 80rem;
   --ecto-left-rail: 14rem;
-  --ecto-right-rail: 14rem;
+  --ecto-right-rail: 11rem;
   --ecto-content-pad: 1.25rem;
-  --ecto-rail-pad: 1.5rem;
+  --ecto-rail-pad: 1rem;
   --ecto-layout-gutter: max(0px, calc((100vw - var(--ecto-layout-max)) / 2));
 }
 
@@ -58,7 +58,7 @@ body {
 
 .page-toc {
   display: none;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
 }
 
 .page-toc-title {
@@ -89,13 +89,6 @@ body {
 .page-toc a:hover {
   color: #27262b;
   text-decoration: underline;
-}
-
-.page-toc-footer {
-  margin: 3rem 0 0;
-  color: #5c5962;
-  font-size: 0.75rem;
-  line-height: 1.4;
 }
 
 .main-content p[align="center"] img[src*="ECTO_logo_black"] {
@@ -150,8 +143,12 @@ body {
     width: var(--ecto-left-rail);
   }
 
-  .site-footer {
+  .side-bar > .site-footer {
     display: none !important;
+  }
+
+  .main-content footer .d-md-none {
+    display: block !important;
   }
 
   .side-bar + .main {
