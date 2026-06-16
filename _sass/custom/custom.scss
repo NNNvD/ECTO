@@ -25,10 +25,6 @@
   margin: 0;
 }
 
-.site-header {
-  min-height: 80px;
-}
-
 .site-title {
   align-items: center;
 }
@@ -42,24 +38,8 @@
   background-size: contain;
 }
 
-.main-content-wrap {
-  display: flex;
-  align-items: flex-start;
-}
-
-.main-content {
-  min-width: 0;
-}
-
 .page-toc {
-  flex: 0 0 13rem;
-  position: sticky;
-  top: 5rem;
-  max-height: calc(100vh - 6rem);
-  overflow-y: auto;
-  margin-left: 2rem;
-  padding-left: 1rem;
-  border-left: 1px solid #e6e6e6;
+  display: none;
   font-size: 0.875rem;
 }
 
@@ -100,6 +80,71 @@
 
   .page-toc {
     display: none;
+  }
+}
+
+@media (min-width: 50rem) {
+  .site-title .site-logo {
+    width: 120px;
+    height: 42px;
+  }
+
+  .side-bar {
+    width: 15.5rem;
+    min-width: 15.5rem;
+  }
+
+  .side-bar + .main {
+    margin-left: 15.5rem;
+  }
+
+  .main {
+    max-width: none;
+  }
+
+  .main-content-wrap {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 66.5rem) {
+  .side-bar {
+    width: 16.5rem;
+    min-width: 16.5rem;
+  }
+
+  .site-nav,
+  .site-header,
+  .site-footer {
+    width: 16.5rem;
+  }
+
+  .side-bar + .main {
+    margin-left: 16.5rem;
+    margin-right: 16.5rem;
+  }
+
+  .main-content-wrap {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .main-content {
+    max-width: 44rem;
+  }
+
+  .page-toc {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 16.5rem;
+    padding: 5.75rem 2rem 2rem;
+    overflow-y: auto;
+    background-color: #f5f6fa;
+    border-left: 1px solid #eeebee;
   }
 }
 
