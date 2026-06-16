@@ -1,2 +1,45 @@
 <link rel="icon" type="image/png" href="{{ '/images/ECTO_logo_NB.png' | relative_url }}">
 <link rel="apple-touch-icon" href="{{ '/images/ECTO_logo_NB.png' | relative_url }}">
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var main = document.querySelector("#main-content main");
+    var wrap = document.querySelector(".main-content-wrap");
+
+    if (!main || !wrap) {
+      return;
+    }
+
+    var headings = main.querySelectorAll("h2[id], h3[id]");
+
+    if (headings.length === 0) {
+      return;
+    }
+
+    var toc = document.createElement("nav");
+    toc.className = "page-toc";
+    toc.setAttribute("aria-label", "On this page");
+
+    var title = document.createElement("p");
+    title.className = "page-toc-title";
+    title.textContent = "On this page";
+
+    var list = document.createElement("ul");
+    list.className = "page-toc-list";
+
+    headings.forEach(function (heading) {
+      var item = document.createElement("li");
+      item.className = "toc-" + heading.tagName.toLowerCase();
+
+      var link = document.createElement("a");
+      link.href = "#" + heading.id;
+      link.textContent = heading.textContent.trim();
+
+      item.appendChild(link);
+      list.appendChild(item);
+    });
+
+    toc.appendChild(title);
+    toc.appendChild(list);
+    wrap.appendChild(toc);
+  });
+</script>
