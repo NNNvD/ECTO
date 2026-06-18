@@ -1,0 +1,4 @@
+# Default code owner for the ECTO repository.
+#
+# This supports the ECTO-1 branch ruleset when code-owner review is enabled.
+* @NNNvD
