@@ -1,6 +1,0 @@
----
-title: "Expert Identification"
----
-
-```{include-file} ../docs/expertIdentification.md
-```

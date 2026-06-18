@@ -1,9 +1,8 @@
-# Quarto
-manuscript/_book/
-manuscript/.quarto/
-
 # OS
 .DS_Store
 
 # Editor
 .vscode/
+
+# Jekyll
+_site/

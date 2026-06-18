@@ -1,7 +1,10 @@
 # Logbook
 
 ## Daily logs
+- 2026-06-18 — [2026-06-18]({{ '/daily/2026-06-18' | relative_url }})
+- 2026-06-16 — [2026-06-16]({{ '/daily/2026-06-16' | relative_url }})
 - 2026-06-11 — [2026-06-11]({{ '/daily/2026-06-11' | relative_url }})
+- 2026-06-04 — [2026-06-04]({{ '/daily/2026-06-04' | relative_url }})
 - 2026-06-01 — [2026-06-01]({{ '/daily/2026-06-01' | relative_url }})
 - 2026-05-28 — [2026-05-28]({{ '/daily/2026-05-28' | relative_url }})
 - 2026-05-21 — [2026-05-21]({{ '/daily/2026-05-21' | relative_url }})
@@ -38,6 +41,7 @@
     <tr><td>0007</td><td><a href="{{ '/decisions/ADR-0007-remove-qualification-scoring' | relative_url }}">Remove qualification scoring from expert identification</a></td><td>2026-02-03</td><td>Accepted</td></tr>
     <tr><td>0008</td><td><a href="{{ '/decisions/ADR-0008-invite-experts-alphabetically' | relative_url }}">Invite experts in alphabetical order</a></td><td>2026-02-05</td><td>Accepted</td></tr>
     <tr><td>0009</td><td><a href="{{ '/decisions/ADR-0009-add-expert-replacement-thresholds' | relative_url }}">Add expert replacement thresholds</a></td><td>2026-01-15</td><td>Accepted</td></tr>
+    <tr><td>0010</td><td><a href="{{ '/decisions/ADR-0010-count-ratings-of-three-in-consensus-threshold' | relative_url }}">Count ratings of 3 in the consensus threshold</a></td><td>2026-06-15</td><td>Accepted</td></tr>
   </tbody>
 </table>
 
