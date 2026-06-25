@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/NNNvD/ECTO/compare/v1.3.0...v1.3.1) (2026-06-25)
+
+
+### Bug Fixes
+
+* Add daily log for June 25, 2026 ([5bc0a31](https://github.com/NNNvD/ECTO/commit/5bc0a31538da923b85abc1dc14c42102b1674e8a))
+
 ## [1.3.0](https://github.com/NNNvD/ECTO/compare/v1.2.11...v1.3.0) (2026-06-18)
 
 
