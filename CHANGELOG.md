@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.3.0](https://github.com/NNNvD/ECTO/compare/v1.2.11...v1.3.0) (2026-06-18)
+
+
+### Features
+
+* clarify public website and materials ([93b8dfb](https://github.com/NNNvD/ECTO/commit/93b8dfbfa5a99068cb3f935e108cd2adc67bf4ea))
+* refine website navigation and branding layout ([c05c95f](https://github.com/NNNvD/ECTO/commit/c05c95f1b4588f2dde647279aeb27c7ad8adc723))
+* update public website and repository governance ([1e3fcc9](https://github.com/NNNvD/ECTO/commit/1e3fcc9cc2fb8296e963a379c1e5775f5fb97b8c))
+
+
+### Bug Fixes
+
+* balance website rail spacing ([75dfa39](https://github.com/NNNvD/ECTO/commit/75dfa39e9f2484781a8a9a0cb14c2f34e6fd9f68))
+* center website page titles ([1867f24](https://github.com/NNNvD/ECTO/commit/1867f24a775f286f6490de447a5dac923a023fae))
+* center website within max-width frame ([85e33a1](https://github.com/NNNvD/ECTO/commit/85e33a1a4971ff73151788bee620fa6cd3b193d5))
+* equalize rails and constrain content width ([863cccf](https://github.com/NNNvD/ECTO/commit/863cccffc282aa83962ca0ac8c08855be3674639))
+* move theme attribution to right rail ([f6d9e55](https://github.com/NNNvD/ECTO/commit/f6d9e55f84358523a5f65fca1d0a77c811adb6c2))
+* restore page footer and compact right rail ([bbf1e01](https://github.com/NNNvD/ECTO/commit/bbf1e01741676108b6c2380bc6b90eeae9d3ccf4))
+* tighten website layout rails ([970c423](https://github.com/NNNvD/ECTO/commit/970c423b16da02708e7c5970bc5439405a2d1c03))
+* update consensus threshold rule ([06ab355](https://github.com/NNNvD/ECTO/commit/06ab35507863ba33259252eebd86b8eb9f664d82))
+
 ## [1.2.11](https://github.com/NNNvD/ECTO/compare/v1.2.10...v1.2.11) (2026-06-11)
 
 
