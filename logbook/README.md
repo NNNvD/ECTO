@@ -1,6 +1,7 @@
 # Logbook
 
 ## Daily logs
+- 2026-07-03 — [2026-07-03]({{ '/daily/2026-07-03' | relative_url }})
 - 2026-06-25 — [2026-06-25]({{ '/daily/2026-06-25' | relative_url }})
 - 2026-06-18 — [2026-06-18]({{ '/daily/2026-06-18' | relative_url }})
 - 2026-06-16 — [2026-06-16]({{ '/daily/2026-06-16' | relative_url }})
@@ -43,6 +44,7 @@
     <tr><td>0008</td><td><a href="{{ '/decisions/ADR-0008-invite-experts-alphabetically' | relative_url }}">Invite experts in alphabetical order</a></td><td>2026-02-05</td><td>Accepted</td></tr>
     <tr><td>0009</td><td><a href="{{ '/decisions/ADR-0009-add-expert-replacement-thresholds' | relative_url }}">Add expert replacement thresholds</a></td><td>2026-01-15</td><td>Accepted</td></tr>
     <tr><td>0010</td><td><a href="{{ '/decisions/ADR-0010-count-ratings-of-three-in-consensus-threshold' | relative_url }}">Count ratings of 3 in the consensus threshold</a></td><td>2026-06-15</td><td>Accepted</td></tr>
+    <tr><td>0011</td><td><a href="{{ '/decisions/ADR-11-concluding-phase1' | relative_url }}">Concluding Phase 1 of ECTO</a></td><td>2026-07-03</td><td>Accepted</td></tr>
   </tbody>
 </table>
 
