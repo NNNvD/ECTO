@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.2](https://github.com/NNNvD/ECTO/compare/v1.3.1...v1.3.2) (2026-07-03)
+
+
+### Bug Fixes
+
+* Add daily log for July 3, 2026 ([83aed27](https://github.com/NNNvD/ECTO/commit/83aed27eec096a297ac325ada820bf23a309b6bc))
+* Conclude Phase 1 and update consensus decision rules ([cefe885](https://github.com/NNNvD/ECTO/commit/cefe8850adee1988dcaee366094052f6a89eb4b9))
+
 ## [1.3.1](https://github.com/NNNvD/ECTO/compare/v1.3.0...v1.3.1) (2026-06-25)
 
 
