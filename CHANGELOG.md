@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/NNNvD/ECTO/compare/v1.3.2...v1.3.3) (2026-08-13)
+
+
+### Bug Fixes
+
+* Merge pull request [#86](https://github.com/NNNvD/ECTO/issues/86) from NNNvD/agent/solo-maintainer-review-guidance ([5d53df0](https://github.com/NNNvD/ECTO/commit/5d53df01eb05fb08db1181a3f4f9cbb6e693e0c3))
+
 ## [1.3.2](https://github.com/NNNvD/ECTO/compare/v1.3.1...v1.3.2) (2026-07-03)
 
 
