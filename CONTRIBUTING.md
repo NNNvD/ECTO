@@ -14,6 +14,8 @@ ECTO uses GitHub as its public transparency and dissemination layer. Keep privat
 
 The `ECTO-1` ruleset requires pull-request review before changes land on `main`. `.github/CODEOWNERS` assigns default repository ownership to `@NNNvD` so code-owner review can be requested consistently.
 
+ECTO is currently solo-maintained. When no independent reviewer is available, the maintainer must still use a feature branch and pull request, complete the PR template, inspect the diff, record checks, and document any privacy, ethics, release, or logbook implications. The maintainer may use the existing auditable ruleset bypass to merge that pull request, but must not bypass the pull-request workflow by pushing directly to `main`. Independent review remains required whenever another qualified maintainer or reviewer is available, especially for privacy, ethics, participant-facing, data-management, release, or governance changes.
+
 ## PR And Commit Titles
 
 ECTO uses release-please, so PR titles and final squash commit titles are version-affecting metadata. Use Conventional Commit-style titles:
