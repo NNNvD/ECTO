@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/NNNvD/ECTO/compare/v1.3.4...v1.4.0) (2026-09-09)
+
+
+### Features
+
+* publish Phase 1 outputs and report ([f27dd99](https://github.com/NNNvD/ECTO/commit/f27dd99e82c7bef26896209174ae55a527c5a0af))
+* publish Phase 1 outputs and report ([395845b](https://github.com/NNNvD/ECTO/commit/395845b629af5cd82c3f9d55df35723b0d8faafa))
+
 ## [1.3.4](https://github.com/NNNvD/ECTO/compare/v1.3.3...v1.3.4) (2026-09-09)
 
 
