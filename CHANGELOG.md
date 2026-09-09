@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.4](https://github.com/NNNvD/ECTO/compare/v1.3.3...v1.3.4) (2026-09-09)
+
+
+### Bug Fixes
+
+* repair website routes and update phase status ([84bd12d](https://github.com/NNNvD/ECTO/commit/84bd12d0efd08cec0b6ecc5b0877bb2caf1f2ade))
+* repair website routes and update phase status ([595c6bb](https://github.com/NNNvD/ECTO/commit/595c6bbdd3d6ca2a6f1b8a2652bd04b89824816f))
+
 ## [1.3.3](https://github.com/NNNvD/ECTO/compare/v1.3.2...v1.3.3) (2026-08-13)
 
 
