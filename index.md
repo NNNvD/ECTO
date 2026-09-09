@@ -16,7 +16,7 @@ The public repository is the project's transparency layer. It documents how the 
 
 ## Current stage
 
-The project is currently running the expert-consensus procedure. Phase 1 focuses on the core tasks and responsibilities of theorists. Version 0.0 material is public, while expert identities, consent forms, raw survey exports, and identifiable responses remain outside GitHub in approved secure storage.
+The project is currently running the expert-consensus procedure. Phase 1 Round 1 reached consensus on the core tasks and responsibilities of theorists, and the project is moving to Phase 2. Public outputs and reports are versioned in the repository, while expert identities, consent forms, raw survey exports, and identifiable responses remain outside GitHub in approved secure storage.
 
 ## Start here
 
@@ -28,11 +28,14 @@ The project is currently running the expert-consensus procedure. Phase 1 focuses
 
 ## Public materials
 
-Public phase materials live in versioned folders in this repository. Sensitive operational data are not published here.
+Public phase materials live in versioned folders under `outputs/`. Public round reports are collected under `docs/reports/`. Sensitive operational data are not published here.
 
 | Material | Web/download link | Source |
 | --- | --- | --- |
-| Phase 1 v0.0: Tasks and responsibilities of a theorist | [PDF]({{ '/v0.0/phase_1/Phase%201_%20Tasks%20and%20Responsibilities%20of%20a%20Theorist%20v0.0.pdf' | relative_url }}) | [Markdown](https://github.com/NNNvD/ECTO/blob/main/v0.0/phase_1/p1_v0.0.md) |
+| Phase 1 v0.0: Tasks and responsibilities of a theorist | [PDF]({{ '/outputs/phase_1/v0.0/Phase_1_Tasks_and_Responsibilities_of_a_Theorist_v0.0.pdf' | relative_url }}) | [Markdown]({{ '/outputs/phase_1/v0.0/p1_v0.0.md' | relative_url }}) |
+| Phase 1 v0.1: Tasks and responsibilities of a theorist | [PDF]({{ '/outputs/phase_1/v0.1/Phase_1_Tasks_and_Responsibilities_of_a_Theorist_v0.1.pdf' | relative_url }}) | [Markdown]({{ '/outputs/phase_1/v0.1/p1_v0.1.md' | relative_url }}) |
+| Phase 1 v0.1: Important but delegable tasks | [PDF]({{ '/outputs/phase_1/v0.1/Phase_1_Delegable_Tasks_of_a_Theorist.pdf' | relative_url }}) | — |
+| Phase 1 Round 1 expert feedback report | [PDF]({{ '/docs/reports/P1R1_expert_feedback_report.pdf' | relative_url }}) | [Markdown]({{ '/docs/reports/P1R1_expert_feedback_report' | relative_url }}) |
 
 ## Repository and archive
 

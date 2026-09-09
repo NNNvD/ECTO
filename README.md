@@ -19,11 +19,10 @@ This repository is the public transparency layer for the project. It documents p
 
 ## Public materials
 
-Public phase materials are stored in versioned folders. Sensitive expert data, consent forms, raw survey exports, and identifiable responses are not stored in this repository.
+Public phase materials are stored in versioned folders under `outputs/`. Public round reports are stored in `docs/reports/`. Sensitive expert data, consent forms, raw survey exports, and identifiable responses are not stored in this repository.
 
-- Phase 1 v0.0: Tasks and responsibilities of a theorist
-  - [PDF](v0.0/phase_1/Phase%201_%20Tasks%20and%20Responsibilities%20of%20a%20Theorist%20v0.0.pdf)
-  - [Markdown source](v0.0/phase_1/p1_v0.0.md)
+- [Phase 1 outputs](outputs/phase_1/)
+- [Phase 1 Round 1 report](docs/reports/P1R1_expert_feedback_report.md)
 
 ## What this repository is for
 
