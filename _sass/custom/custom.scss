@@ -1,8 +1,8 @@
 :root {
-  --ecto-layout-max: 72rem;
+  --ecto-layout-max: 80rem;
   --ecto-left-rail: 14rem;
   --ecto-right-rail: 14rem;
-  --ecto-content-pad: 1.25rem;
+  --ecto-content-pad: 2rem;
   --ecto-rail-pad: 1.5rem;
   --ecto-content-width: calc(var(--ecto-layout-max) - var(--ecto-left-rail) - var(--ecto-right-rail));
   --ecto-layout-gutter: max(0px, calc((100vw - var(--ecto-layout-max)) / 2));
