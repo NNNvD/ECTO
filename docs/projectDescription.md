@@ -10,7 +10,9 @@
 **Summary:** This project aims to develop a collaborative textbook and curriculum on theory creation, development, and evaluation in psychological science through expert consensus.  
 **PI:** N.N.N. van Dongen (Erasmus University Rotterdam)  
 **Advisors:** B. Aczel, B. Haig, O. Perski, B. Jurg  
-**Version note:** This Project Description is not final. It will be updated after we finalize: (a) the expert identification procedure and inclusion/exclusion criteria, (b) the literature search strategy for building Version 0.0, and (c) the detailed design of the expert consensus (Delphi) rounds. Later updates might also occur as the project progresses
+**Version note:** The expert identification procedure and inclusion/exclusion criteria, the literature search strategy for building Version 0.0, and the initial design of the expert consensus (Delphi) rounds have been finalized for the current project stage. This description will continue to be updated as the project progresses.
+
+**Current status:** Phase 1, Round 1 reached consensus on the Phase 1 task and responsibility items. The project is now moving to Phase 2, which concerns skills and learning goals. Supporting evidence and provenance for the Phase 1 materials will be added to the repository separately and do not delay the continuation of the Delphi project.
 
 ---
 

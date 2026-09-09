@@ -1,5 +1,6 @@
 ---
 date: 2026-04-13
+permalink: /meetings/20260413_advisory_board_1
 ---
 
 # 2026-04-13 — Meeting — Advisory Board meeting
