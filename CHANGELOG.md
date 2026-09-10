@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.1](https://github.com/NNNvD/ECTO/compare/v1.4.0...v1.4.1) (2026-09-09)
+
+
+### Bug Fixes
+
+* widen website content column ([d2f5ce7](https://github.com/NNNvD/ECTO/commit/d2f5ce7349b325d733aa8b766dc9a5c5f868ba1a))
+* widen website content column ([5a87cb1](https://github.com/NNNvD/ECTO/commit/5a87cb1ba823c2f640280aaa1c3ee9c15236e0b4))
+
 ## [1.4.0](https://github.com/NNNvD/ECTO/compare/v1.3.4...v1.4.0) (2026-09-09)
 
 
