@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.3](https://github.com/NNNvD/ECTO/compare/v1.4.2...v1.4.3) (2026-09-24)
+
+
+### Bug Fixes
+
+* Add daily log for September 24, 2026 ([f6179c9](https://github.com/NNNvD/ECTO/commit/f6179c940bff936bbef96bfba1e39e8d4d62ac8f))
+* Create phase_1_evidence.md with references for V0.0 ([fdfe9bd](https://github.com/NNNvD/ECTO/commit/fdfe9bdaea216e0e412b7d3c76934edcd2d814b8))
+
 ## [1.4.2](https://github.com/NNNvD/ECTO/compare/v1.4.1...v1.4.2) (2026-09-10)
 
 
