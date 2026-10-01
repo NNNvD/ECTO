@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.4](https://github.com/NNNvD/ECTO/compare/v1.4.3...v1.4.4) (2026-10-01)
+
+
+### Bug Fixes
+
+* add 2026-10-01 daily log ([48486f5](https://github.com/NNNvD/ECTO/commit/48486f5d712b4d0556266e31e06c42347fc3259e))
+* add 2026-10-01 daily log ([85f1fa2](https://github.com/NNNvD/ECTO/commit/85f1fa2f8ddb848dfcca0bd94e212ef54b11b8b8))
+
 ## [1.4.3](https://github.com/NNNvD/ECTO/compare/v1.4.2...v1.4.3) (2026-09-24)
 
 
