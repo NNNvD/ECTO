@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.4.4](https://github.com/NNNvD/ECTO/compare/v1.4.3...v1.4.4) (2026-10-01)
+## [1.4.4](https://github.com/NNNvD/ECTO/compare/v1.4.3...v1.4.4) (2026-10-02)
 
 
 ### Bug Fixes
