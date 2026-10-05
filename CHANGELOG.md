@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.5](https://github.com/NNNvD/ECTO/compare/v1.4.4...v1.4.5) (2026-10-05)
+
+
+### Bug Fixes
+
+* add daily logs for 2026-09-06 to 2026-10-03 for Ilinca Anton. ([857c992](https://github.com/NNNvD/ECTO/commit/857c992a1ed66363ee5a6f035f5650174b65cb23))
+
 ## [1.4.4](https://github.com/NNNvD/ECTO/compare/v1.4.3...v1.4.4) (2026-10-01)
 
 
