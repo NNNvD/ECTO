@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.6](https://github.com/NNNvD/ECTO/compare/v1.4.5...v1.4.6) (2026-10-06)
+
+
+### Bug Fixes
+
+* add Phase 2 v0.0 pdf ([265d9c2](https://github.com/NNNvD/ECTO/commit/265d9c2fee3af00d783247ccae0816f65c4aaeca))
+
 ## [1.4.5](https://github.com/NNNvD/ECTO/compare/v1.4.4...v1.4.5) (2026-10-05)
 
 
