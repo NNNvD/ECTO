@@ -1,0 +1,1363 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phase 2 evidence: Interactive map</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#f2f4f7; --surface:#ffffff; --ink:#1b2130; --muted:#5f6878; --line:#d8dde6;
+    --task-fill:#e8edf7; --task-line:#b3bfdc;
+    --comp-fill:#edf3e4; --comp-line:#a7b98a; --comp-sel:#dcebc4;
+    --primary:#1d4ed8; --on-primary:#ffffff; --dep:#c2306a;
+    --s:#b0730a; --s-fill:#fbf0d6;
+    --k:#12806f; --k-fill:#d9f1ec;
+    --cap:#7a4fc4; --cap-fill:#ece4f8;
+    --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+    --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#12151c; --surface:#181c25; --ink:#e7eaf1; --muted:#9aa3b5; --line:#2c3341;
+      --task-fill:#1f2740; --task-line:#3d4b7a;
+      --comp-fill:#243021; --comp-line:#516b47; --comp-sel:#33472d;
+      --primary:#6f9bff; --on-primary:#0c1220; --dep:#f0729f;
+      --s:#e3a83f; --s-fill:#3a2e15;
+      --k:#4fcdb6; --k-fill:#15352f;
+      --cap:#b797f0; --cap-fill:#2d2446;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12151c; --surface:#181c25; --ink:#e7eaf1; --muted:#9aa3b5; --line:#2c3341;
+    --task-fill:#1f2740; --task-line:#3d4b7a;
+    --comp-fill:#243021; --comp-line:#516b47; --comp-sel:#33472d;
+    --primary:#6f9bff; --on-primary:#0c1220; --dep:#f0729f;
+    --s:#e3a83f; --s-fill:#3a2e15;
+    --k:#4fcdb6; --k-fill:#15352f;
+    --cap:#b797f0; --cap-fill:#2d2446;
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+  .page{max-width:1120px;margin:0 auto;padding:28px 20px 40px}
+  h1{font-family:var(--display);font-weight:700;font-size:clamp(26px,4vw,36px);line-height:1.1;margin:0 0 8px;letter-spacing:-.01em}
+  .lede{margin:0 0 20px;color:var(--muted);max-width:68ch}
+
+  .bar{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;min-height:38px;margin-bottom:12px}
+  .bar label{display:inline-flex;gap:8px;align-items:center;cursor:pointer;color:var(--ink)}
+  .bar input{accent-color:var(--primary);width:16px;height:16px;margin:0}
+  .back{font:inherit;font-weight:500;color:var(--primary);background:transparent;border:1.5px solid var(--primary);border-radius:8px;padding:7px 14px;cursor:pointer}
+  .back:hover{background:color-mix(in srgb,var(--primary) 12%,transparent)}
+  .back:focus-visible,.bar input:focus-visible{outline:3px solid color-mix(in srgb,var(--primary) 45%,transparent);outline-offset:2px}
+  .hint{color:var(--muted);font-size:13.5px}
+  body:not(.focus) .only-focus{display:none}
+  body.focus .only-overview{display:none}
+
+  #caption{min-height:78px;margin:0 0 12px}
+  #caption h2{font-family:var(--display);font-size:22px;line-height:1.2;margin:0 0 4px;font-weight:600}
+  #caption p{margin:0;max-width:78ch}
+  #caption .muted{color:var(--muted)}
+  #caption b{font-weight:600}
+
+  .stage{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow-x:auto}
+  svg{display:block;width:100%;min-width:840px;height:auto;font-family:var(--body)}
+
+  .colhead{font-size:13px;font-weight:600;fill:var(--muted)}
+  #enHead{opacity:0;transition:opacity .3s ease}
+  #enHead.on{opacity:1}
+
+  .node{transition:opacity .25s ease;outline:none}
+  .node.dim{opacity:.28}
+  .task .box{fill:var(--task-fill);stroke:var(--task-line);stroke-width:1.2}
+  .task .chip{fill:var(--task-line)}
+  .comp .box{fill:var(--comp-fill);stroke:var(--comp-line);stroke-width:1.2;transition:fill .25s,stroke .25s}
+  .comp .chip{fill:var(--comp-line)}
+  .comp{cursor:pointer}
+  .comp:hover .box{stroke:var(--primary);stroke-width:1.8}
+  .comp.sel .box{fill:var(--comp-sel);stroke:var(--primary);stroke-width:2.6}
+  .task.pri .box{stroke:var(--primary);stroke-width:2.2}
+  .node:focus-visible .box{stroke:var(--primary);stroke-width:3}
+  .chiptx{font-size:11px;font-weight:600;fill:var(--ink);pointer-events:none}
+  .lbl{font-size:13px;font-weight:500;fill:var(--ink);pointer-events:none}
+  .comp.sel .lbl{font-weight:600}
+
+  .edges path{fill:none;stroke-linecap:round;transition:opacity .25s}
+  .e-pri{stroke:var(--primary);stroke-width:2.6}
+  .e-dep{stroke:var(--dep);stroke-width:1.8;stroke-dasharray:5 4}
+  .faded{opacity:.1}
+  .arrfill{fill:var(--dep)}
+  .arrPriFill{fill:var(--primary)}
+
+  .enab .pill{stroke-width:1.5}
+  .enab.s .pill{fill:var(--s-fill);stroke:var(--s)} .enab.s .mark{fill:var(--s)}
+  .enab.k .pill{fill:var(--k-fill);stroke:var(--k)} .enab.k .mark{fill:var(--k)}
+  .enab.cap .pill{fill:var(--cap-fill);stroke:var(--cap)} .enab.cap .mark{fill:var(--cap)}
+  .enab.support .pill{stroke-dasharray:4 3}
+  .enab .etx{font-size:12.5px;font-weight:500;fill:var(--ink)}
+  .enab .src{fill:var(--primary)}
+  .enab .srctx{font-size:11px;font-weight:600;fill:var(--on-primary)}
+  .enab.support .src{fill:transparent;stroke:var(--muted);stroke-width:1.2}
+  .enab.support .srctx{fill:var(--muted)}
+
+  .tag rect{fill:var(--dep)}
+  .tag text{font-size:10px;font-weight:600;fill:#fff}
+  :root[data-theme="dark"] .tag text{fill:#1a0b12}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .tag text{fill:#1a0b12} }
+
+  .fx{animation:fadein .38s ease backwards}
+  @keyframes fadein{from{opacity:0}}
+  @media (prefers-reduced-motion: reduce){
+    .fx{animation:none}
+    .node,.edges path,#enHead,.comp .box{transition:none}
+  }
+
+  .legend{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:14px;color:var(--muted);font-size:13.5px;align-items:center}
+  .legend span{display:inline-flex;align-items:center;gap:8px}
+  .legend svg{min-width:0;width:34px;height:14px;display:inline-block}
+  .note{margin-top:18px;color:var(--muted);font-size:13.5px}
+  .descHead{font-family:var(--display);font-size:20px;font-weight:600;margin:56px 0 12px}
+  .descSubhead{font-family:var(--display);font-size:16px;font-weight:600;margin:36px 0 10px;color:var(--muted)}
+  .descSubsubhead{font-family:var(--display);font-size:14px;font-weight:600;margin:20px 0 8px;color:var(--muted)}
+  #descTables > .descHead:first-child{margin-top:32px}
+  .condEntry{display:block;margin-bottom:8px}
+  .condEntry.hidden{display:none}
+  .condEntry:last-child{margin-bottom:0}
+  .condEntry b{color:inherit}
+  .condGeneral{display:block;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .condWhenLabel{display:block;font-weight:600;font-size:12px;color:var(--muted);margin-bottom:6px}
+  .hidden{display:none}
+  .descTable{width:100%;border-collapse:collapse;margin-bottom:8px}
+  .descTable th,.descTable td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  .descTable th{font-size:13px;color:var(--muted);font-weight:600}
+  .descTable td:first-child{width:220px;font-weight:600}
+  .descTable tr.hidden{display:none}
+  .rowFlash{animation:rowFlash 1.4s ease}
+  @keyframes rowFlash{
+    0%{background:color-mix(in srgb, var(--primary) 25%, transparent)}
+    100%{background:transparent}
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <h1>Phase 2 evidence: Interactive map</h1>
+  <p class="lede">Eight tasks build ten competencies. Start with the primary link for each one, then open a competency to see the skills, knowledge and capabilities that make it up.</p>
+
+  <div class="bar">
+    <button class="back only-focus" id="back" type="button">Back to all competencies</button>
+    <label class="only-overview"><input type="checkbox" id="tDep"> Show competency dependencies</label>
+    <span class="hint only-focus">Click another competency to switch to it.</span>
+  </div>
+
+  <div id="caption" aria-live="polite"></div>
+
+  <div class="stage">
+    <svg id="map" viewBox="0 0 1050 900" role="group" aria-label="Map of tasks, enablers and competencies">
+      <defs>
+        <marker id="arr" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto">
+          <path d="M0,0 L8,4 L0,8 L2,4 Z" class="arrfill"/>
+        </marker>
+        <marker id="arrPri" viewBox="0 0 8 8" refX="4" refY="4" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto">
+          <path d="M0,0 L8,4 L0,8 L2,4 Z" class="arrPriFill"/>
+        </marker>
+      </defs>
+      <text class="colhead" x="20" y="44">Tasks and responsibilities</text>
+      <text class="colhead" x="345" y="44" id="enHead">Skills, knowledge and capabilities</text>
+      <text class="colhead" x="735" y="44">Competencies</text>
+      <g class="edges" id="gEdges"></g>
+      <g id="gNodes"></g>
+      <g id="gEnab"></g>
+      <g id="gTags"></g>
+    </svg>
+  </div>
+
+  <div class="legend" aria-label="Legend">
+    <span><svg viewBox="0 0 34 14"><path d="M1 7H33" stroke="var(--primary)" stroke-width="2.6" stroke-linecap="round"/></svg>Primary link</span>
+    <span><svg viewBox="0 0 34 14"><path d="M1 7H33" stroke="var(--dep)" stroke-width="1.8" stroke-dasharray="5 4"/></svg>Competency dependency</span>
+    <span><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5" fill="var(--s)"/></svg>Skill</span>
+    <span><svg viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" rx="2" fill="var(--k)"/></svg>Knowledge</span>
+    <span><svg viewBox="0 0 14 14"><path d="M7 1.5L12.5 7L7 12.5L1.5 7z" fill="var(--cap)"/></svg>Capability</span>
+  </div>
+  <p class="note">This content shows the conceptual framework used in Phase 2 of the ECTO project to move from the core tasks and responsibilities of a theorist identified in Phase 1 to a set of competencies / overarching learning goals.<br><br>In this framework, four components are distinguished: Skills, Knowledge, Capabilities, and Competencies. These are related but not interchangeable: the distinction makes explicit what a theorist needs to know, what specific operations they need to be able to perform, and what broader capacities support performance across contexts. These requirements are then integrated into broader theoretical competencies.<br><br>The framework also distinguishes four kinds of relationships between requirements and competencies: core requirements, conditional requirements, cross-cutting requirements, and inter-competency dependencies. These distinctions prevent every relevant requirement from being treated as universally necessary, and they reduce duplication across competencies.<br><br>A core requirement is directly necessary for the competency as such. A conditional requirement becomes necessary only when a particular form, implementation, or context of the competency is involved. A cross-cutting requirement supports several competencies without itself constituting a standalone competency. Inter-competency dependencies capture a different kind of relationship: a competency can depend on outputs or abilities supplied by another competency. Within these dependencies, a further distinction separates functionally dependent relationships, which are structurally necessary, from context-dependent ones, which only apply within specific contexts.</p>
+  <div id="descTables">
+    <h2 class="descHead">Tasks</h2>
+    <table class="descTable" id="taskTable">
+      <thead><tr><th>Task</th><th>Description</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <h2 class="descHead">Competencies</h2>
+    <table class="descTable" id="compTable">
+      <thead><tr><th>Competency</th><th>Description</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <h2 class="descHead">Task-to-Competency Rationale</h2>
+    <table class="descTable" id="rationaleTable">
+      <thead><tr><th>Link</th><th>Rationale</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <h2 class="descHead">Requirements</h2>
+    <h3 class="descSubhead">Core requirements</h3>
+    <table class="descTable" id="skillTable">
+      <thead><tr><th>Skill</th><th>Description</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <table class="descTable" id="knowledgeTable">
+      <thead><tr><th>Knowledge</th><th>Description</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <table class="descTable" id="capabilityTable">
+      <thead><tr><th>Capability</th><th>Description</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <h3 class="descSubhead" id="condSectionHead">Conditional requirements</h3>
+    <table class="descTable" id="condSkillTable">
+      <thead><tr><th>Skill</th><th>Description</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <table class="descTable" id="condKnowledgeTable">
+      <thead><tr><th>Knowledge</th><th>Description</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <table class="descTable" id="condCapabilityTable">
+      <thead><tr><th>Capability</th><th>Description</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <h3 class="descSubhead" id="crossSectionHead">Cross-cutting requirements</h3>
+    <table class="descTable" id="crossSkillTable">
+      <thead><tr><th>Skill</th><th>Description</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <table class="descTable" id="crossKnowledgeTable">
+      <thead><tr><th>Knowledge</th><th>Description</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <table class="descTable" id="crossCapabilityTable">
+      <thead><tr><th>Capability</th><th>Description</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <h2 class="descHead">Inter-competency Dependencies</h2>
+    <h3 class="descSubhead">Functional dependencies</h3>
+    <table class="descTable" id="depTable">
+      <thead><tr><th>Dependency</th><th>Rationale</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <h3 class="descSubhead">Context-dependent dependencies</h3>
+    <table class="descTable" id="contextDepTable">
+      <thead><tr><th>Dependency</th><th>Rationale</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</main>
+
+<script>
+/* ============================ DATA (edit here) ============================ */
+const TASKS = [
+  "Identification and formation of explananda",   // T1
+  "Developing and evaluating construct architecture",            // T2
+  "Coordinating the relationship between theory and measurement",    // T3
+  "Proposing, specifying, and connecting mechanisms",         // T4
+  "Constructing theories and their formal representations",      // T5
+  "Exploring the repairing existing theories",          // T6
+  "Derivation, explenatory appraisal, scope mapping, and comparison",        // T7
+  "Integration, revision, and programme design"      // T8
+];
+
+/* Each enabler: [type, label, sourceTask]. type: s = skill, k = knowledge, cap = capability. */
+const COMPS = [
+    {id:1, name:"Identify and formulate explananda", primary:1, en:[
+    ["s","identify candidate explananda",1], ["s","Formulate Explananda",1], ["s","Categorize and order explananda",1],
+    ["s","Assess and make explicit epistemic status",1], ["s","Trace and evaluate evidential support for candidate explananda",1],
+    ["k","Domain and empirical knowledge",1], ["k","Epistemology and evidence",1], ["k","Explanation and explananda",1],
+    ["cap","Abstract reasoning",1], ["cap","Conceptual precision",1], ["cap","Epistemic judgment",1]]},
+  {id:2, name:"Develop and evaluate construct architectures", primary:2, en:[
+    ["s","Define constructs precisely",2],
+    ["s","Differentiate and prune constructs",2],
+    ["s","Construct and evaluate taxonomies and ontologies",2],
+    ["s","Coordinate constructs and specify their referents and relations",2],
+    ["k","Domain and empirical knowledge",2],
+    ["k","Construct formation, definition, and reference",2],
+    ["k","Classification, taxonomy, and ontology",2],
+    ["cap","Abstract reasoning",2],
+    ["cap","Conceptual precision",2],
+    ["cap","Critical reasoning",2],
+    ["cap","Integrative reasoning",2]]},
+  {id:3, name:"Coordinate theory and measurement", primary:3, en:[
+    ["s","Specify empirical indicators and operationalizations",3],
+    ["s","Identify and specify theory–measurement assumptions",3],
+    ["s","Evaluate indicators and operationalizations",3],
+    ["k","Domain and empirical knowledge",3],
+    ["k","Epistemology and evidence",3],
+    ["k","Construct formation, definition, and reference",3],
+    ["k","Measurement and validity",3],
+    ["cap","Conceptual precision",3],
+    ["cap","Epistemic judgment",3],
+    ["cap","Assumption sensitivity",3]]},
+  {id:4, name:"Develop explanatory mechanisms and processes", primary:4, en:[
+    ["s","Generate candidate explanatory accounts",4],
+    ["s","Progressively specify and refine explanatory accounts",4],
+    ["s","Relate explanations across relevant levels",4],
+    ["k","Domain and empirical knowledge",4],
+    ["k","Explanation and explananda",4],
+    ["k","Mechanistic, process, and functional explanation",4],
+    ["k","Levels of analysis and interlevel relations",4],
+    ["cap","Conceptual precision",4],
+    ["cap","Causal and process reasoning",4],
+    ["cap","Systems thinking",4],
+    ["cap","Integrative reasoning",4],
+    ["cap","Scientific creativity",4]]},
+  {id:5, name:"Construct and represent theories and models", primary:5, en:[
+    ["s","Formulate theoretical propositions",5],
+    ["s","Identify and specify theoretical assumptions",5],
+    ["s","Select appropriate theoretical representations",5],
+    ["s","Construct explicit theories and representations",5],
+    ["s","Construct variants or model families where useful",5],
+    ["s","Evaluate representational fidelity and adequacy",5],
+    ["k","Logic and inferential structure",5],
+    ["k","Theory structure and architecture",5],
+    ["k","Scientific representation and model semantics",5],
+    ["cap","Conceptual precision",5],
+    ["cap","Logical and structural reasoning",5],
+    ["cap","Integrative reasoning",5],
+    ["cap","Representational flexibility",5],
+    ["cap","Assumption sensitivity",5]]},
+  {id:6, name:"Diagnose, develop, and repair theories", primary:6, en:[
+    ["s","Identify and specify theoretical assumptions",6],
+    ["s","Diagnose theoretical problems",6],
+    ["s","Generate and examine candidate revisions or variants",6],
+    ["s","Modify theories and assess consequences of revisions",6],
+    ["k","Domain and empirical knowledge",6],
+    ["k","Logic and inferential structure",6],
+    ["k","Theory structure and architecture",6],
+    ["k","Theory-evaluation criteria and theoretical virtues",6],
+    ["cap","Conceptual precision",6],
+    ["cap","Critical reasoning",6],
+    ["cap","Logical and structural reasoning",6],
+    ["cap","Integrative reasoning",6],
+    ["cap","Scientific creativity",6],
+    ["cap","Intellectual flexibility",6],
+    ["cap","Assumption sensitivity",6]]},
+  {id:7, name:"Derive theoretical implications", primary:7, en:[
+    ["s","Derive consequences from theories and models",7],
+    ["s","Derive explanatory, predictive, intervention, counterfactual, and failure implications where applicable",7],
+    ["s","Identify assumptions and conditions required for derivation",7],
+    ["k","Logic and inferential structure",7],
+    ["k","Theory structure and architecture",7],
+    ["cap","Logical and structural reasoning",7],
+    ["cap","Assumption sensitivity",7]]},
+  {id:8, name:"Appraise, delimit, and compare theories", primary:7, en:[
+    ["s","Appraise explanatory adequacy",7],
+    ["s","Map theoretical scope and boundary conditions",7],
+    ["s","Compare rival theories",7],
+    ["s","Specify evidential support and discrimination",7],
+    ["k","Epistemology and evidence",7],
+    ["k","Explanation and explananda",7],
+    ["k","Scope, boundary conditions, and generalization",7],
+    ["k","Theory comparison and evidential discrimination",7],
+    ["cap","Critical reasoning",7],
+    ["cap","Epistemic judgment",7],
+    ["cap","Integrative reasoning",7],
+    ["cap","Assumption sensitivity",7]]},
+  {id:9, name:"Integrate evidence and update theories", primary:8, en:[
+    ["s","Integrate theory-relevant evidence",8],
+    ["s","Attribute evidential implications to theoretical components",8],
+    ["s","Make theory-update and lifecycle decisions",8],
+    ["k","Domain and empirical knowledge",8],
+    ["k","Epistemology and evidence",8],
+    ["k","Theory structure and architecture",8],
+    ["k","Evidence synthesis and integration",8],
+    ["cap","Epistemic judgment",8],
+    ["cap","Logical and structural reasoning",8],
+    ["cap","Integrative reasoning",8],
+    ["cap","Uncertainty management",8],
+    ["cap","Intellectual flexibility",8],
+    ["cap","Assumption sensitivity",8]]},
+  {id:10, name:"Design theory-guided research programmes", primary:8, en:[
+    ["s","Identify theory-relevant research questions",8],
+    ["s","Select appropriate forms of inquiry",8],
+    ["s","Prioritize and sequence theoretical investigations",8],
+    ["k","Epistemology and evidence",8],
+    ["k","Research strategies and evidential affordances",8],
+    ["k","Research-programme design",8],
+    ["cap","Epistemic judgment",8],
+    ["cap","Integrative reasoning",8],
+    ["cap","Uncertainty management",8],
+    ["cap","Strategic and long-horizon reasoning",8]]}
+];
+
+const TASK_RATIONALE = {
+  1: "Directly derived from the Phase 1 responsibility.",
+  2: "Directly derived from the Phase 1 responsibility.",
+  3: "Directly derived from the Phase 1 responsibility.",
+  4: "Directly derived from the Phase 1 responsibility.",
+  5: "Directly derived from the Phase 1 responsibility.",
+  6: "Directly derived from the Phase 1 responsibility.",
+  7: "Captures the derivation component of T7.",
+  8: "Captures the explanatory appraisal, scope, comparison, and evidential-discrimination components of T7.",
+  9: "Captures the evidence-integration and theory-update components of T8.",
+  10: "Captures the theory-guided research-programme component of T8."
+};
+
+/* Functional dependencies between competencies: downstream requires upstream. */
+const DEPS = [
+  {from:5, to:6},{from:5, to:7},{from:1, to:8},{from:3, to:8},
+  {from:5, to:8},{from:7, to:8},{from:3, to:9},{from:7, to:9},
+  {from:8, to:9},{from:6, to:10},{from:7, to:10},{from:8, to:10},
+  {from:9, to:10}
+];
+const DEP_DESCRIPTIONS = {
+  "5-6": "Diagnosing and deliberately modifying a theory requires a sufficiently explicit grasp of its propositions, assumptions, and structure.",
+  "5-7": "Derivation requires a sufficiently explicit theory/model structure from which consequences can follow.",
+  "1-8": "Explanatory appraisal requires clarity about the intended explananda.",
+  "3-8": "Evidential appraisal requires understanding the assumptions connecting theoretical entities to empirical indicators.",
+  "5-8": "Comparison and appraisal require sufficiently explicit theoretical commitments.",
+  "7-8": "Appraisal and comparison use the implications derived from rival theories or models.",
+  "3-9": "Evidence integration requires interpreting measurement and empirical indicators in relation to theory.",
+  "7-9": "Updating depends on knowing what the theory or model implied.",
+  "8-9": "Updating uses judgments about explanatory adequacy, scope, rival theories, and what evidence counts for or against alternatives.",
+  "6-10": "Diagnosed theoretical problems and candidate repairs generate programme-level questions.",
+  "7-10": "Derived implications generate questions and potential tests for future inquiry.",
+  "8-10": "Scope uncertainties, rival theories, and discriminating evidence generate programme priorities.",
+  "9-10": "The current integrated evidential state and unresolved update decisions constrain what should be investigated next."
+};
+const CONTEXT_DEPS = [
+  {from:2, to:5},{from:4, to:5},{from:2, to:6},{from:4, to:6},
+  {from:1, to:7},{from:4, to:7},{from:4, to:8},{from:6, to:9},
+  {from:3, to:10}
+];
+
+const CONTEXT_DEP_DESCRIPTIONS = {
+  "2-5": "Construct architecture is used when theory/model construction depends on explicit construct organization.",
+  "4-5": "Explanatory mechanisms/processes are used when they constitute part of the theory being represented.",
+  "2-6": "Construct-architecture competence is used when the diagnosed problem concerns constructs.",
+  "4-6": "Mechanism/process competence is used when the repair concerns explanatory structure.",
+  "1-7": "Specified explananda are required when deriving how a theory accounts for established phenomena.",
+  "4-7": "Mechanism/process competence is used when deriving implications of mechanistic or process accounts.",
+  "4-8": "Mechanism/process competence is used when the theories being appraised are mechanistic or process-based.",
+  "6-9": "When evidence warrants revision, LG6 supplies the ability to construct and examine the repair.",
+  "3-10": "Theory–measurement competence is used when measurement development or empirical-interface work is part of the programme."
+};
+/* ========================================================================== */
+
+/* ------------ layout constants ------------ */
+const TX=20, TW=230, TH=50, TG=64, TY0=76;
+const CX=735, CW=240, CH=42, CG=64;
+const EX=345, EW=290, EH=52;
+const ty=i=>TY0+i*TG, cy=j=>TY0+j*CG;
+
+/* ------------ derive data ------------ */
+COMPS.forEach(c=>{
+  c.en=c.en.map(([type,label,task],i)=>({type,label,task,role:task===c.primary?"primary":"support",id:`e${c.id}_${i}`}));
+});
+const compById=id=>COMPS.find(c=>c.id===id);
+const requiresOf=id=>DEPS.filter(d=>d.to===id).map(d=>d.from);
+const unlocksOf=id=>DEPS.filter(d=>d.from===id).map(d=>d.to);
+const TYPE_NAME={s:"Skill",k:"Knowledge",cap:"Capability"};
+
+/* ------------ helpers ------------ */
+const $=s=>document.querySelector(s);
+const curve=(x1,y1,x2,y2)=>{const m=(x1+x2)/2;return `M${x1} ${y1}C${m} ${y1} ${m} ${y2} ${x2} ${y2}`;};
+const arc=(a,b)=>{
+  const x=CX+CW, ya=cy(a-1)+CH/2, yb=cy(b-1)+CH/2;
+  const bulge=22+Math.min(Math.abs(ya-yb)*0.16,52);
+  return `M${x} ${ya}C${x+bulge} ${ya} ${x+bulge} ${yb} ${x+10} ${yb}`;
+};
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+
+/* ------------ static nodes ------------ */
+function wrapLabel(text, maxChars, x, centerY, lineH){
+  const words = text.split(" ");
+  const lines = [""];
+  words.forEach(w => {
+    const cur = lines[lines.length-1];
+    if (cur === "" || (cur + " " + w).length <= maxChars) lines[lines.length-1] = (cur + " " + w).trim();
+    else lines.push(w);
+  });
+  const first = centerY - (lines.length-1)*lineH/2 + 4.5;
+  return lines.map((l,i) => `<tspan x="${x}" y="${first + i*lineH}">${esc(l)}</tspan>`).join("");
+}
+function buildNodes(){
+  let h="";
+  TASKS.forEach((label,i)=>{
+    h+=`<g class="node task" id="t${i+1}" data-k="t" data-id="${i+1}" transform="translate(${TX},${ty(i)})">
+      <rect class="box" width="${TW}" height="${TH}" rx="10"/>
+      <rect class="chip" x="10" y="${TH/2-11}" width="30" height="22" rx="6"/>
+      <text class="chiptx" x="25" y="${TH/2+4}" text-anchor="middle">T${i+1}</text>
+      <text class="lbl">${wrapLabel(label, 24, 52, TH/2, 15)}</text></g>`;
+  });
+  COMPS.forEach((c,j)=>{
+    h+=`<g class="node comp" id="c${c.id}" data-k="c" data-id="${c.id}" tabindex="0" role="button" aria-label="Open ${esc(c.name)}" transform="translate(${CX},${cy(j)})">
+      <rect class="box" width="${CW}" height="${CH}" rx="10"/>
+      <rect class="chip" x="10" y="${CH/2-11}" width="36" height="22" rx="6"/>
+      <text class="chiptx" x="28" y="${CH/2+4}" text-anchor="middle">C${c.id}</text>
+      <text class="lbl">${wrapLabel(c.name, 24, 58, CH/2, 15)}</text></g>`;
+  });
+  $("#gNodes").innerHTML=h;
+}
+
+function buildDescTables(){
+  const taskBody = document.querySelector("#taskTable tbody");
+  const compBody = document.querySelector("#compTable tbody");
+  const taskDescriptions = [
+    "The theorist identifies, categorizes, and orders the phenomena, capacities, or problems to be explained by theory. The theorist distinguishes established explananda from provisional patterns, speculative targets, and raw data patterns, while making their epistemic status explicit.",
+    "The theorist defines, differentiates, coordinates, and, where necessary, prunes constructs; builds ontologies and taxonomies; and specifies how theoretical terms refer to psychological phenomena, capacities, attributes, states, processes, or mechanisms.",
+    "The theorist specifies how constructs could, in principle, be operationalized, indexed, measured, or otherwise evidenced; what counts as valid indicators or indices; and what assumptions connect these to theoretical entities. Technical measurement development can be collaborative or delegated.",
+    "The theorist proposes and refines mechanistic, functional, or process-based explanations, distinguishing preliminary sketches from more specified accounts and relating psychological explanations across cognitive, affective, motivational, behavioral, bodily, neural, social, developmental, and environmental levels.",
+    "The theorist builds verbal, formal, diagrammatic, computational, mathematical, or hybrid theories, models, and model families that specify core propositions, clarify assumptions, support comparison and testing, and remain usable by relevant scientific audiences.",
+    "The theorist extends, constrains, deepens, and repairs theories by resolving tensions, refining mechanisms, examining analogies, developing variants, and situating theories in relation to other theories when this improves coherence, precision, parsimony, explanatory value, scope, or testability.",
+    "The theorist derives implications from theories and models, including explanations of established phenomena, qualitative or quantitative predictions, intervention predictions, counterfactual expectations, and expected failures. The theorist identifies auxiliary assumptions, maps scope and boundary conditions, compares rival theories, and specifies what evidence would count for or against each theory.",
+    "The theorist integrates fragmented empirical, formal, and measurement-related evidence; revises, retains, forks, merges, or discards theories; documents assumptions, versions, and open questions; and helps design theory-guided research programmes. This includes articulating standards for judging theories, including their explanatory value, empirical interface, usability, and potential harms."
+  ];
+  const compDescriptions = [
+    "The theorist can identify, formulate, categorize, and order phenomena, capacities, or problems as candidate explananda; distinguish established explananda from provisional patterns, speculative targets, and raw data patterns; and make their epistemic status explicit.",
+    "The theorist can define, differentiate, coordinate, and, where necessary, prune constructs; construct and evaluate taxonomies and ontologies; and specify what theoretical terms refer to and how constructs relate to one another.",
+    "The theorist can specify how theoretical constructs could, in principle, be operationalized, indexed, measured, or otherwise empirically evidenced; evaluate what counts as valid indicators or indices; and make explicit the assumptions connecting empirical observations or measurements to theoretical entities.",
+    "The theorist can propose, progressively specify, and refine mechanistic, functional, or process-based explanations; distinguish preliminary sketches from more specified accounts; and relate explanations across relevant levels.",
+    "The theorist can construct coherent theories, models, and, where useful, model families that make core propositions and assumptions explicit; select and develop appropriate verbal, diagrammatic, formal, mathematical, computational, or hybrid representations; and ensure that these representations preserve the intended theoretical commitments and are sufficiently explicit and usable to support comparison and testing.",
+    "The theorist can diagnose tensions, gaps, ambiguities, inconsistencies, and other limitations in existing theories; generate and examine possible revisions or variants; and extend, constrain, deepen, or repair theories when doing so improves relevant theoretical properties such as coherence, precision, parsimony, explanatory value, scope, or testability.",
+    "The theorist can determine what follows from a theory or model, including how it accounts for established phenomena and, where applicable, its qualitative or quantitative predictions, intervention predictions, counterfactual expectations, and expected failures, while making explicit the assumptions required for these derivations.",
+    "The theorist can appraise how and how well a theory explains its intended explananda; identify its scope, boundary conditions, and expected limits; compare rival theories on common explanatory targets; and specify, given relevant auxiliary assumptions, what evidence would count for, against, or discriminate between them.",
+    "The theorist can integrate fragmented, heterogeneous, and potentially conflicting empirical, formal, conceptual, and measurement-related evidence; determine what that evidence implies for a theory and its components; and make principled decisions about what should be retained, revised, constrained, forked, merged, or discarded.",
+    "The theorist can translate unresolved theoretical problems, uncertainties, derived implications, and contrasts between theoretical alternatives into a prioritized and coherently sequenced programme of theoretical and empirical inquiry; select appropriate forms of investigation for the questions involved; and organize them so that earlier work constrains, informs, or enables subsequent theory development and testing."
+  ];
+  taskBody.innerHTML = TASKS.map((label,i) =>
+    `<tr id="taskdesc-${i+1}"><td>T${i+1} - ${esc(label)}</td><td>${taskDescriptions[i]}</td></tr>`
+  ).join("");
+  compBody.innerHTML = COMPS.map(c =>
+    `<tr id="compdesc-${c.id}"><td>C${c.id} - ${esc(c.name)}</td><td>${compDescriptions[c.id-1]}</td></tr>`
+  ).join("");
+}
+
+const MASTER_KNOWLEDGE = [
+  ["K01","Domain and empirical knowledge"],
+  ["K02","Epistemology and evidence"],
+  ["K03","Explanation and explananda"],
+  ["K04","Construct formation, definition, and reference"],
+  ["K05","Measurement and validity"],
+  ["K06","Mechanistic, process, and functional explanation"],
+  ["K07","Levels of analysis and interlevel relations"],
+  ["K08","Logic and inferential structure"],
+  ["K09","Theory structure and architecture"],
+  ["K10","Formal, mathematical, and computational modeling"],
+  ["K11","Scientific representation and model semantics"],
+  ["K12","Theory-evaluation criteria and theoretical virtues"],
+  ["K13","Scope, boundary conditions, and generalization"],
+  ["K14","Research strategies and evidential affordances"],
+  ["K15","Evidence synthesis and integration"],
+  ["K16","Theory documentation, provenance, and versioning"],
+  ["K17","Research-programme design"],
+  ["K18","Potential harms and responsible theory development"],
+  ["K19","Relevant methods, tools, resources, and specialist expertise"],
+  ["K20","Theory comparison and evidential discrimination"],
+  ["K21","Classification, taxonomy, and ontology"],
+  ["K22","Causal, intervention, and counterfactual concepts"],
+  ["K23","Analogy and inter-theory relations"]
+];
+
+const MASTER_SKILLS = [
+  ["S01","Identify candidate explananda"],
+  ["S02","Formulate explananda"],
+  ["S03","Categorize and order explananda"],
+  ["S04","Assess and make explicit epistemic status"],
+  ["S05","Trace and evaluate evidential support for candidate explananda"],
+  ["S06","Define constructs precisely"],
+  ["S07","Differentiate and prune constructs"],
+  ["S08","Construct and evaluate taxonomies and ontologies"],
+  ["S09","Coordinate constructs and specify their referents and relations"],
+  ["S10","Specify empirical indicators and operationalizations"],
+  ["S11","Identify and specify theory–measurement assumptions"],
+  ["S12","Evaluate indicators and operationalizations"],
+  ["S13","Generate candidate explanatory accounts"],
+  ["S14","Progressively specify and refine explanatory accounts"],
+  ["S15","Relate explanations across relevant levels"],
+  ["S16","Formulate theoretical propositions"],
+  ["S17","Identify and specify theoretical assumptions"],
+  ["S18","Select appropriate theoretical representations"],
+  ["S19","Construct explicit theories and representations"],
+  ["S20","Construct variants or model families where useful"],
+  ["S21","Evaluate representational fidelity and adequacy"],
+  ["S22","Diagnose theoretical problems"],
+  ["S23","Modify theories and assess consequences of revisions"],
+  ["S24","Generate and examine candidate revisions or variants"],
+  ["S25","Use analogies and inter-theory relations for theory development"],
+  ["S26","Derive consequences from theories and models"],
+  ["S27","Derive explanatory, predictive, intervention, counterfactual, and failure implications where applicable"],
+  ["S28","Identify assumptions and conditions required for derivation"],
+  ["S29","Map theoretical scope and boundary conditions"],
+  ["S30","Compare rival theories"],
+  ["S31","Specify evidential support and discrimination"],
+  ["S32","Appraise explanatory adequacy"],
+  ["S33","Integrate theory-relevant evidence"],
+  ["S34","Make theory-update and lifecycle decisions"],
+  ["S35","Maintain transparent and traceable theoretical documentation"],
+  ["S36","Identify theory-relevant research questions"],
+  ["S37","Select, articulate, and apply appropriate theory-evaluation criteria"],
+  ["S38","Identify and evaluate potential theoretical harms"],
+  ["S39","Coordinate specialist expertise"],
+  ["S40","Attribute evidential implications to theoretical components"],
+  ["S41","Select appropriate forms of inquiry"],
+  ["S42","Prioritize and sequence theoretical investigations"]
+];
+
+const MASTER_CAPABILITIES = [
+  ["P01","Abstract reasoning"],
+  ["P02","Conceptual precision"],
+  ["P03","Critical reasoning"],
+  ["P04","Epistemic judgment"],
+  ["P05","Logical and structural reasoning"],
+  ["P06","Causal and process reasoning"],
+  ["P07","Systems thinking"],
+  ["P08","Integrative reasoning"],
+  ["P09","Representational flexibility"],
+  ["P10","Quantitative and computational reasoning"],
+  ["P11","Scientific creativity"],
+  ["P12","Counterfactual reasoning"],
+  ["P13","Uncertainty management"],
+  ["P14","Intellectual flexibility"],
+  ["P15","Strategic and long-horizon reasoning"],
+  ["P17","Collaborative communication"],
+  ["P18","Ethical foresight"],
+  ["P19","Assumption sensitivity"]
+];
+// Note: P16 "Metascientific reasoning" is intentionally omitted (retired).
+
+const CONDITIONAL = {
+  k: [
+    {code:"K06", label:"Mechanistic, process, and functional explanation", entries:[
+      {comp:6, text:"When the repair concerns mechanisms, functions, or processes."}
+    ]},
+    {code:"K10", label:"Formal, mathematical, and computational modeling", entries:[
+      {comp:5, text:"When mathematical or computational representation is selected."},
+      {comp:7, text:"When quantitative or computational derivation is required."}
+    ]},
+    {code:"K19", label:"Relevant methods, tools, resources, and specialist expertise", entries:[
+      {comp:3, text:"When technical measurement development requires specialist methods or expertise."},
+      {comp:5, text:"When technical representation or implementation requires specialist expertise."},
+      {comp:7, text:"When technically demanding derivation requires specialist expertise."},
+      {comp:10, text:"When the programme requires specialist methods or expertise outside the theorist's own competence."}
+    ]},
+    {code:"K22", label:"Causal, intervention, and counterfactual concepts", entries:[
+      {comp:7, text:"When causal, intervention, or counterfactual implications are derived."}
+    ]},
+    {code:"K23", label:"Analogy and inter-theory relations", entries:[
+      {comp:6, text:"When analogy or relations to other theories are used as development strategies."}
+    ]}
+  ],
+  s: [
+    {code:"S25", label:"Use analogies and inter-theory relations for theory development", entries:[
+      {comp:6, text:"When analogy or relations to other theories are used as development strategies."}
+    ]},
+    {code:"S39", label:"Coordinate specialist expertise", entries:[
+      {comp:3, text:"When measurement work is collaborative or delegated."},
+      {comp:5, text:"When technical representation or implementation is collaborative or delegated."},
+      {comp:7, text:"When technical derivation is collaborative or delegated."},
+      {comp:10, text:"When specialist technical work must be coordinated within the programme."}
+    ]}
+  ],
+  cap: [
+    {code:"P06", label:"Causal and process reasoning", entries:[
+      {comp:6, text:"When the repair requires causal or process reasoning."},
+      {comp:7, text:"When causal or intervention reasoning is required."}
+    ]},
+    {code:"P10", label:"Quantitative and computational reasoning", entries:[
+      {comp:5, text:"When mathematical or computational representation is selected."},
+      {comp:7, text:"When quantitative or computational derivation is required."}
+    ]},
+    {code:"P12", label:"Counterfactual reasoning", entries:[
+      {comp:7, text:"When counterfactual expectations are derived."}
+    ]},
+    {code:"P17", label:"Collaborative communication", entries:[
+      {comp:3, text:"When theoretical requirements must be communicated across specialist boundaries."},
+      {comp:5, text:"When collaboration with technical specialists is required."},
+      {comp:7, text:"When specialist collaboration is required for the derivation."},
+      {comp:10, text:"When programme design requires communication across specialist boundaries."}
+    ]}
+  ]
+};
+
+const CROSSCUTTING = {
+  k: [
+    {code:"K12", label:"Theory-evaluation criteria and theoretical virtues", entries:[
+      {comp:5, text:"Supports explicit judgments about representational/theoretical quality beyond fidelity alone."},
+      {comp:8, text:"Supports use of explicit theory-evaluation criteria beyond explanatory adequacy, scope, and evidence."},
+      {comp:9, text:"Supports update decisions that require explicit trade-offs among theoretical virtues."}
+    ]},
+    {code:"K16", label:"Theory documentation, provenance, and versioning", entries:[
+      {comp:5, text:"Supports transparent recording of propositions, assumptions, representations, and versions."},
+      {comp:6, text:"Supports traceable records of identified problems, proposed changes, and revision rationales."},
+      {comp:9, text:"Supports traceable records of evidence, update targets, decisions, and unresolved uncertainty."},
+      {comp:10, text:"Supports documentation of open questions, priorities, dependencies, and programme decisions."}
+    ]},
+    {code:"K18", label:"Potential harms and responsible theory development", entries:[
+      {comp:2, text:"Where construct or classification choices plausibly create consequential harms."},
+      {comp:4, text:"Where explanatory choices plausibly create consequential harms."},
+      {comp:5, text:"Where theoretical representations or applications plausibly create consequential harms."},
+      {comp:8, text:"Where appraisal must include plausible consequential harms."},
+      {comp:9, text:"Where evidence or update decisions reveal or create plausible consequential harms."},
+      {comp:10, text:"Where programme choices plausibly create consequential harms."}
+    ]}
+  ],
+  s: [
+    {code:"S35", label:"Maintain transparent and traceable theoretical documentation", entries:[
+      {comp:5, text:"Supports transparent recording of propositions, assumptions, representations, and versions."},
+      {comp:6, text:"Supports traceable records of identified problems, proposed changes, and revision rationales."},
+      {comp:9, text:"Supports traceable records of evidence, update targets, decisions, and unresolved uncertainty."},
+      {comp:10, text:"Supports documentation of open questions, priorities, dependencies, and programme decisions."}
+    ]},
+    {code:"S37", label:"Select, articulate, and apply appropriate theory-evaluation criteria", entries:[
+      {comp:5, text:"Supports explicit selection and application of relevant evaluation criteria."},
+      {comp:6, text:"Supports explicit application of theoretical criteria and trade-offs when judging repairs."},
+      {comp:8, text:"Supports explicit selection and application of relevant theory-evaluation criteria."},
+      {comp:9, text:"Supports update decisions that require explicit trade-offs among theoretical criteria."}
+    ]},
+    {code:"S38", label:"Identify and evaluate potential theoretical harms", entries:[
+      {comp:2, text:"Where construct or classification choices plausibly create consequential harms."},
+      {comp:4, text:"Where explanatory choices plausibly create consequential harms."},
+      {comp:5, text:"Where theoretical representations or applications plausibly create consequential harms."},
+      {comp:8, text:"Where appraisal must include plausible consequential harms."},
+      {comp:9, text:"Where evidence or update decisions reveal or create plausible consequential harms."},
+      {comp:10, text:"Where programme choices plausibly create consequential harms."}
+    ]}
+  ],
+  cap: [
+    {code:"P18", label:"Ethical foresight", entries:[
+      {comp:2, text:"Where construct or classification choices plausibly create consequential harms."},
+      {comp:4, text:"Where explanatory choices plausibly create consequential harms."},
+      {comp:5, text:"Where theoretical representations or applications plausibly create consequential harms."},
+      {comp:8, text:"Where appraisal must anticipate plausible downstream harms."},
+      {comp:9, text:"Where updating requires anticipation of plausible downstream harms."},
+      {comp:10, text:"Where programme choices require anticipation of plausible downstream harms."}
+    ]}
+  ]
+};
+
+function norm(s){ return String(s).trim().toLowerCase(); }
+
+function buildRequirementLists(){
+  const compIndex = {s:new Map(), k:new Map(), cap:new Map()};
+  const excludedCoreLabels = new Set([
+    "Formal, mathematical, and computational modeling",
+    "Theory documentation, provenance, and versioning",
+    "Potential harms and responsible theory development",
+    "Relevant methods, tools, resources, and specialist expertise",
+    "Causal, intervention, and counterfactual concepts",
+    "Analogy and inter-theory relations",
+    "Use analogies and inter-theory relations for theory development",
+    "Maintain transparent and traceable theoretical documentation",
+    "Select, articulate, and apply appropriate theory-evaluation criteria",
+    "Identify and evaluate potential theoretical harms",
+    "Coordinate specialist expertise",
+    "Quantitative and computational reasoning",
+    "Counterfactual reasoning",
+    "Collaborative communication",
+    "Ethical foresight"
+  ].map(norm));
+  COMPS.forEach(c=>{
+    c.en.forEach(e=>{
+      const key = norm(e.label);
+      if(!compIndex[e.type].has(key)) compIndex[e.type].set(key, new Set());
+      compIndex[e.type].get(key).add(c.id);
+    });
+  });
+
+  function buildOne(masterList, typeKey){
+    return masterList.map(([code,label])=>({
+        code, label,
+        compIds: compIndex[typeKey].get(norm(label)) || new Set()
+      }))
+      .filter(entry=>entry.compIds.size>0)
+      .filter(entry=>!excludedCoreLabels.has(norm(entry.label)));
+  }
+
+  return {
+    k: buildOne(MASTER_KNOWLEDGE, "k"),
+    s: buildOne(MASTER_SKILLS, "s"),
+    cap: buildOne(MASTER_CAPABILITIES, "cap")
+  };
+}
+const REQUIREMENTS = buildRequirementLists();
+
+const REQ_DESCRIPTIONS = {
+  knowledge: {
+    "Domain and empirical knowledge": "Knowledge of the relevant psychological domain, empirical literature, established findings, candidate phenomena, and major empirical controversies.",
+    "Epistemology and evidence": "Knowledge of evidence, justification, uncertainty, evidential strength, underdetermination, and distinctions among observations, data patterns, phenomena, and theoretical claims.",
+    "Explanation and explananda": "Knowledge of explananda; distinctions among description, prediction, and explanation; and different kinds and levels of explanatory targets.",
+    "Construct formation, definition, and reference": "Knowledge of construct formation, conceptual meaning, definitions, referents, and relations among theoretical terms and constructs.",
+    "Measurement and validity": "Knowledge of operationalization, indicators, indices, measurement models, validity, reliability, measurement error, and assumptions connecting observations or scores to constructs.",
+    "Mechanistic, process, and functional explanation": "Knowledge of mechanisms, processes, functions, causal or organized production, components and activities, and the distinction between preliminary explanatory sketches and progressively specified accounts.",
+    "Levels of analysis and interlevel relations": "Knowledge of relevant levels of psychological explanation and possible relations among phenomena or explanations at different levels, including constitutive, part–whole, coordinative, and causal relations where appropriate.",
+    "Logic and inferential structure": "Knowledge of propositions, consistency, contradiction, implication, dependency, and the basic inferential relations needed to construct, interpret, and reason from explicit theoretical structures.",
+    "Theory structure and architecture": "Knowledge of propositions, assumptions, theoretical entities, relations, auxiliary commitments, theory structures, model structures, variants, and theory/model families.",
+    "Scientific representation and model semantics": "Knowledge of verbal, diagrammatic, formal, mathematical, computational, and hybrid representations; what their elements mean; and their representational affordances, limitations, and possible distortions.",
+    "Theory-evaluation criteria and theoretical virtues": "Knowledge of criteria that may be relevant to evaluating theories and models, including explanatory value, coherence, precision, parsimony, scope, testability, empirical interface, and usability; their meanings and limitations; and possible tensions or trade-offs among them.",
+    "Scope, boundary conditions, and generalization": "Knowledge of theoretical scope, domains of application, boundary conditions, generality, exceptions, expected limits, and conditions under which theoretical claims should or should not apply.",
+    "Research strategies and evidential affordances": "Knowledge of how observational, experimental, intervention-based, measurement, formal, computational, simulation, conceptual, and evidence-synthesis approaches can address different theoretical questions, including the kinds of evidence they can provide and their principal assumptions and limitations.",
+    "Evidence synthesis and integration": "Knowledge of principles for combining heterogeneous, incomplete, convergent, or conflicting empirical, formal, conceptual, and measurement-related evidence, including dependencies among evidence sources and limits on what integrated evidence warrants.",
+    "Research-programme design": "Knowledge of how theoretical questions can structure sequences of theoretical and empirical inquiry, research priorities, dependencies, decision points, and cumulative research programmes.",
+    "Theory comparison and evidential discrimination": "Knowledge of principles for comparing rival or related theories on common explanatory targets, assumptions, implications, scope, and evidential consequences, including the possibility of underdetermination or empirical equivalence.",
+    "Classification, taxonomy, and ontology": "Knowledge of principles for classifying and organizing constructs, phenomena, entities, processes, or relations into taxonomic or ontological structures and for evaluating the coherence of those structures.",
+    "Formal, mathematical, and computational modeling": "Knowledge of mathematical and computational approaches, formal systems, simulation, variables, parameters, and the representational affordances and limits of formal modeling methods.",
+    "Theory documentation, provenance, and versioning": "Knowledge of principles and methods for recording theoretical definitions, assumptions, decisions, representations, versions, revisions, rationales, uncertainties, and open questions so that theoretical development remains transparent and traceable.",
+    "Potential harms and responsible theory development": "Knowledge of ways theoretical constructs, classifications, explanations, assumptions, models, predictions, interpretations, and applications can produce, reinforce, obscure, or legitimize harms, and of relevant principles for identifying and responding to such risks.",
+    "Relevant methods, tools, resources, and specialist expertise": "Awareness of relevant technical methods, software, literatures, databases, and specialist expertise, including when specialist input is needed and where and how it can be obtained.",
+    "Causal, intervention, and counterfactual concepts": "Knowledge of causal relations, interventions, counterfactual dependence, and the conditions under which causal, intervention, or counterfactual claims and derivations are licensed.",
+    "Analogy and inter-theory relations": "Knowledge of how analogies and relations among theories can be used to identify structural similarities and differences, transferable explanatory resources, nesting, compatibility, complementarity, or opportunities for theoretical development."
+  },
+  skill: {
+    "Identify candidate explananda": "Identify phenomena, capacities, regularities, or problems that may require theoretical explanation.",
+    "Formulate explananda": "Turn broad observations, capacities, or problems into sufficiently explicit explanatory targets.",
+    "Categorize and order explananda": "Categorize, organize, prioritize, or otherwise order candidate explananda in theoretically meaningful ways.",
+    "Trace and evaluate evidential support for candidate explananda": "Identify and evaluate the evidence supporting the existence, characterization, stability, or epistemic status of a proposed explanandum.",
+    "Define constructs precisely": "Formulate sufficiently clear construct definitions and specify their intended meaning.",
+    "Differentiate and prune constructs": "Identify justified distinctions, overlap, redundancy, ambiguity, and unnecessary construct proliferation, and remove or consolidate distinctions when warranted.",
+    "Construct and evaluate taxonomies and ontologies": "Organize constructs and relevant entities into explicit taxonomic or ontological structures and assess the coherence of those structures.",
+    "Coordinate constructs and specify their referents and relations": "Specify what theoretical terms refer to and articulate how constructs are related, distinguished, nested, or otherwise coordinated.",
+    "Specify empirical indicators and operationalizations": "Identify and articulate ways in which a theoretical construct could, in principle, be operationalized, indexed, measured, or otherwise empirically evidenced.",
+    "Identify and specify theory–measurement assumptions": "Make explicit the assumptions connecting theoretical constructs or entities to indicators, indices, measurement procedures, observations, or scores.",
+    "Evaluate indicators and operationalizations": "Assess whether, how, and under what assumptions indicators, indices, measurements, or operationalizations provide evidence concerning the intended theoretical construct.",
+    "Generate candidate explanatory accounts": "Propose candidate mechanistic, functional, or process-based explanations capable of accounting for an explanandum.",
+    "Progressively specify and refine explanatory accounts": "Elaborate preliminary explanatory sketches into more specified accounts by identifying and refining relevant components, processes, functions, activities, organization, temporal structure, or other explanatory relations as appropriate.",
+    "Relate explanations across relevant levels": "Identify relevant levels of explanation and articulate defensible relations among accounts operating at those levels without conflating levels or assuming unjustified reduction.",
+    "Formulate theoretical propositions": "State core theoretical claims sufficiently explicitly that their meaning, relations, and implications can be examined.",
+    "Identify and specify theoretical assumptions": "Identify and make explicit assumptions that structure or constrain a theory or representation, including which assumptions are added, retained, modified, or removed.",
+    "Select appropriate theoretical representations": "Select verbal, diagrammatic, formal, mathematical, computational, or hybrid representations according to the theoretical function they need to serve.",
+    "Construct explicit theories and representations": "Organize theoretical propositions, assumptions, entities, relations, and other commitments into coherent and sufficiently explicit theoretical representations.",
+    "Construct variants or model families where useful": "Develop related variants or model families when this clarifies which commitments are essential, optional, or alternative.",
+    "Evaluate representational fidelity and adequacy": "Determine whether a representation faithfully expresses intended theoretical commitments, avoids unintended commitments where possible, and is sufficiently explicit and usable for its intended purposes.",
+    "Diagnose theoretical problems": "Identify tensions, inconsistencies, gaps, ambiguities, redundancies, underspecification, unsupported assumptions, and other limitations in an existing theory.",
+    "Generate and examine candidate revisions or variants": "Generate alternative revisions, extensions, constraints, specifications, or variants that could address an identified theoretical problem and examine their likely consequences.",
+    "Modify theories and assess consequences of revisions": "Extend, constrain, deepen, or otherwise repair a theory while tracing how the modification affects relevant theoretical properties.",
+    "Derive consequences from theories and models": "Determine, through appropriate reasoning, what follows from a specified theory or model under stated conditions.",
+    "Derive explanatory, predictive, intervention, counterfactual, and failure implications where applicable": "Determine how a theory accounts for established phenomena and, where warranted, derive predictions, intervention consequences, counterfactual expectations, and expected failures.",
+    "Identify assumptions and conditions required for derivation": "Identify and make explicit auxiliary assumptions, background conditions, initial conditions, measurement assumptions, or other premises required to derive a particular implication.",
+    "Map theoretical scope and boundary conditions": "Specify the domains to which a theory is intended to apply and identify conditions under which its claims no longer apply or are expected to fail.",
+    "Compare rival theories": "Compare rival or related theories with respect to common explananda, theoretical commitments, derived implications, scope, and other relevant dimensions.",
+    "Specify evidential support and discrimination": "Specify what evidence would count for or against each theoretical alternative and identify evidence that would discriminate between rivals.",
+    "Appraise explanatory adequacy": "Determine how and how well a theory or model accounts for its intended explananda and identify explanatory successes and limitations.",
+    "Integrate theory-relevant evidence": "Synthesize heterogeneous, incomplete, convergent, or conflicting evidence into an explicit assessment of what is supported, challenged, unresolved, or underdetermined.",
+    "Make theory-update and lifecycle decisions": "Determine which theoretical commitments should be retained, revised, constrained, forked, merged, or discarded in light of integrated evidence.",
+    "Attribute evidential implications to theoretical components": "Determine which constructs, assumptions, propositions, mechanisms, model components, or scope claims are implicated by a body of evidence.",
+    "Select appropriate forms of inquiry": "Determine which forms of theoretical or empirical investigation are appropriate for addressing a theoretical question.",
+    "Prioritize and sequence theoretical investigations": "Prioritize and order investigations according to dependencies, expected informativeness, unresolved uncertainty, and ability to enable or constrain subsequent work.",
+    "Identify theory-relevant research questions": "Translate unresolved theoretical problems, uncertainties, assumptions, scope questions, competing explanations, and other gaps into explicit questions that advance theory development or evaluation.",
+    "Assess and make explicit epistemic status": "Distinguish established explananda from provisional patterns, speculative targets, and raw data patterns and explicitly qualify their epistemic status.",
+    "Use analogies and inter-theory relations for theory development": "Examine theoretically relevant analogies and relations to other theories when these provide resources for diagnosing or improving the target theory.",
+    "Maintain transparent and traceable theoretical documentation": "Record the definitions, assumptions, theoretical decisions, representations, versions, revisions, rationales, uncertainties, and open questions necessary to reconstruct how a theory or model developed and why substantive changes were made.",
+    "Select, articulate, and apply appropriate theory-evaluation criteria": "Identify which evaluative criteria are relevant to a particular theoretical purpose or decision, make those criteria explicit, apply them consistently, and identify consequential trade-offs among them.",
+    "Identify and evaluate potential theoretical harms": "Identify plausible harms arising from theoretical constructs, classifications, assumptions, explanations, models, predictions, or applications; locate which commitments generate those risks; and determine whether modification, qualification, restriction, or explicit warning is warranted.",
+    "Coordinate specialist expertise": "Recognize when specialist input is needed, identify appropriate expertise, communicate the theoretical requirement, and evaluate whether delegated technical work serves the intended theoretical purpose."
+  },
+  capability: {
+    "Abstract reasoning": "Move from particulars to general structures, relations, representations, and theoretical principles.",
+    "Conceptual precision": "Recognize and maintain theoretically consequential distinctions in meaning, reference, assumptions, and relations.",
+    "Critical reasoning": "Identify weaknesses, unjustified assumptions, inconsistencies, alternatives, and potential counterarguments.",
+    "Epistemic judgment": "Judge evidential strength, uncertainty, justification, adequacy, and what conclusions available evidence warrants.",
+    "Logical and structural reasoning": "Reason correctly about consistency, implication, dependency, formal or conceptual structure, and consequences of changes within theoretical systems.",
+    "Causal and process reasoning": "Reason about dependencies, interventions, processes, mechanisms, temporal organization, and causal consequences where relevant.",
+    "Systems thinking": "Understand interacting components, organization, feedback, dependencies, and system-level consequences.",
+    "Integrative reasoning": "Bring heterogeneous concepts, theories, levels, evidence, and representations into coherent relation.",
+    "Representational flexibility": "Move effectively among verbal, visual, diagrammatic, mathematical, formal, and computational representations of theoretical structures.",
+    "Scientific creativity": "Generate non-obvious explanatory structures, theoretical alternatives, representations, analogies, and repairs.",
+    "Uncertainty management": "Reason and decide productively despite incomplete knowledge, ambiguity, underdetermination, conflicting evidence, or multiple plausible alternatives.",
+    "Intellectual flexibility": "Revise commitments, entertain alternatives, change theoretical approaches, and abandon inadequate positions when warranted.",
+    "Strategic and long-horizon reasoning": "Reason across sequences of investigations and decisions and their consequences for longer-term theory development.",
+    "Assumption sensitivity": "Notice implicit assumptions, distinguish relevant types of assumptions, and recognize how theoretical conclusions and decisions depend on them.",
+    "Quantitative and computational reasoning": "Understand quantitative relations, formal model behavior, simulations, parameterization, and computational consequences.",
+    "Counterfactual reasoning": "Reason about unrealized alternatives, interventions, changed assumptions, and how outcomes would differ under those conditions.",
+    "Collaborative communication": "Communicate theoretical requirements across disciplinary or technical boundaries and productively incorporate specialist input.",
+    "Ethical foresight": "Anticipate plausible downstream consequences of theoretical choices for people, groups, scientific practice, or societal applications, including unintended consequences."
+  }
+};
+const normalizeReqLabel = label => String(label).trim().replace(/\s+/g," ").toLowerCase();
+const normalizedReqDescriptions = Object.fromEntries(Object.entries(REQ_DESCRIPTIONS).map(([type,items])=>[
+  type, Object.fromEntries(Object.entries(items).map(([label,description])=>[normalizeReqLabel(label),description]))
+]));
+
+function buildReqTables(){
+  const cfg = [["s","skillTable","skill"],["k","knowledgeTable","knowledge"],["cap","capabilityTable","capability"]];
+  cfg.forEach(([type,tableId,word])=>{
+    const body = document.querySelector(`#${tableId} tbody`);
+    body.innerHTML = REQUIREMENTS[type].map(entry =>
+      `<tr id="core-${type}-${entry.code}" data-comps="${[...entry.compIds].join(",")}">
+        <td>${entry.code} - ${esc(entry.label)}</td><td>${normalizedReqDescriptions[word][normalizeReqLabel(entry.label)] || `Description of ${word} ${entry.code}`}</td></tr>`
+    ).join("");
+  });
+}
+
+function buildConditionalTables(){
+  const cfg = [["k","condKnowledgeTable"],["s","condSkillTable"],["cap","condCapabilityTable"]];
+  const typeWord = {k:"knowledge", s:"skill", cap:"capability"};
+  cfg.forEach(([type,tableId])=>{
+    const body = document.querySelector(`#${tableId} tbody`);
+    body.innerHTML = CONDITIONAL[type].map(item => {
+      const general = REQ_DESCRIPTIONS[typeWord[type]]?.[item.label] || "Description missing";
+      const perComp = item.entries.map(e =>
+        `<span class="condEntry" id="cond-${type}-${item.code}-${e.comp}" data-comp="${e.comp}"><b>C${e.comp}</b> - ${esc(e.text)}</span>`
+      ).join("");
+      const compList = item.entries.map(e=>e.comp).join(",");
+      return `<tr id="condrow-${type}-${item.code}" data-comps="${compList}"><td>${item.code} - ${esc(item.label)}</td><td><span class="condGeneral">${esc(general)}</span><span class="condWhenLabel">Applies when:</span>${perComp}</td></tr>`;
+    }).join("");
+  });
+}
+
+function buildRationaleTable(){
+  const body = document.querySelector("#rationaleTable tbody");
+  body.innerHTML = COMPS.map(c =>
+    `<tr id="rationale-${c.id}"><td>T${c.primary} \u2192 C${c.id}</td><td>${esc(TASK_RATIONALE[c.id])}</td></tr>`
+  ).join("");
+}
+
+function updateRationaleTable(){
+  const sel = state.sel;
+  COMPS.forEach(c=>{
+    const row = document.getElementById(`rationale-${c.id}`);
+    if(!row) return;
+    const relevant = sel===null || sel===c.id;
+    row.classList.toggle("hidden", !relevant);
+  });
+}
+
+function buildCrossCuttingTables(){
+  const cfg = [["k","crossKnowledgeTable"],["s","crossSkillTable"],["cap","crossCapabilityTable"]];
+  const typeWord = {k:"knowledge", s:"skill", cap:"capability"};
+  cfg.forEach(([type,tableId])=>{
+    const body = document.querySelector(`#${tableId} tbody`);
+    body.innerHTML = CROSSCUTTING[type].map(item => {
+      const general = REQ_DESCRIPTIONS[typeWord[type]]?.[item.label] || "Description missing";
+      const perComp = item.entries.map(e =>
+        `<span class="condEntry" id="cross-${type}-${item.code}-${e.comp}" data-comp="${e.comp}"><b>C${e.comp}</b> - ${esc(e.text)}</span>`
+      ).join("");
+      const compList = item.entries.map(e=>e.comp).join(",");
+      return `<tr id="crossrow-${type}-${item.code}" data-comps="${compList}"><td>${item.code} - ${esc(item.label)}</td><td><span class="condGeneral">${esc(general)}</span><span class="condWhenLabel">Applies when:</span>${perComp}</td></tr>`;
+    }).join("");
+  });
+}
+
+function updateConditionalAndCrossCutting(){
+  const sel = state.sel;
+  document.querySelectorAll('[id^="condrow-"], [id^="crossrow-"]').forEach(row=>{
+    const comps = (row.dataset.comps || "").split(",").map(Number);
+    const relevant = sel===null || comps.includes(sel);
+    row.classList.toggle("hidden", !relevant);
+  });
+  document.querySelectorAll('.condEntry[data-comp]').forEach(entry=>{
+    const comp = Number(entry.dataset.comp);
+    const relevant = sel===null || comp===sel;
+    entry.classList.toggle("hidden", !relevant);
+  });
+}
+
+function jumpToRequirement(type, label){
+  state.drill = {type, label};
+  applyDrillDown();
+
+  const norm = s => String(s).trim().toLowerCase();
+  const target = norm(label);
+
+  const coreList = REQUIREMENTS[type] || [];
+  const coreMatch = coreList.find(e => norm(e.label) === target);
+  if(coreMatch){
+    const row = document.getElementById(`core-${type}-${coreMatch.code}`);
+    if(row){ scrollAndFlash(row); return; }
+  }
+
+  const condMatch = (CONDITIONAL[type]||[]).find(e => norm(e.label) === target);
+  if(condMatch){
+    const row = document.getElementById(`condrow-${type}-${condMatch.code}`);
+    if(row){ scrollAndFlash(row); return; }
+  }
+
+  const crossMatch = (CROSSCUTTING[type]||[]).find(e => norm(e.label) === target);
+  if(crossMatch){
+    const row = document.getElementById(`crossrow-${type}-${crossMatch.code}`);
+    if(row){ scrollAndFlash(row); return; }
+  }
+}
+
+function scrollAndFlash(row){
+  row.scrollIntoView({behavior:"smooth", block:"center"});
+  row.classList.remove("rowFlash");
+  void row.offsetWidth;
+  row.classList.add("rowFlash");
+}
+
+function applyDrillDown(){
+  const allTaskRows = document.querySelectorAll('[id^="taskdesc-"]');
+  const allCompRows = document.querySelectorAll('[id^="compdesc-"]');
+  const allRationaleRows = document.querySelectorAll('#rationaleTable tbody tr');
+  const allDepRows = document.querySelectorAll('#depTable tbody tr, #contextDepTable tbody tr');
+  const allRequirementRows = document.querySelectorAll(
+    '#skillTable tbody tr, #knowledgeTable tbody tr, #capabilityTable tbody tr, ' +
+    '[id^="condrow-"], [id^="crossrow-"]'
+  );
+
+  if(state.drill){
+    const c = compById(state.sel);
+    if(!c) return;
+
+    allDepRows.forEach(r => r.classList.add("hidden"));
+
+    allTaskRows.forEach(r => {
+      const match = r.id === `taskdesc-${c.primary}`;
+      r.classList.toggle("hidden", !match);
+    });
+
+    allCompRows.forEach(r => {
+      const match = r.id === `compdesc-${c.id}`;
+      r.classList.toggle("hidden", !match);
+    });
+
+    allRationaleRows.forEach(r => {
+      const match = r.id === `rationale-${c.id}`;
+      r.classList.toggle("hidden", !match);
+    });
+
+    const norm = s => String(s).trim().toLowerCase();
+    const target = norm(state.drill.label);
+    const type = state.drill.type;
+
+    let targetRow = null;
+
+    if(type){
+      const coreMatch = (REQUIREMENTS[type] || [])
+        .find(e => norm(e.label) === target);
+      if(coreMatch){
+        targetRow = document.getElementById(`core-${type}-${coreMatch.code}`);
+      }
+
+      if(!targetRow){
+        const condMatch = (CONDITIONAL[type] || [])
+          .find(e => norm(e.label) === target);
+        if(condMatch){
+          targetRow = document.getElementById(`condrow-${type}-${condMatch.code}`);
+        }
+      }
+
+      if(!targetRow){
+        const crossMatch = (CROSSCUTTING[type] || [])
+          .find(e => norm(e.label) === target);
+        if(crossMatch){
+          targetRow = document.getElementById(`crossrow-${type}-${crossMatch.code}`);
+        }
+      }
+    }
+
+    if(!targetRow){
+      targetRow = [...allRequirementRows].find(row => {
+        const label = row.querySelector("td")?.textContent
+          ?.replace(/^[A-Z]+\d+\s*-\s*/, "")
+          .trim();
+        return norm(label) === target;
+      }) || null;
+    }
+
+    allRequirementRows.forEach(r => {
+      r.classList.toggle("hidden", r !== targetRow);
+    });
+  } else {
+    render();
+  }
+}
+
+function updateEmptySubsections(){
+  const pairs = [
+    "condKnowledgeTable",
+    "condSkillTable",
+    "condCapabilityTable",
+    "crossKnowledgeTable",
+    "crossSkillTable",
+    "crossCapabilityTable"
+  ];
+  pairs.forEach(tableId=>{
+    const table = document.getElementById(tableId);
+    if(!table) return;
+    const rows = table.querySelectorAll("tbody tr");
+    const anyVisible = [...rows].some(r => !r.classList.contains("hidden"));
+    table.classList.toggle("hidden", !anyVisible);
+  });
+
+  const condVisible = ["condKnowledgeTable","condSkillTable","condCapabilityTable"]
+    .some(id => !document.getElementById(id)?.classList.contains("hidden"));
+  const crossVisible = ["crossKnowledgeTable","crossSkillTable","crossCapabilityTable"]
+    .some(id => !document.getElementById(id)?.classList.contains("hidden"));
+  document.getElementById("condSectionHead")?.classList.toggle("hidden", !condVisible);
+  document.getElementById("crossSectionHead")?.classList.toggle("hidden", !crossVisible);
+}
+
+function buildDepTable(){
+  const body = document.querySelector("#depTable tbody");
+  body.innerHTML = DEPS.map(d => {
+    const label = `C${d.from} \u2192 C${d.to}`;
+    const rationale = DEP_DESCRIPTIONS[`${d.from}-${d.to}`] || "Description missing";
+    return `<tr id="depdesc-${d.from}-${d.to}"><td>${label}</td><td>${rationale}</td></tr>`;
+  }).join("");
+}
+
+function buildContextDepTable(){
+  const body = document.querySelector("#contextDepTable tbody");
+  body.innerHTML = CONTEXT_DEPS.map(d => {
+    const label = `C${d.from} \u2192 C${d.to}`;
+    const rationale = CONTEXT_DEP_DESCRIPTIONS[`${d.from}-${d.to}`] || "Description missing";
+    return `<tr id="contextdep-${d.from}-${d.to}"><td>${label}</td><td>${rationale}</td></tr>`;
+  }).join("");
+}
+
+function updateContextDepTable(){
+  const sel = state.sel;
+  CONTEXT_DEPS.forEach(d=>{
+    const row = document.getElementById(`contextdep-${d.from}-${d.to}`);
+    if(!row) return;
+    const relevant = sel===null || sel===d.to;
+    row.classList.toggle("hidden", !relevant);
+  });
+}
+
+function updateDepTable(){
+  const sel = state.sel;
+  DEPS.forEach(d=>{
+    const row = document.getElementById(`depdesc-${d.from}-${d.to}`);
+    if(!row) return;
+    const relevant = sel===null || sel===d.to;
+    row.classList.toggle("hidden", !relevant);
+  });
+}
+
+function updateReqTables(){
+  const sel = state.sel;
+  ["s","k","cap"].forEach(type=>{
+    REQUIREMENTS[type].forEach(entry=>{
+      const row = document.getElementById(`core-${type}-${entry.code}`);
+      if(!row) return;
+      const relevant = sel===null || entry.compIds.size===0 || entry.compIds.has(sel);
+      row.classList.toggle("hidden", !relevant);
+    });
+  });
+}
+
+function updateDescTables(){
+  const sel = state.sel;
+  TASKS.forEach((_,i)=>{
+    const row = document.getElementById(`taskdesc-${i+1}`);
+    if(!row) return;
+    const relevant = sel===null || compById(sel).primary===i+1;
+    row.classList.toggle("hidden", !relevant);
+  });
+  COMPS.forEach(c=>{
+    const row = document.getElementById(`compdesc-${c.id}`);
+    if(!row) return;
+    const relevant = sel===null || sel===c.id;
+    row.classList.toggle("hidden", !relevant);
+  });
+}
+
+
+/* ------------ state ------------ */
+const state={sel:null,hover:null,showDep:false,drill:null};
+
+function keepSets(){
+  const {sel,hover}=state;
+  if(sel!==null){
+    const c=compById(sel);
+    return {
+      t:new Set([c.primary,...c.en.map(e=>e.task)]),
+      c:new Set([c.id,...requiresOf(c.id)])
+    };
+  }
+  if(hover){
+    if(hover.k==="c"){
+      const c=compById(hover.id);
+      return {t:new Set([c.primary]),c:new Set([c.id])};
+    }
+    return {t:new Set([hover.id]),c:new Set(COMPS.filter(c=>c.primary===hover.id).map(c=>c.id))};
+  }
+  return null;
+}
+
+function updateNodes(){
+  const keep=keepSets();
+  const selComp=state.sel!==null?compById(state.sel):null;
+  TASKS.forEach((_,i)=>{
+    const el=$("#t"+(i+1));
+    el.classList.toggle("dim",!!keep&&!keep.t.has(i+1));
+    el.classList.toggle("pri",!!selComp&&selComp.primary===i+1);
+  });
+  COMPS.forEach(c=>{
+    const el=$("#c"+c.id);
+    el.classList.toggle("dim",!!keep&&!keep.c.has(c.id));
+    el.classList.toggle("sel",state.sel===c.id);
+  });
+}
+
+/* ------------ overview edges ------------ */
+function overviewEdges(){
+  const hv=state.hover;
+  let pri="",dep="";
+  COMPS.forEach(c=>{
+    const y2=cy(c.id-1)+CH/2, x1=TX+TW;
+    const relP=!hv||(hv.k==="c"&&hv.id===c.id)||(hv.k==="t"&&hv.id===c.primary);
+    pri+=`<path class="e-pri ${relP?"":"faded"}" marker-end="url(#arrPri)" d="${curve(x1,ty(c.primary-1)+TH/2,CX-10,y2)}"/>`;
+  });
+  if(state.showDep){
+    DEPS.forEach(d=>{
+      const rel=!hv||(hv.k==="c"&&(hv.id===d.from||hv.id===d.to));
+      dep+=`<path class="e-dep ${rel?"":"faded"}" marker-end="url(#arr)" d="${arc(d.from,d.to)}"/>`;
+    });
+  }
+  $("#gEdges").innerHTML=pri+dep;
+  $("#gEnab").innerHTML="";
+  $("#gTags").innerHTML="";
+}
+
+/* ------------ focus view ------------ */
+function focusLayout(n){
+  const perItem = EH + 12;
+  const minSpan = Math.max(TASKS.length, COMPS.length) * Math.max(TG,CG);
+  const span = Math.max(n * perItem, minSpan);
+  const gap = n > 1 ? Math.min(90, (span - EH) / (n - 1)) : 0;
+  return { span, gap };
+}
+
+function pillMarkup(e,x,y,delay){
+  const mid=EH/2;
+  let mark;
+  if(e.type==="s") mark=`<circle class="mark" cx="18" cy="${mid}" r="5.5"/>`;
+  else if(e.type==="k") mark=`<rect class="mark" x="12.5" y="${mid-5.5}" width="11" height="11" rx="2.5"/>`;
+  else mark=`<path class="mark" d="M18 ${mid-7}L25 ${mid}L18 ${mid+7}L11 ${mid}z"/>`;
+  const tip=`${TYPE_NAME[e.type]}, from T${e.task}${e.role==="primary"?" (primary task)":" (supporting task)"}`;
+  return `<g class="enab fx ${e.type} ${e.role}" onclick='jumpToRequirement(${JSON.stringify(e.type)}, ${JSON.stringify(e.label).replace(/'/g,"&#39;")})' style="animation-delay:${delay}ms" transform="translate(${x},${y})">
+    <title>${tip}</title>
+    <rect class="pill" width="${EW}" height="${EH}" rx="${EH/2}"/>
+    ${mark}
+    <text class="etx" x="${(34+EW-42)/2}" text-anchor="middle">${wrapLabel(e.label, 32, (34+EW-42)/2, mid, 15)}</text>
+    <rect class="src" x="${EW-42}" y="${mid-10}" width="32" height="20" rx="10"/>
+    <text class="srctx" x="${EW-26}" y="${mid+4}" text-anchor="middle">T${e.task}</text></g>`;
+}
+
+function focusView(c){
+  const list=[...c.en].sort((a,b)=>a.task-b.task);
+  const n=list.length;
+  const { span, gap } = focusLayout(n);
+  const midY = TY0 + span / 2;
+  const top = midY - ((n-1)*gap) / 2 - EH/2;
+  const cyc=cy(c.id-1)+CH/2;
+
+  let priE="",pills="";
+  list.forEach((e,i)=>{
+    const ey=top+i*gap, ec=ey+EH/2;
+    const d1=curve(TX+TW,ty(e.task-1)+TH/2,EX-10,ec);
+    const d2=curve(EX+EW,ec,CX-10,cyc);
+    const delay=60+i*45;
+    const p=`<path class="e-pri fx" style="animation-delay:${delay}ms" marker-end="url(#arrPri)" d="${d1}"/><path class="e-pri fx" style="animation-delay:${delay}ms" marker-end="url(#arrPri)" d="${d2}"/>`;
+    priE+=p;
+    pills+=pillMarkup(e,EX,ey,delay);
+  });
+
+  let dep="",tags="";
+  requiresOf(c.id).forEach(a=>{
+    dep+=`<path class="e-dep fx" marker-end="url(#arr)" d="${arc(a,c.id)}"/>`;
+    tags+=tagMarkup(a,"functionally dependent");
+  });
+
+  $("#gEdges").innerHTML=priE+dep;
+  $("#gEnab").innerHTML=pills;
+  $("#gTags").innerHTML=tags;
+}
+
+function tagMarkup(id,text){
+  const w=Math.round(text.length*5.6+16);
+  const x=CX+CW-w-10, y=cy(id-1)-7;
+  return `<g class="tag fx" transform="translate(${x},${y})"><rect width="${w}" height="14" rx="7"/><text x="${w/2}" y="10.3" text-anchor="middle">${text}</text></g>`;
+}
+
+/* ------------ caption ------------ */
+function names(ids){return ids.map(i=>`C${i} ${compById(i).name}`).join(", ");}
+function captionHTML(){
+  if(state.sel===null){
+    return `<h2>All competencies</h2><p class="muted">Each competency is built primarily from one task, shown as a bold line. Click a competency to see the knowledge, skills, and capabilities it draws on, along with any competencies it functionally depends on.</p>`;
+  }
+  const c=compById(state.sel);
+  const cnt={s:0,k:0,cap:0}; c.en.forEach(e=>cnt[e.type]++);
+  const req=requiresOf(c.id), unl=unlocksOf(c.id);
+  let h=`<h2>C${c.id} ${esc(c.name)}</h2>`;
+  h+=`<p>Built mainly from <b>T${c.primary} ${esc(TASKS[c.primary-1])}</b>. It has ${c.en.length} enablers: ${cnt.s} skills, ${cnt.k} knowledge, and ${cnt.cap} capabilities.</p>`;
+  h+=`<p class="muted">${req.length?`Requires ${esc(names(req))}. `:"Depends on no other competency. "}${unl.length?`Unlocks ${esc(names(unl))}.`:"Nothing else depends on it."}</p>`;
+  return h;
+}
+
+function computeHeight(){
+  const rows = Math.max(TASKS.length, COMPS.length);
+  const overviewHeight = TY0 + rows*Math.max(TG,CG) + 40;
+  if(state.sel === null) return overviewHeight;
+  const c = compById(state.sel);
+  const { span } = focusLayout(c.en.length);
+  return Math.max(overviewHeight, TY0 + span + 80);
+}
+
+/* ------------ render ------------ */
+function render(){
+  $("#map").setAttribute("viewBox", `0 0 1050 ${computeHeight()}`);
+  document.body.classList.toggle("focus",state.sel!==null);
+  $("#enHead").classList.toggle("on",state.sel!==null);
+  updateNodes();
+  if(state.sel===null) overviewEdges(); else focusView(compById(state.sel));
+  $("#caption").innerHTML=captionHTML();
+  updateDescTables();
+  updateRationaleTable();
+  updateReqTables();
+  updateDepTable();
+  updateContextDepTable();
+  updateConditionalAndCrossCutting();
+  updateEmptySubsections();
+}
+
+function setHover(h){
+  if(state.sel!==null) return;
+  const same=(!h&&!state.hover)||(h&&state.hover&&h.k===state.hover.k&&h.id===state.hover.id);
+  if(same) return;
+  state.hover=h; render();
+}
+function openComp(id){state.sel=id;state.hover=null;state.drill=null;render();}
+function closeComp(refocus){
+  if(state.sel===null) return;
+  const was=state.sel; state.sel=null; state.hover=null; state.drill=null; render();
+  if(refocus===true){const el=$("#c"+was); if(el) el.focus({preventScroll:true});}
+}
+
+/* ------------ events ------------ */
+const svg=$("#map");
+svg.addEventListener("mouseover",ev=>{
+  const n=ev.target.closest(".node");
+  setHover(n?{k:n.dataset.k,id:+n.dataset.id}:null);
+});
+svg.addEventListener("mouseleave",()=>setHover(null));
+svg.addEventListener("focusin",ev=>{
+  const n=ev.target.closest&&ev.target.closest(".node");
+  if(n) setHover({k:n.dataset.k,id:+n.dataset.id});
+});
+svg.addEventListener("focusout",()=>setHover(null));
+svg.addEventListener("click",ev=>{
+  const n=ev.target.closest(".node");
+  if(n&&n.dataset.k==="c"){openComp(+n.dataset.id);return;}
+  if(!n&&state.sel!==null&&!ev.target.closest(".enab")) closeComp();
+});
+svg.addEventListener("keydown",ev=>{
+  const n=ev.target.closest&&ev.target.closest(".node.comp");
+  if(n&&(ev.key==="Enter"||ev.key===" ")){ev.preventDefault();openComp(+n.dataset.id);}
+});
+document.addEventListener("keydown",ev=>{if(ev.key==="Escape") closeComp(true);});
+$("#back").addEventListener("click",()=>closeComp(false));
+$("#tDep").addEventListener("change",e=>{state.showDep=e.target.checked;render();});
+
+buildDescTables();
+buildRationaleTable();
+buildReqTables();
+buildConditionalTables();
+buildCrossCuttingTables();
+buildDepTable();
+buildContextDepTable();
+buildNodes();
+render();
+</script>
+</body>
+</html>
