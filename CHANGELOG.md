@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.0](https://github.com/NNNvD/ECTO/compare/v1.4.6...v1.5.0) (2026-10-09)
+
+
+### Features
+
+* add ECTO glossary, Phase 2 map, and October logbook notes ([c3d0671](https://github.com/NNNvD/ECTO/commit/c3d06717faf2e5319e8516c4a2bf684aaa4c24dc))
+* add ECTO glossary, Phase 2 map, and October logbook notes ([206f8a8](https://github.com/NNNvD/ECTO/commit/206f8a872fd12b13d00e65ef8bfac3a58350628b))
+
 ## [1.4.6](https://github.com/NNNvD/ECTO/compare/v1.4.5...v1.4.6) (2026-10-06)
 
 
