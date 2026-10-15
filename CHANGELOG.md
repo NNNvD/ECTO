@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/NNNvD/ECTO/compare/v1.5.0...v1.5.1) (2026-10-15)
+
+
+### Bug Fixes
+
+* Add daily log for October 15, 2026 ([80c78c1](https://github.com/NNNvD/ECTO/commit/80c78c1169eb3c7d30bcb77a8247d4f0b763517f))
+
 ## [1.5.0](https://github.com/NNNvD/ECTO/compare/v1.4.6...v1.5.0) (2026-10-09)
 
 
