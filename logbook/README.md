@@ -1,6 +1,8 @@
 # Logbook
 
 ## Daily logs
+- 2026-10-22 — [2026-10-22]({{ '/daily/2026-10-22' | relative_url }})
+- 2026-10-19 — [2026-10-19]({{ '/daily/2026-10-19' | relative_url }})
 - 2026-10-15 — [2026-10-15]({{ '/daily/2026-10-15' | relative_url }})
 - 2026-10-09 — [2026-10-09]({{ '/daily/2026-10-09' | relative_url }})
 - 2026-10-03 — [2026-10-03]({{ '/daily/2026-10-03' | relative_url }})
@@ -65,4 +67,4 @@
 - [20260413_advisory_board_1]({{ '/meetings/20260413_advisory_board_1' | relative_url }})
 
 ## Incidents
-- (none)
+- [2026-10-22-phase2-round1-item-1-wording-correction]({{ '/incidents/2026-10-22-phase2-round1-item-1-wording-correction' | relative_url }})
