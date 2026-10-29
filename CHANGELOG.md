@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.2](https://github.com/NNNvD/ECTO/compare/v1.5.1...v1.5.2) (2026-10-29)
+
+
+### Bug Fixes
+
+* generate working URLs for logbook notes ([d972ac5](https://github.com/NNNvD/ECTO/commit/d972ac559107c3ab858368f31eb97b75592665a8))
+* generate working URLs for logbook notes ([a63ad42](https://github.com/NNNvD/ECTO/commit/a63ad420026628c5b2cc372110e64f7edbd8a3c3))
+
 ## [1.5.1](https://github.com/NNNvD/ECTO/compare/v1.5.0...v1.5.1) (2026-10-15)
 
 
