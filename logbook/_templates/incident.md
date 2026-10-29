@@ -1,6 +1,7 @@
 ---
 date: {{DATE}}
 severity: low
+permalink: /incidents/:basename
 ---
 
 # {{DATE}} — Incident — {{TITLE}}

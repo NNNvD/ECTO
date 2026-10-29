@@ -32,6 +32,7 @@ Open the new file and replace template placeholders with real values:
 - Links to related issues/PRs/commits
 
 Keep entries concise and specific so others can scan them quickly.
+Keep the template's `permalink` field. It gives the note a stable public URL; Jekyll replaces `:basename` with the note's filename when it builds the site.
 
 ## 4) Add links to indexes (if applicable)
-After creating a note, update `logbook/README.md` so it appears in the relevant section (Daily logs, Decisions, Meetings, or Incidents).
+Do not edit `logbook/README.md` manually. The GitHub Actions workflow regenerates it from the Markdown files in the logbook folders and opens a pull request with the updated index. The generator uses a note's `permalink` when present and otherwise links to Jekyll's default source-path URL.

@@ -1,5 +1,6 @@
 ---
 date: {{DATE}}
+permalink: /meetings/:basename
 ---
 
 # {{DATE}} — Meeting — {{TITLE}}
