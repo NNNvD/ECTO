@@ -1,27 +1,24 @@
 # Logbook guide
 
 ## What goes where
-- **Daily logs**: day-to-day progress, experiments, and quick notes. Use for anything worth remembering that day.
+- **Daily logs**: concise record of day-to-day work, experiments, and outcomes.
 - **Decision records (ADRs)**: durable, project-wide choices that affect direction, architecture, or long-term behavior.
 - **Meeting notes**: summaries of discussions, attendees, outcomes, and action items.
 - **Incidents**: outages, regressions, or operational issues that need a timeline and follow-up.
 
-## When to create an ADR
-Create an ADR when a change is:
-- Long-lived or difficult to reverse.
-- Affects architecture, tooling, or team workflows.
-- Likely to be referenced later (why/when/how we decided).
+## Daily log style
+Use `logbook/daily/YYYY-MM-DD.md` and follow `logbook/_templates/daily.md`.
 
-## Recommended entry style
-Use a short, descriptive heading followed by consistent bullet fields. Keep entries terse and scannable:
-- Context: the situation or problem.
-- What I did: the action taken.
-- Result: outcome or current state.
-- Links: related Issue/PR/commit.
-- Follow-ups: next steps.
+- Keep Highlights concise and scannable.
+- List Entries chronologically. Use the heading format `### HH:MM — Action — <short action title>`; times are in the frontmatter timezone, `Europe/Amsterdam`.
+- Use the time supplied for the activity. Do not invent a time; write `Time not recorded` if none is available.
+- Write completed activities in past tense. For daily-log drafting, treat work described as planned or prepared as completed unless the user explicitly says it was not completed.
+- A `**Context:**` line is optional. Include it only when it helps explain why the action was taken. Put the actions performed in concise bullets below it. If context is unnecessary, omit the line and put the action bullets directly below the heading.
+- Do not mention or link to pull requests in daily-log entries.
+- Keep internal weekly reviews, identifying details, private correspondence, and individual survey responses out of public daily logs.
 
-## Referencing GitHub items
-Use GitHub-native references for easy navigation:
-- Issues: `#123`
-- PRs: `PR #45`
-- Commits: short SHA (e.g., `abc1234`)
+## Other log types
+Use the matching template for meeting notes, ADRs, and incident reports. Include context, decisions, links, and follow-ups when relevant to that record type.
+
+## Linking related project records
+Daily logs do not include pull-request references. Other log types may link to relevant issues, ADRs, commits, or pull requests when useful.

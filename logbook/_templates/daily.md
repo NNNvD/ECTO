@@ -7,9 +7,8 @@ permalink: /daily/:basename
 # {{DATE}}
 
 ## Highlights
-- 
+- <brief completed outcome>
 
 ## Entries
-### {{TIME}} — Action — <short title>
-**Context:**
-
+### {{TIME}} — Action — <short action title>
+- <completed action or outcome>
