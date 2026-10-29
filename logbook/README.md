@@ -1,6 +1,7 @@
 # Logbook
 
 ## Daily logs
+- 2026-10-29 — [2026-10-29]({{ '/logbook/daily/2026-10-29.html' | relative_url }})
 - 2026-10-22 — [2026-10-22]({{ '/daily/2026-10-22' | relative_url }})
 - 2026-10-19 — [2026-10-19]({{ '/daily/2026-10-19' | relative_url }})
 - 2026-10-15 — [2026-10-15]({{ '/daily/2026-10-15' | relative_url }})
