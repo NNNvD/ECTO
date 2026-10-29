@@ -1,3 +1,7 @@
+---
+permalink: /decisions/:basename
+---
+
 # ADR-{{ADR_NUM}}: {{TITLE}}
 
 - Date: {{DATE}}

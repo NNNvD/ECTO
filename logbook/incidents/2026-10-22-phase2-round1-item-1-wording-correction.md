@@ -1,6 +1,7 @@
 ---
 date: 2026-10-22
 severity: low
+permalink: /incidents/2026-10-22-phase2-round1-item-1-wording-correction
 ---
 
 # 2026-10-22 — Incident — Phase 2 Round 1 Item 1 wording correction

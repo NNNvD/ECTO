@@ -20,6 +20,35 @@ HEADER = """# Logbook
 ADR_HEADING_RE = re.compile(r"^#\s+ADR-(\d{4}):\s*(.+)$")
 ADR_DATE_RE = re.compile(r"^-\s+Date:\s*(.+)$")
 ADR_STATUS_RE = re.compile(r"^-\s+Status:\s*(.+)$")
+PERMALINK_RE = re.compile(r"^permalink:\s*(.*?)\s*$")
+
+
+def page_url(path: Path) -> str:
+    """Return the Jekyll output URL for a Markdown page."""
+    lines = path.read_text(encoding="utf-8").splitlines()
+    permalink = None
+    if lines and lines[0].strip() == "---":
+        for line in lines[1:]:
+            if line.strip() == "---":
+                break
+            match = PERMALINK_RE.match(line)
+            if match:
+                permalink = match.group(1).strip().strip("\"'")
+                break
+
+    if permalink:
+        return (
+            permalink.replace(":path", path.parent.as_posix())
+            .replace(":basename", path.stem)
+            .replace(":output_ext", ".html")
+        )
+
+    # Jekyll renders pages at their source path with an .html suffix by default.
+    return f"/{path.with_suffix('.html').as_posix()}"
+
+
+def relative_url(path: Path) -> str:
+    return f"{{{{ '{page_url(path)}' | relative_url }}}}"
 
 
 def list_markdown_files(directory: Path) -> list[Path]:
@@ -53,7 +82,7 @@ def parse_adr_metadata(path: Path) -> dict[str, str]:
         "title": title,
         "date": date,
         "status": status,
-        "path": str(path),
+        "url": relative_url(path),
     }
 
 
@@ -63,7 +92,7 @@ def build_daily_section() -> str:
     lines = ["## Daily logs"]
     for path in daily_files:
         date = path.stem
-        lines.append(f"- {date} — [{date}]({{{{ '/daily/{path.stem}' | relative_url }}}})")
+        lines.append(f"- {date} — [{date}]({relative_url(path)})")
     if len(lines) == 1:
         lines.append("- (none)")
     return "\n".join(lines)
@@ -89,7 +118,7 @@ def build_adr_section() -> str:
     else:
         for item in adr_metadata:
             title_link = (
-                f"<a href=\"{{{{ '/decisions/{Path(item['path']).stem}' | relative_url }}}}\">"
+                f"<a href=\"{item['url']}\">"
                 f"{item['title']}</a>"
             )
             lines.append(
@@ -103,11 +132,11 @@ def build_adr_section() -> str:
     return "\n".join(lines)
 
 
-def build_simple_section(title: str, directory: Path, label: str) -> str:
+def build_simple_section(title: str, directory: Path) -> str:
     files = list_markdown_files(directory)
     lines = [title]
     for path in files:
-        lines.append(f"- [{path.stem}]({{{{ '/{label}/{path.stem}' | relative_url }}}})")
+        lines.append(f"- [{path.stem}]({relative_url(path)})")
     if len(lines) == 1:
         lines.append("- (none)")
     return "\n".join(lines)
@@ -121,9 +150,9 @@ def main() -> int:
         "",
         build_adr_section(),
         "",
-        build_simple_section("## Meetings", MEETINGS_DIR, "meetings"),
+        build_simple_section("## Meetings", MEETINGS_DIR),
         "",
-        build_simple_section("## Incidents", INCIDENTS_DIR, "incidents"),
+        build_simple_section("## Incidents", INCIDENTS_DIR),
         "",
     ]
     README_PATH.write_text("\n".join(sections).strip() + "\n", encoding="utf-8")
