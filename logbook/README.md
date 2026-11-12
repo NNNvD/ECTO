@@ -1,8 +1,9 @@
 # Logbook
 
 ## Daily logs
-- 2026-11-05 — [2026-11-05]({{ '/logbook/daily/2026-11-05.html' | relative_url }})
-- 2026-10-29 — [2026-10-29]({{ '/logbook/daily/2026-10-29.html' | relative_url }})
+- 2026-11-12 — [2026-11-12]({{ '/daily/2026-11-12' | relative_url }})
+- 2026-11-05 — [2026-11-05]({{ '/daily/2026-11-05' | relative_url }})
+- 2026-10-29 — [2026-10-29]({{ '/daily/2026-10-29' | relative_url }})
 - 2026-10-22 — [2026-10-22]({{ '/daily/2026-10-22' | relative_url }})
 - 2026-10-19 — [2026-10-19]({{ '/daily/2026-10-19' | relative_url }})
 - 2026-10-15 — [2026-10-15]({{ '/daily/2026-10-15' | relative_url }})
@@ -59,6 +60,8 @@
     <tr><td>0009</td><td><a href="{{ '/decisions/ADR-0009-add-expert-replacement-thresholds' | relative_url }}">Add expert replacement thresholds</a></td><td>2026-01-15</td><td>Accepted</td></tr>
     <tr><td>0010</td><td><a href="{{ '/decisions/ADR-0010-count-ratings-of-three-in-consensus-threshold' | relative_url }}">Count ratings of 3 in the consensus threshold</a></td><td>2026-06-15</td><td>Accepted</td></tr>
     <tr><td>0011</td><td><a href="{{ '/decisions/ADR-0011-concluding-phase1' | relative_url }}">Concluding Phase 1 of ECTO</a></td><td>2026-07-03</td><td>Accepted</td></tr>
+    <tr><td>0012</td><td><a href="{{ '/decisions/ADR-0012-notify-experts-of-phase2-round1-item-1-correction' | relative_url }}">Notify experts of the Phase 2 Round 1 Item 1 correction</a></td><td>2026-10-22</td><td>Accepted</td></tr>
+    <tr><td>0013</td><td><a href="{{ '/decisions/ADR-0013-phase2-round1-response-handling' | relative_url }}">Phase 2 Round 1 response handling decisions</a></td><td>2026-11-12</td><td>Accepted</td></tr>
   </tbody>
 </table>
 
